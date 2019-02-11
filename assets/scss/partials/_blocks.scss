@@ -1,0 +1,479 @@
+/* Blocks
+---------------------------------------------------------------------------------------------------- */
+
+/* Typographical Elements
+--------------------------------------------- */
+
+body {
+	@include base-style();
+}
+
+::-moz-selection {
+	background-color: $base-color;
+	color: $white;
+}
+
+::selection {
+	background-color: $base-color;
+	color: $white;
+}
+
+a {
+	color: $highlight;
+	text-decoration: none;
+	@extend %transition;
+
+	&:hover {
+		color: $base-color;
+	}
+
+	svg {
+		@extend %transition;
+	}
+}
+
+b, strong {
+	font-weight: 700;
+}
+
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+code,
+pre {
+	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+	font-size: 12px;
+}
+
+code {
+	padding: 2px 4px;
+	white-space: nowrap;
+}
+
+pre {
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	line-height: 18px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+}
+
+pre code {
+	padding: 0;
+	color: inherit;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: transparent;
+	border: 0;
+}
+
+blockquote, cite, em, i {
+	font-style: italic;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+
+/* Float Clearing
+--------------------------------------------- */
+
+.clearfix {
+	@include clearfix;
+}
+
+.author-box:before,
+.clearfix:before,
+.entry:before,
+.entry-content:before,
+.footer-widgets:before,
+.nav-primary:before,
+.nav-secondary:before,
+.pagination:before,
+.site-container:before,
+.site-footer:before,
+.site-header:before,
+.site-inner:before,
+.wrap:before {
+    content: " ";
+    display: table;
+}
+
+.author-box,
+.clearfix,
+.entry,
+.entry-content,
+.footer-widgets,
+.nav-primary,
+.nav-secondary,
+.pagination,
+.site-container,
+.site-footer,
+.site-header,
+.site-inner,
+.wrap {
+	@include clearfix;
+}
+
+/* Paragraph
+--------------------------------------------- */
+
+p {
+	margin: 0 0 $block-margin;
+	padding: 0;
+}
+
+/* Headings
+--------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: $base-color;
+	line-height: 1.2;
+	font-weight: 700;
+	margin: 0 0 20px;
+
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h4 {
+    font-size: 24px;
+}
+
+h5 {
+    font-size: 20px;
+}
+
+h6 {
+    font-size: 18px;
+}
+
+/* Objects
+--------------------------------------------- */
+
+embed,
+iframe,
+img,
+object,
+video,
+.wp-caption {
+	max-width: 100%;
+}
+
+/* Blockquote
+--------------------------------------------- */
+
+blockquote {
+	margin: 40px;
+	padding: 18px;
+	border-radius: 0 20px 20px 0;
+	
+	p {
+  	margin: 0;
+  }
+  
+
+	&.bq-success {
+		border-left: 4px solid $green_1;
+    background-color: $green_3;
+
+		/* Иконки для сообщений
+    &:before {
+			left: -15px;
+			top: -10px;
+			color: $green_1;
+    	content: "\f529";
+		}
+		*/
+	}
+
+	&.bq-danger {
+		border-left: 4px solid $red_1;
+    background-color: $red_3;
+
+		/* Иконки для сообщений
+    &:before {
+			left: -15px;
+			top: -10px;
+			color: $red_1;
+    	content: "\f339";
+		}
+		*/
+	}
+
+	&.bq-warning {
+		border-left: 4px solid $orange_1;
+    background-color: $orange_3;
+
+		/* Иконки для сообщений
+	  &:before {
+			left: -15px;
+			top: -10px;
+			color: $orange_1;
+    	content: "\f534";
+		}
+		*/
+	}
+
+	&.bq-primary {
+		border-left: 4px solid $blue_1;
+    background-color: $blue_3;
+
+		/* Иконки для сообщений
+	  &:before {
+			left: -15px;
+			top: -10px;
+			color: $blue_1;
+    	content: "\f348";
+		}
+		*/
+	}
+
+	/*
+	&:before {
+		font: normal 40px/1 'dashicons';
+		display: block;
+		height: 0;
+		position: relative;
+	}
+	*/
+
+	@include media("<tablet") {
+		margin: 40px 0;
+	}
+}
+
+
+/* Pull Quote
+--------------------------------------------- */
+
+.wp-block-pullquote {
+	border: none;
+	padding: 0;
+
+	blockquote {
+		border-left: 0;
+		border-top: 8px solid $highlight;
+		border-bottom: 8px solid $highlight;
+		padding: 16px 0;
+		text-align: center;
+		max-width: 50%;
+		margin: 0 auto;
+	}
+
+	&.alignleft,
+	&.alignright {
+
+		blockquote {
+			max-width: 100%;
+		}
+	}
+}
+
+/* Separator
+--------------------------------------------- */
+
+.wp-block-separator,
+hr {
+
+	&:not(.is-style-dots) {
+		background-color: $border-color;
+		border: 0;
+		height: 1px;
+	}
+
+	&:not(.is-style-wide):not(.is-style-dots) {
+		width: 100%;
+		height: 4px;
+		background: transparent;
+
+		&::before {
+			content: '';
+			display: block;
+			height: 4px;
+			width: 40px;
+			background: $highlight;
+		}
+	}
+
+	&.is-style-dots:before {
+		color: $grey_9;
+		font-size: 18px;
+		letter-spacing: 12px;
+		padding-left: 12px;
+	}
+}
+
+/* Image
+--------------------------------------------- */
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+figcaption {
+	color: $grey_7;
+	text-align: left;
+	font-size: 14px;
+	font-style: italic;
+}
+
+.featured-content img,{
+	width: auto;
+}
+
+/* Gallery
+--------------------------------------------- */
+
+.gallery {
+	overflow: hidden;
+}
+
+.gallery-item {
+	margin: 0 0 30px;
+	text-align: center;
+}
+
+.gallery-columns-2 .gallery-item {
+	width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	width: 33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	width: 16.6666%;
+}
+
+.gallery-columns-7 .gallery-item {
+	width: 14.2857%;
+}
+
+.gallery-columns-8 .gallery-item {
+	width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	width: 11.1111%;
+}
+
+.gallery img {
+	border: 1px solid #ddd;
+	height: auto;
+	padding: 4px;
+	width: auto;
+	@extend %transition;
+}
+
+.gallery img:hover {
+	border: 1px solid #999;
+}
+
+/* Tables
+--------------------------------------------- */
+
+table,
+.wp-block-table {
+	margin-bottom: $block-margin;
+	border-collapse: collapse;
+	border-spacing: 0;
+	line-height: 2;
+	width: 100%;
+
+	body {
+		border-bottom: 1px solid $grey_13;
+	}
+
+	th,
+	td {
+		text-align: left
+	}
+
+	td {
+		border-top: 1px solid $grey_13;
+		padding: 6px 0;
+	}
+
+	th {
+		font-weight: 400;
+	}
+}
+
+/* Genesis
+--------------------------------------------- */
+
+.breadcrumb {
+	margin-bottom: 30px;
+}
+
+.archive-description,
+.author-box {
+	border-bottom: 1px solid #f5f5f5;
+	font-size: 18px;
+	margin-bottom: 60px;
+	padding-bottom: 30px;
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.single .author-box {
+	border-top: 1px solid #f5f5f5;
+	padding-top: 30px;
+}
+
+.author-box-title {
+	font-size: 20px;
+	margin-bottom: 4px;
+}
+
+/* Color Options
+--------------------------------------------- */
+
+@each $name, $color in $colors {
+
+	.has-#{$name}-color {
+		color: $color;
+	}
+
+	.has-#{$name}-background-color {
+		background-color: $color;
+	}
+}
