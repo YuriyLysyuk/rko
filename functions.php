@@ -25,7 +25,7 @@ if ( ! isset( $content_width ) )
  */
 function etidni_setup() {
 
-	define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/assets/css/main.min.css' ) );
+	define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/dist/css/main.min.css' ) );
 
 	// Includes
 	include_once( get_stylesheet_directory() . '/inc/wordpress-cleanup.php' );
@@ -41,7 +41,7 @@ function etidni_setup() {
 
 	// Editor Styles
 	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/css/editor-style.css' );
+	add_editor_style( 'dist/css/editor-style.css' );
 
 	// Image Sizes
 	// add_image_size( 'Etidni_featured', 400, 100, true );
@@ -131,16 +131,16 @@ add_filter( 'comment_form_defaults', 'etidni_comment_text' );
 function etidni_global_enqueues() {
 
 	// javascript
-	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/assets/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/scripts.min.js' ), true );
+	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/scripts.min.js' ), true );
 
 	// css
   wp_dequeue_style( 'child-theme' );
-  wp_enqueue_style( 'etidni-style', get_stylesheet_directory_uri() . '/assets/css/main.min.css', array(), CHILD_THEME_VERSION );
+  wp_enqueue_style( 'etidni-style', get_stylesheet_directory_uri() . '/dist/css/main.min.css', array(), CHILD_THEME_VERSION );
 
 	// Move jQuery to footer
 	if( ! is_admin() ) {
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/assets/js/jquery-3.3.1.min.js', false, NULL, true );
+		wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/dist/js/jquery-3.3.1.min.js', false, NULL, true );
 		wp_enqueue_script( 'jquery' );
 	}
 }
@@ -190,7 +190,7 @@ add_filter( 'template_include', 'etidni_template_hierarchy' );
  *
  */
 function ly_favicon() {
-	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-152.png">';
-	echo '<!--[if IE]><link rel="shortcut icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon.ico"><![endif]-->';	
+	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon-152.png">';
+	echo '<!--[if IE]><link rel="shortcut icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon.ico"><![endif]-->';	
 }
 add_action( 'wp_head', 'ly_favicon' );
