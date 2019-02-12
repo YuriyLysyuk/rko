@@ -1,27 +1,14 @@
-jQuery(function($){
-
-	// FitVids
-	$('.entry-content').fitVids();
-
-	// Responsive menu
-	$("header .genesis-nav-menu, .nav-primary .genesis-nav-menu, .nav-secondary .genesis-nav-menu").addClass("responsive-menu").before('<div class="responsive-menu-icon"></div>');
-
-	$(".responsive-menu-icon").click(function(){
-		$(this).next("header .genesis-nav-menu, .nav-primary .genesis-nav-menu, .nav-secondary .genesis-nav-menu").slideToggle();
-	});
-
-	$(window).resize(function(){
-		if(window.innerWidth > 767) {
-			$("header .genesis-nav-menu, .nav-primary .genesis-nav-menu, .nav-secondary .genesis-nav-menu, nav .sub-menu").removeAttr("style");
-			$(".responsive-menu > .menu-item").removeClass("menu-open");
-		}
-	});
-
-	$(".responsive-menu > .menu-item").click(function(event){
-		if (event.target !== this)
-		return;
-			$(this).find(".sub-menu:first").slideToggle(function() {
-			$(this).parent().toggleClass("menu-open");
-		});
-	});
+jQuery(function(o){
+	o(".search-toggle").click(function() {
+    o("body").removeClass("mobile-menu-active").toggleClass("search-active"),
+    o(".header-search .search-field").focus()
+  }),
+  o(".mobile-menu-toggle").click(function() {
+    o("body").removeClass("search-active").toggleClass("mobile-menu-active")
+  }),
+  o(".menu-item-has-children").prepend('<span class="submenu-toggle">'),
+  o(".menu-item-has-children > .submenu-toggle").click(function(e) {
+    o(this).parent().toggleClass("submenu-active"),
+    e.preventDefault()
+  });
 });

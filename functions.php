@@ -37,6 +37,7 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/helper-functions.php' );
 	include_once( get_stylesheet_directory() . '/inc/navigation.php' );
 	include_once( get_stylesheet_directory() . '/inc/loop.php' );
+	include_once( get_stylesheet_directory() . '/inc/search.php' );
 	// include_once( get_stylesheet_directory() . '/inc/custom-logo.php' );
 
 	// Editor Styles
@@ -47,6 +48,9 @@ function etidni_setup() {
 	// add_image_size( 'Etidni_featured', 400, 100, true );
 
 	// Gutenberg
+	
+	// -- Responsive embeds
+	add_theme_support( 'responsive-embeds' );
 
 	// -- Wide Images
 	add_theme_support( 'align-wide' );
@@ -131,7 +135,7 @@ add_filter( 'comment_form_defaults', 'etidni_comment_text' );
 function etidni_global_enqueues() {
 
 	// javascript
-	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/scripts.min.js' ), true );
+	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/dist/js/scripts.min.js' ), true );
 
 	// css
   wp_dequeue_style( 'child-theme' );

@@ -16,20 +16,24 @@ $grey_13: #DDD;
 $black: #000;
 
 // Brand Colors
-// -- normal / darker / lighter
+// -- normal / none / lighter
 $blue_1: #4285f4;
-$blue_2: #39A5B9;
 $blue_3: #e3f2fd;
 $green_1: #00c851;
-$green_2: #458D53;
 $green_3: #e8f5e9;
 $orange_1: #fb3;
-$orange_2: #FFA916;
 $orange_3: #fff3e0;
 $red_1: #ff3547;
-$red_2: #D83023;
 $red_3: #ffebee;
 $brand_color: #e5554e;
+$brand_color_2: #4374c4;
+
+// Меню
+$menu_bg_grey: $grey_2;
+$dark_grey: $grey_4;
+$light_grey: $grey_3;
+$menu_hover: $brand_color_2;
+
 
 // Gutenberg color options
 // -- see editor-color-palette in functions.php
@@ -43,31 +47,28 @@ $highlight: $brand_color;
 $border-color: $grey_2;
 
 // Content
-$content-width: 920px;
+$content-width: 768px;
 $block-margin: 30px;
 
-// Logo
-$logo-width: 189px;
-$logo-height: 40px;
-
 // Grid
-$grid-width: 1248px;
+$grid-width: 1168px;
 $grid-gap: 32px;
-$base-margin: 20px;
+$base-margin: 16px;
 $wrap_edge: $base-margin;
 $margin_2x: $base-margin * 2;
 $margin_4x: $base-margin * 4;
 
 // Fonts
 $roboto-font-path:            "../font/roboto/" !default;
+$alt-font: 'Work Sans', sans-serif;
 
 // Include Media
 $breakpoints: (
   'phone'  : 360px,
   'small'  : 768px,
   'tablet' : 768px, // required for include-media
-  'mobile_menu' : 768px,
-  'medium' : 992px,
+  'medium' : 768px + $grid-gap + 200px,
+  'reading': 768px + $grid-gap + 200px + 440px,
   'large'  : 1200px,
   'desktop': $grid-width + $grid-gap, // required for include-media
 );

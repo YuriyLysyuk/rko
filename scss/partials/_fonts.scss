@@ -1,4 +1,3 @@
-// Typography
 // ROBOTO FONT
 @font-face {
   font-family: "Roboto";
@@ -24,7 +23,8 @@
 
 @font-face {
   font-family: "Roboto";
-  src: url("#{$roboto-font-path}Roboto-Bold.eot");
+  src: local(Roboto Bold),
+    url("#{$roboto-font-path}Roboto-Bold.eot");
   src: url("#{$roboto-font-path}Roboto-Bold.eot?#iefix") format("embedded-opentype"),
     url("#{$roboto-font-path}Roboto-Bold.woff2") format("woff2"),
     url("#{$roboto-font-path}Roboto-Bold.woff") format("woff"),

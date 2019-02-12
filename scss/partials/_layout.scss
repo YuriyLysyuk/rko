@@ -47,12 +47,11 @@ input[type="search"] {
 /* Wrap
 --------------------------------------------- */
 
-@include media(">=tablet") {
-
-	.wrap {
+.wrap {
   	max-width: map-get( $breakpoints, 'desktop' );
   	margin: 0 auto;
-	}
+  	padding-left:  ($grid-gap / 2);
+		padding-right: ($grid-gap / 2);
 }
 
 /* Sidebar Layouts
