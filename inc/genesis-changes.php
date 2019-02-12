@@ -18,16 +18,18 @@ add_theme_support( 'genesis-inpost-layouts' );
 add_theme_support( 'genesis-archive-layouts' );
 
 // Adds support for accessibility.
+
 add_theme_support(
 	'genesis-accessibility', array(
-		'404-page',
+		//'404-page',
 	//	'drop-down-menu',
-		'headings',
-		'rems',
-		'search-form',
-		'screen-reader-text',
+		//'headings',
+		//'rems',
+		//'search-form',
+		//'screen-reader-text',
 	)
 );
+
 
 // Remove admin bar styling
 add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );

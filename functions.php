@@ -38,6 +38,7 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/navigation.php' );
 	include_once( get_stylesheet_directory() . '/inc/loop.php' );
 	include_once( get_stylesheet_directory() . '/inc/search.php' );
+	include_once( get_stylesheet_directory() . '/inc/footer.php' );
 	// include_once( get_stylesheet_directory() . '/inc/custom-logo.php' );
 
 	// Editor Styles
