@@ -51,9 +51,7 @@
 
   ::-moz-placeholder {
   	color: $color;
-    font-weight: 400;
   	opacity: 1;
-    -webkit-font-smoothing: antialiased;
   }
 
   ::-ms-input-placeholder {
@@ -62,8 +60,6 @@
 
   ::-webkit-input-placeholder {
   	color: $color;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
   }
 
   input:focus::-webkit-input-placeholder,
@@ -125,35 +121,35 @@
  */
 @mixin columns( $columns, $grid_item_element: article, $gap: null ) {
 
-	@if( $gap == null ) {
-		$gap: $grid-gap;
-	}
+  @if( $gap == null ) {
+    $gap: $grid-gap;
+  }
 
-	& > #{$grid_item_element} {
-		float: left;
-		margin-left: $gap / $grid-width * 100%;
-		width: ( ( $grid-width - $gap * ( $columns - 1 ) ) / $columns ) / $grid-width * 100%;
+  & > #{$grid_item_element} {
+    float: left;
+    margin-left: $gap / $grid-width * 100%;
+    width: ( ( $grid-width - $gap * ( $columns - 1 ) ) / $columns ) / $grid-width * 100%;
 
-		&:nth-of-type(#{$columns}n+1) {
-			clear: both;
-			margin-left: 0;
-		}
-	}
+    &:nth-of-type(#{$columns}n+1) {
+      clear: both;
+      margin-left: 0;
+    }
+  }
 
-	@supports( display: grid ) {
-		display: grid;
-		grid-column-gap: $gap;
-		grid-template-columns: repeat( $columns, 1fr );
+  @supports( display: grid ) {
+    display: grid;
+    grid-column-gap: $gap;
+    grid-template-columns: repeat( $columns, 1fr );
 
-		& > #{$grid_item_element} {
-			margin-left: 0;
-			width: 100%;
-		}
+    & > #{$grid_item_element} {
+      margin-left: 0;
+      width: 100%;
+    }
 
-		header, nav, aside, footer {
-			grid-column: 1 / -1;
-		}
-	}
+    header, nav, aside, footer {
+      grid-column: 1 / -1;
+    }
+  }
 }
 
 /**
@@ -162,9 +158,9 @@
  */
 @mixin columns-mobile( $columns, $grid_item_element: article, $gap: null ) {
 
-	@include media("<tablet") {
-		@include columns( $columns,$grid_item_element, $gap );
-	}
+  @include media("<tablet") {
+    @include columns( $columns,$grid_item_element, $gap );
+  }
 }
 
 /**
@@ -173,9 +169,9 @@
  */
 @mixin columns-tablet( $columns, $grid_item_element: article, $gap: null ) {
 
-	@include media(">=tablet", "<medium") {
-		@include columns( $columns, $grid_item_element, $gap );
-	}
+  @include media(">=tablet", "<medium") {
+    @include columns( $columns, $grid_item_element, $gap );
+  }
 
 }
 
@@ -185,9 +181,9 @@
  */
 @mixin columns-tablet-up( $columns, $grid_item_element: article, $gap: null ) {
 
-	@include media(">=tablet") {
-		@include columns( $columns, $grid_item_element, $gap );
-	}
+  @include media(">=tablet") {
+    @include columns( $columns, $grid_item_element, $gap );
+  }
 
 }
 
@@ -196,7 +192,7 @@
  *
  */
 @mixin columns-desktop( $columns, $grid_item_element: article, $gap: null ) {
-	@include media(">=medium") {
-		@include columns( $columns, $grid_item_element, $gap );
-	}
+  @include media(">=medium") {
+    @include columns( $columns, $grid_item_element, $gap );
+  }
 }

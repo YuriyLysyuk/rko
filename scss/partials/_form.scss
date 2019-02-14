@@ -89,7 +89,6 @@ input[type="search"]::-webkit-search-results-button {
 
 .search-form,
 .search-form-wrapper {
-	border: 1px solid $border-color;
 	max-width: 400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -97,7 +96,7 @@ input[type="search"]::-webkit-search-results-button {
 	overflow: hidden;
 
 	.search-field {
-		border: 1px solid $grey_5;
+		background-color: $white;
     border-radius: 3px;
 		padding-right: 24px + 16px;
 	}

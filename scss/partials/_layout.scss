@@ -37,11 +37,13 @@
 /* Box Sizing
 --------------------------------------------- */
 
-*,
+html,
 input[type="search"] {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 /* Wrap
@@ -52,6 +54,7 @@ input[type="search"] {
   	margin: 0 auto;
   	padding-left:  ($grid-gap / 2);
 		padding-right: ($grid-gap / 2);
+		@include clearfix;
 }
 
 /* Sidebar Layouts

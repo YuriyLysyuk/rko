@@ -53,21 +53,6 @@
 	}
 }
 
-/* Admin Bar
---------------------------------------------- */
-
-@include media(">=tablet" ) {
-	.admin-bar .site-container {
-		padding-top: 32px;
-	}
-}
-
-@include media("<tablet") {
-	#wpadminbar {
-		display: none !important;
-	}
-}
-
 /* Site Navigation
 --------------------------------------------- */
 
@@ -310,7 +295,6 @@
 	line-height: 0;
 	outline: none;
 	padding: 27px 16px;
-	@extend %transition;
 
 	@include media("<phone" ) {
 		padding: 23px 16px;
