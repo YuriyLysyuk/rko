@@ -1,6 +1,146 @@
 /* Blocks
 ---------------------------------------------------------------------------------------------------- */
 
+/* General
+--------------------------------------------- */
+
+.entry-content,
+.entry-comments,
+.comment-respond {
+
+	& > *:first-child {
+		margin-top: 0;
+	}
+
+	@include media(">=tablet") {
+		max-width: $content-width;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+}
+
+.entry-content > * {
+
+	margin: $block-margin 0;
+	max-width: 100%;
+
+	> *:first-child {
+		margin-top: 0;
+	}
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+
+	&.alignwide {
+		margin: calc( 2 * #{$block-margin} ) -#{$base-margin};
+		max-width: calc( 100% + #{$margin_2x});
+
+		@include media(">=medium") {
+			margin-left: -100px;
+			margin-right: -100px;
+			max-width: calc( 100% + 200px );
+		}
+	}
+
+	&.alignfull {
+		margin: calc( 2 * #{$block-margin} ) calc(50% - 50vw);
+		width: auto;
+		padding-left: $base-margin;
+		padding-right: $base-margin;
+		max-width: 100vw;
+
+		@include media(">=desktop") {
+			max-width: $grid-width;
+			margin-left: calc( ( #{$content-width} - #{$grid-width} ) / 2 );
+			margin-right: calc( ( #{$content-width} - #{$grid-width} ) / 2 );
+		}
+
+		&.bg-grey {
+			background: $grey_1;
+			margin: 0 calc( 50% - 50vw);
+			max-width: 100vw;
+			padding: 65px 0;
+
+			.block-wrap {
+				padding: 0 $base-margin;
+				max-width: $grid-width;
+				margin: 0 auto;
+			}
+
+			&:last-child {
+				margin-bottom: -60px;
+				@include media(">=tablet") {
+					margin-bottom: -100px;
+				}
+			}
+		}
+	}
+
+	&.alignleft {
+		/*rtl:ignore*/
+		float: left;
+		max-width: calc(5 * (100vw / 12));
+		margin-top: 0;
+		margin-left: 0;
+		/*rtl:ignore*/
+		margin-right: $base-margin;
+
+		@include media(">=tablet") {
+			max-width: calc(4 * (#{$content-width} / 12));
+			/*rtl:ignore*/
+			margin-right: calc(2 * #{$base-margin});
+		}
+
+	}
+
+	&.alignright {
+		/*rtl:ignore*/
+		float: right;
+		max-width: calc(5 * (100vw / 12));
+		margin-top: 0;
+		margin-right: 0;
+		/*rtl:ignore*/
+		margin-left: $base-margin;
+
+		@include media(">=tablet") {
+			max-width: calc(4 * (#{$content-width} / 12));
+			margin-right: 0;
+		}
+	}
+	&.aligncenter {
+		margin-left: auto;
+		margin-right: auto;
+
+		@include media(">=tablet") {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+}
+
+.entry-content {
+
+	ul, ol {
+    padding-left: 20px;
+
+    li {
+			padding-left: 10px;
+			padding-bottom: .5rem;
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+
+			ul, ol {
+				padding-top: .5rem;
+			}
+		}
+	}
+}
+
 /* Headings
 --------------------------------------------- */
 
@@ -14,122 +154,300 @@ h6 {
 	line-height: 1.2;
 	font-weight: 700;
 	margin: 0 0 20px;
+	@extend %transition;
 
+	.entry-content > & {
+		margin: $margin_2x 0 -16px;
+
+		&.extra-margin {
+			margin-bottom: $base-margin;
+		}
+	}
+
+	a {
+		color: $base-color;
+
+		&:hover {
+			color: $highlight;
+			text-decoration: none;
+		}
+	}
+
+	&:focus {
+		color: $grey_7;
+		outline: none;
+	}
+
+	&.alt {
+		color: $grey_6;
+	}
 }
 
 h1 {
-    font-size: 36px;
+    @include font-sizes( 34px, 44px, 50px );
+
+	&.alt {
+		@include font-sizes( 32px, 38px, 44px );
+	}
 }
 
 h2 {
-    font-size: 30px;
+    @include font-sizes( 30px, 38px, 42px );
+
+	&.alt {
+		@include font-sizes( 28px, 32px, 36px );
+	}
 }
 
 h3 {
-    font-size: 28px;
+    @include font-sizes( 26px, 32px, 36px );
+
+	&.alt {
+		@include font-sizes( 24px, 30px );
+	}
 }
 
 h4 {
-    font-size: 24px;
+    @include font-sizes( 22px, 26px, 28px );
+
+	&.alt {
+		font-size: 22px;
+	}
 }
 
 h5 {
-    font-size: 20px;
+    @include font-sizes( 18px, 22px );
+
+	&.alt {
+		font-size: 16px;
+	}
 }
 
 h6 {
-    font-size: 18px;
-}
-
-/* Objects
---------------------------------------------- */
-
-embed,
-iframe,
-img,
-object,
-video,
-.wp-caption {
-	max-width: 100%;
+    @include font-sizes( 14px, 16px );
 }
 
 /* Blockquote
 --------------------------------------------- */
 
-blockquote {
-	margin: 40px;
-	padding: 18px;
+blockquote,
+blockquote.wp-block-quote {
+	padding: 20px;
 	border-radius: 0 20px 20px 0;
+	text-align: left;
 	
 	p {
-  	margin: 0;
+  	color: $base-color;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 400;
   }
   
+  cite,
+	.wp-block-quote__citation {
+		color: $base-color;
+		display: block;
+		font-size: 14px;
+		line-height: 25px;
+		font-weight: 700;
+		margin-top: 12px;
+		text-transform: uppercase;
+
+		em {
+			font-weight: 400;
+			text-transform: none;
+			font-style: normal;
+		}
+
+		.avatar {
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			float: left;
+			margin: 0 6px 0 0;
+		}
+	}
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+	&.is-style-large {
+		background: transparent;
+		border: none;
+		margin-top: calc( 2 * #{$block-margin});
+		margin-bottom: calc( 2 * #{$block-margin});
+		padding: 0 0 0 70px;
+		position: relative;
+
+		&::before {
+			background: url(../icons/color/quote-orange.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 45px;
+			height: 34px;
+			position: absolute;
+			top: 0;
+			left: 0;
+
+		}
+
+		p {
+			@include font-sizes( 20px, 28px );
+			font-style: normal;
+			line-height: 1.35;
+		}
+
+		cite {
+			text-align: left;
+			margin-top: 30px;
+		}
+
+		@include media("<tablet") {
+			padding-left: 35px;
+
+			&::before {
+				width: 25px;
+			}
+
+			cite {
+				margin-top: 16px;
+			}
+		}
+	}
 
 	&.bq-success {
-		border-left: 4px solid $green_1;
+		border-left: 5px solid $green_1;
     background-color: $green_3;
-
-		/* Иконки для сообщений
-    &:before {
-			left: -15px;
-			top: -10px;
-			color: $green_1;
-    	content: "\f529";
+    position: relative;
+			
+		&::before {
+			background: url(../icons/color/thumbs-up-green.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			top: calc( 50% - 20px );
+			left: 20px;
 		}
-		*/
+
+		p {
+			padding-left: 55px;
+		}
+
+		@include media("<tablet") {
+			&::before {
+				display: none;
+			}
+
+			p {
+				padding-left: 0;
+			}
+		}
 	}
 
 	&.bq-danger {
-		border-left: 4px solid $red_1;
+		border-left: 5px solid $red_1;
     background-color: $red_3;
-
-		/* Иконки для сообщений
-    &:before {
-			left: -15px;
-			top: -10px;
-			color: $red_1;
-    	content: "\f339";
+		position: relative;
+			
+		&::before {
+			background: url(../icons/color/bolt-red.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			top: calc( 50% - 20px );
+			left: 20px;
 		}
-		*/
+
+		p {
+			padding-left: 55px;
+		}
+
+		@include media("<tablet") {
+			&::before {
+				display: none;
+			}
+
+			p {
+				padding-left: 0;
+			}
+		}
 	}
 
 	&.bq-warning {
-		border-left: 4px solid $orange_1;
+		border-left: 5px solid $orange_1;
     background-color: $orange_3;
-
-		/* Иконки для сообщений
-	  &:before {
-			left: -15px;
-			top: -10px;
-			color: $orange_1;
-    	content: "\f534";
+		position: relative;
+			
+		&::before {
+			background: url(../icons/color/exclamation-triangle-orange.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			top: calc( 50% - 20px );
+			left: 20px;
 		}
-		*/
+
+		p {
+			padding-left: 55px;
+		}
+
+		@include media("<tablet") {
+			&::before {
+				display: none;
+			}
+
+			p {
+				padding-left: 0;
+			}
+		}
 	}
 
-	&.bq-primary {
+	&.bq-primary, &.bq-info {
 		border-left: 4px solid $blue_1;
     background-color: $blue_3;
-
-		/* Иконки для сообщений
-	  &:before {
-			left: -15px;
-			top: -10px;
-			color: $blue_1;
-    	content: "\f348";
-		}
-		*/
-	}
-
-	/*
-	&:before {
-		font: normal 40px/1 'dashicons';
-		display: block;
-		height: 0;
 		position: relative;
+			
+		&::before {
+			background: url(../icons/color/info-blue.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			top: calc( 50% - 20px );
+			left: 20px;
+		}
+
+		p {
+			padding-left: 55px;
+		}
+
+		@include media("<tablet") {
+			&::before {
+				display: none;
+			}
+
+			p {
+				padding-left: 0;
+			}
+		}
 	}
-	*/
 
 	@include media("<tablet") {
 		margin: 40px 0;
@@ -152,6 +470,7 @@ blockquote {
 		text-align: center;
 		max-width: 50%;
 		margin: 0 auto;
+		border-radius: 0;
 	}
 
 	&.alignleft,
@@ -162,6 +481,7 @@ blockquote {
 		}
 	}
 }
+
 
 /* Separator
 --------------------------------------------- */
@@ -201,20 +521,41 @@ hr {
 --------------------------------------------- */
 
 img {
-	display: block;
 	max-width: 100%;
 	height: auto;
+
+	&.border {
+		border: 1px solid $border-color;
+	}
 }
 
-figcaption {
-	color: $grey_7;
-	text-align: left;
-	font-size: 14px;
-	font-style: italic;
+.wp-block-image {
+
+	&.border > figure {
+		border: 1px solid $border-color;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	figcaption {
+		color: $grey_7;
+		text-align: left;
+		font-size: 14px;
+		font-style: italic;
+	}
+
 }
 
-.featured-content img,{
-	width: auto;
+/* Button
+--------------------------------------------- */
+
+.wp-block-button {
+	margin-bottom: $block-margin;
+	text-align: center;
 }
 
 
@@ -222,57 +563,61 @@ figcaption {
 --------------------------------------------- */
 
 table,
+.table,
 .wp-block-table {
-	margin-bottom: $block-margin;
-	border-collapse: collapse;
 	border-spacing: 0;
+	border-collapse: collapse;
 	line-height: 2;
 	width: 100%;
-
-	body {
-		border-bottom: 1px solid $grey_13;
-	}
+	max-width: $grid-width;
+	margin-bottom: $block-margin;
 
 	th,
 	td {
-		text-align: left
+		padding: 16px;
+		vertical-align: middle;
 	}
 
 	td {
-		border-top: 1px solid $grey_13;
-		padding: 6px 0;
+		border-top: 1px solid $border-color;
 	}
 
-	th {
-		font-weight: 400;
+	thead th {
+		vertical-align: bottom;
+		border-bottom: 2px solid $border-color;
 	}
+
+	tbody + tbody {
+		border-top: 2px solid $border-color;
+	}
+	
 }
 
-/* Genesis
+/* Columns
 --------------------------------------------- */
 
-.breadcrumb {
-	margin-bottom: 30px;
-}
+.wp-block-columns {
 
-.archive-description,
-.author-box {
-	border-bottom: 1px solid #f5f5f5;
-	font-size: 18px;
-	margin-bottom: 60px;
-	padding-bottom: 30px;
-
-	p:last-child {
-		margin-bottom: 0;
+	.wp-block-column {
+		margin-bottom: $block-margin;
 	}
-}
 
-.single .author-box {
-	border-top: 1px solid #f5f5f5;
-	padding-top: 30px;
-}
+	.wp-block-column > * {
 
-.author-box-title {
-	font-size: 20px;
-	margin-bottom: 4px;
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&[class*='has-'] > * {
+		margin-right: $base-margin;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
 }

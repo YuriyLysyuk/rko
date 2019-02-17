@@ -39,7 +39,6 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/loop.php' );
 	include_once( get_stylesheet_directory() . '/inc/search.php' );
 	include_once( get_stylesheet_directory() . '/inc/footer.php' );
-	// include_once( get_stylesheet_directory() . '/inc/custom-logo.php' );
 
 	// Editor Styles
 	add_theme_support( 'editor-styles' );
@@ -89,22 +88,37 @@ function etidni_setup() {
 		array(
 			'name'  => __( 'Blue', 'Etidni' ),
 			'slug'  => 'blue',
-			'color'	=> '#59BACC',
+			'color'	=> '#4374c4',
 		),
 		array(
 			'name'  => __( 'Green', 'Etidni' ),
 			'slug'  => 'green',
-			'color' => '#58AD69',
+			'color' => '#00c851',
 		),
 		array(
 			'name'  => __( 'Orange', 'Etidni' ),
 			'slug'  => 'orange',
-			'color' => '#FFBC49',
+			'color' => '#fb3',
 		),
 		array(
 			'name'	=> __( 'Red', 'Etidni' ),
 			'slug'	=> 'red',
-			'color'	=> '#E2574C',
+			'color'	=> '#ff3547',
+		),
+		array(
+			'name'	=> __( 'White', 'Etidni' ),
+			'slug'	=> 'white',
+			'color'	=> '#fff',
+		),
+		array(
+			'name'	=> __( 'Grey', 'Etidni' ),
+			'slug'	=> 'grey',
+			'color'	=> '#333',
+		),
+		array(
+			'name'	=> __( 'Black', 'Etidni' ),
+			'slug'	=> 'black',
+			'color'	=> '#000',
 		),
 	) );
 

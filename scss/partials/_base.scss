@@ -17,22 +17,21 @@ $black: #000;
 
 // Brand Colors
 // -- normal / none / lighter
-$blue_1: #4285f4;
-$blue_3: #e3f2fd;
+$blue_1: #4374c4;
+$blue_3: rgba( $blue_1, .1);
 $green_1: #00c851;
-$green_3: #e8f5e9;
+$green_3: rgba( $green_1, .1);
 $orange_1: #fb3;
-$orange_3: #fff3e0;
+$orange_3: rgba( $orange_1, .1);
 $red_1: #ff3547;
-$red_3: #ffebee;
+$red_3: rgba( $red_1, .1);
 $brand_color: #e5554e;
-$brand_color_2: #4374c4;
 
 // Меню
 $menu_bg_grey: $grey_2;
 $dark_grey: $grey_4;
 $light_grey: $grey_3;
-$menu_hover: $brand_color_2;
+$menu_hover: $blue_1;
 
 
 // Gutenberg color options
@@ -60,7 +59,7 @@ $margin_4x: $base-margin * 4;
 
 // Fonts
 $roboto-font-path:            "../font/roboto/" !default;
-$alt-font: 'Work Sans', sans-serif;
+$base-font: -apple-system,BlinkMacSystemFont,Roboto,sans-serif;
 
 // Include Media
 $breakpoints: (

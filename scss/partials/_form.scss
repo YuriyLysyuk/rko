@@ -181,7 +181,7 @@ input[type="search"]::-webkit-search-results-button {
 
 		.wpforms-title {
 			color: $white;
-			font-family: $alt-font;
+			font-family: $base-font;
 			@include font-sizes( 24px, 28px );
 			line-height: 1.2;
 			margin-bottom: 16px;

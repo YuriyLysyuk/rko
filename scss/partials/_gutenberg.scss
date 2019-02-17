@@ -24,7 +24,7 @@ body, p {
 		color: $base-color;
 		line-height: 1.2;
 	    @include font-sizes( 34px, 44px, 50px );
-		font-family: $alt-font;
+		font-family: $base-font;
 		font-weight: 700;
 		margin-bottom: 16px;
 		text-align: center;
