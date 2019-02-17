@@ -123,12 +123,46 @@
 
 .entry-content {
 
-	ul, ol {
+	ol {
     padding-left: 20px;
 
     li {
 			padding-left: 10px;
 			padding-bottom: .5rem;
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+
+			ul, ol {
+				padding-top: .5rem;
+			}
+		}
+	}
+
+	ul {
+    padding-left: 0;
+
+    li {
+			padding-left: 0;
+			padding-bottom: .5rem;
+			list-style-type: none;
+
+      &::before {
+      	background: url(../icons/color/angle-right-orange.svg) no-repeat center;
+				background-size: contain;
+				content: '';
+				display: inline-block;;
+				width: 18px;
+				height: 18px;
+				margin-right: 10px;
+				vertical-align: middle;
+
+				@include media(">=tablet") {
+					width: 20px;
+					height: 20px;
+				}
+      }
 
 			&:last-child {
 				padding-bottom: 0;
@@ -587,7 +621,7 @@ table,
 			width: 100% !important;
 		}
   }
-  
+
 	th,
 	td {
 		padding: 16px;

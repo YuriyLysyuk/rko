@@ -406,20 +406,57 @@ ul ul {
   }
 }
 
-.entry-content ul, .entry-content ol {
+.entry-content ol {
   padding-left: 20px;
 }
 
-.entry-content ul li, .entry-content ol li {
+.entry-content ol li {
   padding-left: 10px;
   padding-bottom: .5rem;
 }
 
-.entry-content ul li:last-child, .entry-content ol li:last-child {
+.entry-content ol li:last-child {
   padding-bottom: 0;
 }
 
-.entry-content ul li ul, .entry-content ul li ol, .entry-content ol li ul, .entry-content ol li ol {
+.entry-content ol li ul, .entry-content ol li ol {
+  padding-top: .5rem;
+}
+
+.entry-content ul {
+  padding-left: 0;
+}
+
+.entry-content ul li {
+  padding-left: 0;
+  padding-bottom: .5rem;
+  list-style-type: none;
+}
+
+.entry-content ul li::before {
+  background: url(../icons/color/angle-right-orange.svg) no-repeat center;
+  -webkit-background-size: contain;
+          background-size: contain;
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+  .entry-content ul li::before {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.entry-content ul li:last-child {
+  padding-bottom: 0;
+}
+
+.entry-content ul li ul, .entry-content ul li ol {
   padding-top: .5rem;
 }
 
