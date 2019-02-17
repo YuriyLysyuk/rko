@@ -571,20 +571,44 @@ table,
 	width: 100%;
 	max-width: $grid-width;
 	margin-bottom: $block-margin;
+	display: block;
+  overflow-x: auto;
 
+	&.alignwide {
+	margin: #{$block-margin}  -#{$base-margin};
+	padding-left: #{$base-margin};
+	max-width: calc( 100% + #{$margin_2x});
+	width: calc( 100% + #{$margin_2x});
+
+		@include media(">=medium") {
+			margin: 0 !important;
+			padding-left: 0 !important;
+			max-width: 100% !important;
+			width: 100% !important;
+		}
+  }
+  
 	th,
 	td {
 		padding: 16px;
 		vertical-align: middle;
+		white-space: nowrap;
 	}
 
 	td {
 		border-top: 1px solid $border-color;
 	}
 
-	thead th {
-		vertical-align: bottom;
-		border-bottom: 2px solid $border-color;
+	thead {
+		text-align: left;
+		background-color: $blue_3;
+		color: $base-color;
+
+
+		th {
+			vertical-align: bottom;
+			border-bottom: 2px solid $border-color;
+		}
 	}
 
 	tbody + tbody {

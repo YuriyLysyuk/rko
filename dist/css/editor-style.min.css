@@ -1015,6 +1015,30 @@ table,
   width: 100%;
   max-width: 1168px;
   margin-bottom: 30px;
+  display: block;
+  overflow-x: auto;
+}
+
+table.alignwide,
+.table.alignwide,
+.wp-block-table.alignwide {
+  margin: 30px -16px;
+  padding-left: 16px;
+  max-width: -webkit-calc( 100% + 32px);
+  max-width: calc( 100% + 32px);
+  width: -webkit-calc( 100% + 32px);
+  width: calc( 100% + 32px);
+}
+
+@media (min-width: 1000px) {
+  table.alignwide,
+  .table.alignwide,
+  .wp-block-table.alignwide {
+    margin: 0 !important;
+    padding-left: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
 }
 
 table th,
@@ -1025,12 +1049,21 @@ table td,
 .wp-block-table td {
   padding: 16px;
   vertical-align: middle;
+  white-space: nowrap;
 }
 
 table td,
 .table td,
 .wp-block-table td {
   border-top: 1px solid #F5F5F5;
+}
+
+table thead,
+.table thead,
+.wp-block-table thead {
+  text-align: left;
+  background-color: rgba(67, 116, 196, 0.1);
+  color: #333;
 }
 
 table thead th,

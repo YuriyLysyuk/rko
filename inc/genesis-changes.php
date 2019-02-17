@@ -64,3 +64,27 @@ function ea_remove_genesis_templates( $page_templates ) {
 	return $page_templates;
 }
 add_filter( 'theme_page_templates', 'ea_remove_genesis_templates' );
+
+
+/** 
+ * Modify Post Info
+ *
+ */
+function ly_post_info_filter($post_info) {
+	$author = '<span class="entry-author"><span class="label">автор</span>';
+	$author .= get_the_author();
+	$author .= '</span>';
+
+	$modified_time = '<span class="entry-date"><span class="label">обновлено</span>';
+	$modified_time .= '[post_modified_date format="F j, Y"]';
+	$modified_time .= '</span>';
+
+	$comments = '<span class="entry-comments-link"><span class="label">обсуждение</span>';
+	$comments .= '[post_comments zero="Нет комментариев" one="1 комментарий" more="% комментариев" hide_if_off="disabled"]';
+	$comments .= '</span>';
+
+	$post_info = $author . $modified_time . $comments;
+
+	return $post_info;
+}
+add_filter('genesis_post_info', 'ly_post_info_filter');
