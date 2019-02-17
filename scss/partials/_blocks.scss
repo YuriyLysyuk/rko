@@ -679,3 +679,57 @@ table,
 		}
 	}
 }
+
+/* Table of content
+--------------------------------------------- */
+
+.block-toc {
+	background-color: $toc_bg;
+	padding: 20px;
+	border-radius: 3px;
+	margin: #{$block-margin}  -#{$base-margin};
+	max-width: calc( 100% + #{$margin_2x});
+	width: calc( 100% + #{$margin_2x});
+
+	@include media(">=medium") {
+		margin: 0;
+		max-width: 100% ;
+		width: 100%;
+	}
+
+	.block-toc-title {
+		text-align: center;
+		display: block;
+		font-weight: 400;
+	}
+
+	.block-toc-contents {
+		margin-left: 20px;
+		margin-top: 20px;
+
+		li {
+			list-style-type: disc;
+			padding-bottom: 0;
+
+			a {
+				//@extend %alt_link;
+				color: $blue_1;
+				font-weight: 300;
+				border-bottom: 1px dashed $blue_1;
+
+				&:hover {
+					border-bottom: 1px dashed transparent;
+					text-decoration: none;
+					color: $base-color;
+				}
+			}
+
+			&::before {
+				display: none;
+			}
+		}
+	}
+}
+
+
+

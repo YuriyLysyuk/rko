@@ -16,8 +16,9 @@ $grey_13: #DDD;
 $black: #000;
 
 // Brand Colors
-// -- normal / none / lighter
+// -- normal / ultralight / lighter
 $blue_1: #4374c4;
+$blue_2: #f8fafd;
 $blue_3: rgba( $blue_1, .1);
 $green_1: #00c851;
 $green_3: rgba( $green_1, .1);
@@ -33,6 +34,8 @@ $dark_grey: $grey_4;
 $light_grey: $grey_3;
 $menu_hover: $blue_1;
 
+// Table of Contents
+$toc_bg: $blue_2;
 
 // Gutenberg color options
 // -- see editor-color-palette in functions.php
