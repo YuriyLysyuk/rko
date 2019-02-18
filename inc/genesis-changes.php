@@ -79,7 +79,7 @@ function ly_post_info_filter($post_info) {
 	$modified_time .= '[post_modified_date format="F j, Y"]';
 	$modified_time .= '</span>';
 
-	$comments = '<span class="entry-comments-link"><span class="label">обсуждение</span>';
+	$comments = '<span class="entry-comments-link"><span class="label">вопросы и ответы</span>';
 	$comments .= '[post_comments zero="Нет комментариев" one="1 комментарий" more="% комментариев" hide_if_off="disabled"]';
 	$comments .= '</span>';
 
@@ -88,3 +88,17 @@ function ly_post_info_filter($post_info) {
 	return $post_info;
 }
 add_filter('genesis_post_info', 'ly_post_info_filter');
+
+/** 
+ * Удаляем ссылку на главную с лого на главной странице
+ *
+ */
+add_filter( 'genesis_seo_title', 'ly_unlink_logo', 10, 3 );
+
+function ly_unlink_logo( $title, $inside, $wrap ) {
+		if (is_front_page()) {
+			$inside = sprintf( '%s', get_bloginfo( 'name' ) );
+		}
+
+    return sprintf( '<%1$s class="site-title" itemprop="headline">%2$s</%1$s>', $wrap, $inside );
+}

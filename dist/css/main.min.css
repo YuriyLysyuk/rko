@@ -1985,7 +1985,7 @@ input[type="search"] {
   margin: 0;
 }
 
-.title-area .site-title a {
+.title-area .site-title a, .title-area > h1.site-title {
   background-image: url(../images/logo@2x.png);
   background-image: url(../images/logo.svg), none;
   -webkit-background-size: contain;
@@ -2000,7 +2000,7 @@ input[type="search"] {
 }
 
 @media (max-width: 359px) {
-  .title-area .site-title a {
+  .title-area .site-title a, .title-area > h1.site-title {
     padding-bottom: 21.33333%;
   }
 }

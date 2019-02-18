@@ -20,7 +20,7 @@
 		margin: 0;
 	}
 
-	.site-title a {
+	.site-title a, & > h1.site-title {
 		background-image: url(../images/logo@2x.png);
 	  background-image: url(../images/logo.svg), none;
 	  background-size: contain;
