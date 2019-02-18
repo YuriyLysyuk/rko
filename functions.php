@@ -152,6 +152,9 @@ function etidni_global_enqueues() {
 	// javascript
 	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/dist/js/scripts.min.js' ), true );
 
+	// убираем стили Gutenberg
+	wp_dequeue_style( 'wp-block-library' );
+
 	// css
   wp_dequeue_style( 'child-theme' );
   wp_enqueue_style( 'etidni-style', get_stylesheet_directory_uri() . '/dist/css/main.min.css', array(), CHILD_THEME_VERSION );
