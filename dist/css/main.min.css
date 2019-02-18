@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
  * Margin, No Edge
  * Removes left margin from first item, right margin from last item
@@ -67,6 +68,15 @@ h6, .breadcrumb .icon-home {
 .breadcrumb a:hover, .entry .entry-header .entry-meta a:hover {
   color: #e5554e;
   text-decoration: none;
+}
+
+/* Gradient
+--------------------------------------------- */
+.wp-polls {
+  background-image: -webkit-gradient(linear, left top, right top, from(#ffecd2), to(#fcb69f));
+  background-image: -webkit-linear-gradient(left, #ffecd2 0%, #fcb69f 100%);
+  background-image: -o-linear-gradient(left, #ffecd2 0%, #fcb69f 100%);
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
 }
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -1888,7 +1898,7 @@ table tbody + tbody,
 }
 
 .wp-polls {
-  background-color: #f8fafd;
+  background-color: #ffecd2;
   padding: 20px;
   -webkit-border-radius: 3px;
           border-radius: 3px;
@@ -1943,6 +1953,83 @@ table tbody + tbody,
 .wp-polls .view-result-link,
 .wp-polls .vote-link-wrap {
   margin-bottom: 0;
+}
+
+.wp-polls a {
+  color: #333;
+}
+
+/* WP TestMe
+--------------------------------------------- */
+.testme_area {
+  background-color: rgba(156, 39, 176, 0.1);
+  padding: 20px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  margin: 30px -16px;
+  max-width: -webkit-calc( 100% + 32px);
+  max-width: calc( 100% + 32px);
+  width: -webkit-calc( 100% + 32px);
+  width: calc( 100% + 32px);
+  /* Текст вопроса */
+  /* Блок с ответом */
+  /* Радио-кнопка для выбора ответа */
+  /* Текст ответа */
+  /* Параметры кнопки */
+  /*  === Результаты === */
+  /* Оболочка, в которую записывается результат */
+  /* Весь блок с результатами */
+  /* Надпись перед показом результатов */
+  /* Результат теста в баллах */
+}
+
+@media (min-width: 1000px) {
+  .testme_area {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.testme_area .testme_question_text {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.testme_area .testme_answer_block {
+  margin-bottom: 7px;
+}
+
+.testme_area .testme_answer {
+  padding-left: 20px;
+}
+
+.testme_area .testme_question label {
+  margin-left: 10px;
+}
+
+.testme_area .testme_button_wrap {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.testme_area #testme_result {
+  border: 2px solid rgba(156, 39, 176, 0.7);
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+}
+
+.testme_area .testme_result_block {
+  margin: 10px;
+}
+
+.testme_area .testme_before_results {
+  color: #333;
+}
+
+.testme_area .testme_your_score {
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 /* Site Container

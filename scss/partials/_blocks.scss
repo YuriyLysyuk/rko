@@ -731,7 +731,6 @@ table,
 	}
 }
 
-
 /* WP polls
 --------------------------------------------- */
 
@@ -739,7 +738,8 @@ table,
 	/* background-color: #ffffff; */
 }
 .wp-polls {
-	background-color: $blue_2;
+	background-color: #ffecd2;
+	@extend %juicy-peach-gradient;
 	padding: 20px;
 	border-radius: 3px;
 	margin: #{$block-margin}  -#{$base-margin};
@@ -789,4 +789,80 @@ table,
 	.vote-link-wrap {
 		margin-bottom: 0;
 	}
+
+	a {
+		color: $base-color;
+	}
+}
+
+/* WP TestMe
+--------------------------------------------- */
+
+.testme_area {
+	background-color: rgba(156, 39, 176, 0.1);
+	padding: 20px;
+	border-radius: 3px;
+	margin: #{$block-margin}  -#{$base-margin};
+	max-width: calc( 100% + #{$margin_2x});
+	width: calc( 100% + #{$margin_2x});
+
+	@include media(">=medium") {
+		margin: 0;
+		max-width: 100% ;
+		width: 100%;
+	}
+
+	/* Текст вопроса */
+	.testme_question_text {
+		margin-top:20px;
+  	font-weight: bold;
+	}
+
+	/* Блок с ответом */
+	.testme_answer_block {
+	    margin-bottom:7px;
+	}
+
+	/* Радио-кнопка для выбора ответа */
+	.testme_answer {
+		padding-left:20px;
+	}
+
+	/* Текст ответа */
+	.testme_question label {
+	    margin-left: 10px;
+	}
+
+	/* Параметры кнопки */
+	.testme_button_wrap {
+		margin-top: 20px;
+		text-align: center;
+	}
+
+	/*  === Результаты === */
+
+	/* Оболочка, в которую записывается результат */
+	#testme_result {
+		border: 2px solid rgba(156, 39, 176, 0.7);
+    border-radius: 3px;
+
+
+	}
+
+	/* Весь блок с результатами */
+	.testme_result_block {
+		margin: 10px;
+	}
+
+	/* Надпись перед показом результатов */
+	.testme_before_results {
+	    color: $base-color;
+	}
+
+	/* Результат теста в баллах */
+	.testme_your_score {
+	    margin-top:10px;
+	    font-weight: bold;
+	}
+
 }

@@ -40,6 +40,7 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/search.php' );
 	include_once( get_stylesheet_directory() . '/inc/footer.php' );
 	include_once( get_stylesheet_directory() . '/inc/wp-polls.php' );
+	include_once( get_stylesheet_directory() . '/inc/wp-testme.php' );
 
 	// Editor Styles
 	add_theme_support( 'editor-styles' );
