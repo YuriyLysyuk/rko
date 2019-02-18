@@ -39,6 +39,7 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/loop.php' );
 	include_once( get_stylesheet_directory() . '/inc/search.php' );
 	include_once( get_stylesheet_directory() . '/inc/footer.php' );
+	include_once( get_stylesheet_directory() . '/inc/wp-polls.php' );
 
 	// Editor Styles
 	add_theme_support( 'editor-styles' );
@@ -185,16 +186,6 @@ function etidni_add_async_attribute($tag, $handle) {
 }
 
 add_filter('script_loader_tag', 'etidni_add_async_attribute', 10, 2);
-
-/**
- * Gutenberg scripts and styles
- *
- */
-function etidni_gutenberg_scripts() {
-
-}
-add_action( 'enqueue_block_editor_assets', 'etidni_gutenberg_scripts' );
-
 
 /**
  * Template Hierarchy

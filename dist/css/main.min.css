@@ -1857,7 +1857,7 @@ table tbody + tbody,
 
 .block-toc .block-toc-contents {
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .block-toc .block-toc-contents li {
@@ -1879,6 +1879,70 @@ table tbody + tbody,
 
 .block-toc .block-toc-contents li::before {
   display: none;
+}
+
+/* WP polls
+--------------------------------------------- */
+.wp-polls-archive {
+  /* background-color: #ffffff; */
+}
+
+.wp-polls {
+  background-color: #f8fafd;
+  padding: 20px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  margin: 30px -16px;
+  max-width: -webkit-calc( 100% + 32px);
+  max-width: calc( 100% + 32px);
+  width: -webkit-calc( 100% + 32px);
+  width: calc( 100% + 32px);
+}
+
+@media (min-width: 1000px) {
+  .wp-polls {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.wp-polls .poll-question {
+  text-align: center;
+  display: block;
+  font-weight: 400;
+}
+
+.wp-polls .wp-polls-ul {
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.wp-polls .wp-polls-ul li {
+  list-style-type: none;
+}
+
+.wp-polls .wp-polls-ul li::before {
+  display: none;
+}
+
+.wp-polls .wp-polls-ul li .pollbar {
+  background-color: #e5554e;
+  height: .5em;
+}
+
+.wp-polls .vote-button-wrap,
+.wp-polls .total-voters,
+.wp-polls .view-result-link,
+.wp-polls .vote-link-wrap,
+.wp-polls .total-voters-last {
+  text-align: center;
+}
+
+.wp-polls .total-voters-last,
+.wp-polls .view-result-link,
+.wp-polls .vote-link-wrap {
+  margin-bottom: 0;
 }
 
 /* Site Container
