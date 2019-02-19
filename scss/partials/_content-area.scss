@@ -171,34 +171,54 @@
 		overflow: hidden;
 		width: 100%;
 
+		@include media("<tablet") {
+			text-align: center;
+		}
+		
 		.shared-counts-wrap {
 			margin: 0;
 			float: left;
 			width: auto;
+
+			@include media("<tablet") {
+				float: none;
+			}
 		}
 
-		.be-like-content {
-			color: $grey_5;
+		.post-ratings {
+			width: auto;
 			font-weight: 400;
 			float: right;
 
-			svg {
-				@include icon-position( 20px );
-				margin-left: 9px;
-				fill: $grey_5;
+			@include media("<tablet") {
+				float: none;
+				margin-top: 10px;
+
+				.postratings-label {
+					display: block;
+				}
+			}
+
+			img {
 				vertical-align: middle;
 			}
 
-			&:hover,
-			&.liked {
-				color: $highlight;
-				text-decoration: none;
-
-				svg {
-					fill: $highlight;
-				}
-			}
 		}
+	}
+}
+
+/* Shared Counts
+--------------------------------------------- */
+
+.site-container .shared-counts-wrap.style-icon .shared-counts-button {
+
+	@include media("<tablet") {
+		display: inline-block;
+		float: none;
+	}
+
+	.shared-counts-icon svg {
+		@include icon-position( 20px, 32px );
 	}
 }
 
