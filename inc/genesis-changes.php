@@ -102,3 +102,6 @@ function ly_unlink_logo( $title, $inside, $wrap ) {
 
     return sprintf( '<%1$s class="site-title" itemprop="headline">%2$s</%1$s>', $wrap, $inside );
 }
+
+// Убираем вывод ссылок категории и меток в посте для записи
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
