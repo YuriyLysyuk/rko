@@ -207,6 +207,64 @@
 	}
 }
 
+.after-entry {
+	margin: $margin_2x auto;
+}
+
+.author-info {
+	@include columns-tablet-up( 2, 'div' );
+	align-items: center;
+	margin: 40px auto;
+	font-weight: 400;
+}
+
+.author-box {
+	font-size: 16px;
+	padding-left: 100px + 16px;
+	position: relative;
+	min-height: 100%;
+
+	.avatar {
+		border-radius: 50%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	.h5 {
+		margin: 0 0 5px;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.author-service {
+	background: $grey_9;
+	color: $white;
+	padding: 16px;
+	font-size: 16px;
+	@include media("<tablet") {
+		margin-top: $margin_2x;
+	}
+
+
+	.h5 {
+		color: $white;
+		margin: 0 0 5px;
+	}
+
+	p {
+		margin-bottom: 5px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+
 /* Shared Counts
 --------------------------------------------- */
 
