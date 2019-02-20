@@ -43,3 +43,66 @@ function ly_author_box( $output, $context, $pattern, $gravatar, $title, $descrip
 
 	return $output;
 }
+
+/**
+ * Add Custom Avatar Field
+ * @author Bill Erickson
+ * @link http://www.billerickson.net/wordpress-custom-avatar/
+ *
+ * @param object $user
+ */
+function ly_custom_avatar_field( $user ) { ?>
+	<h3>Custom Avatar</h3>
+	 
+	<table>
+	<tr>
+	<th><label for="ly_custom_avatar">Кастомный аватар URL:</label></th>
+	<td>
+	<input type="text" name="ly_custom_avatar" id="ly_custom_avatar" value="<?php echo esc_url_raw( get_the_author_meta( 'ly_custom_avatar', $user->ID ) ); ?>" /><br />
+	<span>Задайте относительный! URL для аватара размещенного в теме. Например: "/dist/images/avatar.jpg" Он перепишет Gravatar, или покажет этот аватар если Граватар отключен. <br /><strong>Image should be 100x100 pixels.</strong></span>
+	</td>
+	</tr>
+	</table>
+	<?php 
+}
+add_action( 'show_user_profile', 'ly_custom_avatar_field' );
+add_action( 'edit_user_profile', 'ly_custom_avatar_field' );
+
+/**
+ * Save Custom Avatar Field
+ * @author Bill Erickson
+ * @link http://www.billerickson.net/wordpress-custom-avatar/
+ *
+ * @param int $user_id
+ */
+function ly_save_custom_avatar_field( $user_id ) {
+	if ( current_user_can( 'edit_user', $user_id ) ) {
+		update_usermeta( $user_id, 'ly_custom_avatar', esc_url_raw( $_POST['ly_custom_avatar'] ) );
+	}
+}
+add_action( 'personal_options_update', 'ly_save_custom_avatar_field' );
+add_action( 'edit_user_profile_update', 'ly_save_custom_avatar_field' );
+
+/**
+ * Use Custom Avatar if Provided
+ * @author Bill Erickson
+ * @link http://www.billerickson.net/wordpress-custom-avatar/
+ *
+ */
+function ly_gravatar_filter($avatar, $id_or_email, $size, $default, $alt) {
+	
+	// If provided an email and it doesn't exist as WP user, return avatar since there can't be a custom avatar
+	$email = is_object( $id_or_email ) ? $id_or_email->comment_author_email : $id_or_email;
+	if( is_email( $email ) && ! email_exists( $email ) )
+		return $avatar;
+	
+	$custom_avatar = get_the_author_meta('ly_custom_avatar');
+	if ($custom_avatar) 
+		$return = '<img src="'.get_stylesheet_directory_uri().$custom_avatar.'" width="'.$size.'" height="'.$size.'" alt="'.$alt.'" class="avatar" />';
+	elseif ($avatar) 
+		$return = $avatar;
+	else 
+		$return = '<img src="'.$default.'" width="'.$size.'" height="'.$size.'" alt="'.$alt.'" />';
+	return $return;
+}
+add_filter('get_avatar', 'ly_gravatar_filter', 10, 5);
