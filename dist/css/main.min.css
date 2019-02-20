@@ -54,7 +54,13 @@ h2,
 h3,
 h4,
 h5,
-h6, .breadcrumb .icon-home {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6, .breadcrumb .icon-home {
   -webkit-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
@@ -702,11 +708,11 @@ input[type="submit"] {
           box-shadow: none;
   color: #fff;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 1px;
-  padding: 16px 24px;
-  text-transform: uppercase;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 32px;
+  padding: 18px 50px;
   width: auto;
   text-align: center;
   text-decoration: none;
@@ -735,6 +741,19 @@ input[type="submit"]:hover {
 
 .entry-content .button:hover {
   color: #fff;
+}
+
+.button.button-small {
+  font-size: 16px;
+  padding: 9px 25px;
+}
+
+.author-service .button {
+  background-color: #e5554e;
+}
+
+.author-service .button:hover {
+  background: #333;
 }
 
 input[type="search"]::-webkit-search-cancel-button,
@@ -1166,7 +1185,13 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   color: #333;
   line-height: 1.2;
   font-weight: 700;
@@ -1178,7 +1203,13 @@ h2, .entry-content >
 h3, .entry-content >
 h4, .entry-content >
 h5, .entry-content >
-h6 {
+h6, .entry-content >
+.h1, .entry-content >
+.h2, .entry-content >
+.h3, .entry-content >
+.h4, .entry-content >
+.h5, .entry-content >
+.h6 {
   margin: 32px 0 -16px;
 }
 
@@ -1187,7 +1218,13 @@ h2.extra-margin, .entry-content >
 h3.extra-margin, .entry-content >
 h4.extra-margin, .entry-content >
 h5.extra-margin, .entry-content >
-h6.extra-margin {
+h6.extra-margin, .entry-content >
+.h1.extra-margin, .entry-content >
+.h2.extra-margin, .entry-content >
+.h3.extra-margin, .entry-content >
+.h4.extra-margin, .entry-content >
+.h5.extra-margin, .entry-content >
+.h6.extra-margin {
   margin-bottom: 16px;
 }
 
@@ -1196,7 +1233,13 @@ h2 a,
 h3 a,
 h4 a,
 h5 a,
-h6 a {
+h6 a,
+.h1 a,
+.h2 a,
+.h3 a,
+.h4 a,
+.h5 a,
+.h6 a {
   color: #333;
 }
 
@@ -1205,7 +1248,13 @@ h2 a:hover,
 h3 a:hover,
 h4 a:hover,
 h5 a:hover,
-h6 a:hover {
+h6 a:hover,
+.h1 a:hover,
+.h2 a:hover,
+.h3 a:hover,
+.h4 a:hover,
+.h5 a:hover,
+.h6 a:hover {
   color: #e5554e;
   text-decoration: none;
 }
@@ -1215,7 +1264,13 @@ h2:focus,
 h3:focus,
 h4:focus,
 h5:focus,
-h6:focus {
+h6:focus,
+.h1:focus,
+.h2:focus,
+.h3:focus,
+.h4:focus,
+.h5:focus,
+.h6:focus {
   color: #757575;
   outline: none;
 }
@@ -1225,140 +1280,146 @@ h2.alt,
 h3.alt,
 h4.alt,
 h5.alt,
-h6.alt {
+h6.alt,
+.h1.alt,
+.h2.alt,
+.h3.alt,
+.h4.alt,
+.h5.alt,
+.h6.alt {
   color: #9E9E9E;
 }
 
-h1 {
+h1, .h1 {
   font-size: 34px;
 }
 
 @media (min-width: 768px) {
-  h1 {
+  h1, .h1 {
     font-size: 44px;
   }
 }
 
 @media (min-width: 1000px) {
-  h1 {
+  h1, .h1 {
     font-size: 50px;
   }
 }
 
-h1.alt {
+h1.alt, .h1.alt {
   font-size: 32px;
 }
 
 @media (min-width: 768px) {
-  h1.alt {
+  h1.alt, .h1.alt {
     font-size: 38px;
   }
 }
 
 @media (min-width: 1000px) {
-  h1.alt {
+  h1.alt, .h1.alt {
     font-size: 44px;
   }
 }
 
-h2 {
+h2, .h2 {
   font-size: 30px;
 }
 
 @media (min-width: 768px) {
-  h2 {
+  h2, .h2 {
     font-size: 38px;
   }
 }
 
 @media (min-width: 1000px) {
-  h2 {
+  h2, .h2 {
     font-size: 42px;
   }
 }
 
-h2.alt {
+h2.alt, .h2.alt {
   font-size: 28px;
 }
 
 @media (min-width: 768px) {
-  h2.alt {
+  h2.alt, .h2.alt {
     font-size: 32px;
   }
 }
 
 @media (min-width: 1000px) {
-  h2.alt {
+  h2.alt, .h2.alt {
     font-size: 36px;
   }
 }
 
-h3 {
+h3, .h3 {
   font-size: 26px;
 }
 
 @media (min-width: 768px) {
-  h3 {
+  h3, .h3 {
     font-size: 32px;
   }
 }
 
 @media (min-width: 1000px) {
-  h3 {
+  h3, .h3 {
     font-size: 36px;
   }
 }
 
-h3.alt {
+h3.alt, .h3.alt {
   font-size: 24px;
 }
 
 @media (min-width: 768px) {
-  h3.alt {
+  h3.alt, .h3.alt {
     font-size: 30px;
   }
 }
 
-h4 {
+h4, .h4 {
   font-size: 22px;
 }
 
 @media (min-width: 768px) {
-  h4 {
+  h4, .h4 {
     font-size: 26px;
   }
 }
 
 @media (min-width: 1000px) {
-  h4 {
+  h4, .h4 {
     font-size: 28px;
   }
 }
 
-h4.alt {
+h4.alt, .h4.alt {
   font-size: 22px;
 }
 
-h5 {
+h5, .h5 {
   font-size: 18px;
 }
 
 @media (min-width: 768px) {
-  h5 {
+  h5, .h5 {
     font-size: 22px;
   }
 }
 
-h5.alt {
+h5.alt, .h5.alt {
   font-size: 16px;
 }
 
-h6 {
+h6, .h6 {
   font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  h6 {
+  h6, .h6 {
     font-size: 16px;
   }
 }
@@ -2307,6 +2368,7 @@ input[type="search"] {
     color: #fff;
     margin: 14px;
     padding: 16px;
+    font-weight: 700;
   }
   .nav-menu .menu-item.highlight a:hover {
     background-color: #333;
@@ -2742,6 +2804,94 @@ body.mobile-menu-active
 
 .entry .entry-footer .post-ratings img {
   vertical-align: middle;
+}
+
+.after-entry {
+  margin: 32px auto;
+}
+
+.author-info {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 40px auto;
+  font-weight: 400;
+}
+
+@media (min-width: 768px) {
+  .author-info > div {
+    float: left;
+    margin-left: 2.73973%;
+    width: 48.63014%;
+  }
+  .author-info > div:nth-of-type(2n+1) {
+    clear: both;
+    margin-left: 0;
+  }
+  @supports (display: grid) {
+    .author-info {
+      display: grid;
+      grid-column-gap: 32px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .author-info > div {
+      margin-left: 0;
+      width: 100%;
+    }
+    .author-info header, .author-info nav, .author-info aside, .author-info footer {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.author-box {
+  font-size: 16px;
+  padding-left: 116px;
+  position: relative;
+  min-height: 100%;
+}
+
+.author-box .avatar {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.author-box .h5 {
+  margin: 0 0 5px;
+}
+
+.author-box p:last-child {
+  margin-bottom: 0;
+}
+
+.author-service {
+  background: #424242;
+  color: #fff;
+  padding: 16px;
+  font-size: 16px;
+}
+
+@media (max-width: 767px) {
+  .author-service {
+    margin-top: 32px;
+  }
+}
+
+.author-service .h5 {
+  color: #fff;
+  margin: 0 0 5px;
+}
+
+.author-service p {
+  margin-bottom: 5px;
+}
+
+.author-service p:last-child {
+  margin-bottom: 0;
 }
 
 /* Shared Counts

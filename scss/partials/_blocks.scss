@@ -183,7 +183,13 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
 	color: $base-color;
 	line-height: 1.2;
 	font-weight: 700;
@@ -217,7 +223,7 @@ h6 {
 	}
 }
 
-h1 {
+h1, .h1 {
     @include font-sizes( 34px, 44px, 50px );
 
 	&.alt {
@@ -225,7 +231,7 @@ h1 {
 	}
 }
 
-h2 {
+h2, .h2 {
     @include font-sizes( 30px, 38px, 42px );
 
 	&.alt {
@@ -233,7 +239,7 @@ h2 {
 	}
 }
 
-h3 {
+h3, .h3 {
     @include font-sizes( 26px, 32px, 36px );
 
 	&.alt {
@@ -241,7 +247,7 @@ h3 {
 	}
 }
 
-h4 {
+h4, .h4 {
     @include font-sizes( 22px, 26px, 28px );
 
 	&.alt {
@@ -249,7 +255,7 @@ h4 {
 	}
 }
 
-h5 {
+h5, .h5 {
     @include font-sizes( 18px, 22px );
 
 	&.alt {
@@ -257,7 +263,7 @@ h5 {
 	}
 }
 
-h6 {
+h6, .h6 {
     @include font-sizes( 14px, 16px );
 }
 
