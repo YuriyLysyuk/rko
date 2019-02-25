@@ -280,6 +280,95 @@
 	}
 }
 
+/* Comments
+--------------------------------------------- */
+
+.entry-comments {
+
+	.comment-list {
+		margin: 0 0 $margin_2x;
+
+		li {
+			list-style-type: none;
+
+			article {
+				border: 2px solid $grey_2;
+				padding: $base-margin;
+				position: relative;
+				margin-bottom: $base-margin;
+
+				&::before {
+					background: $grey_4;
+					content: '';
+					display: block;
+					width: 5px;
+					height: calc( 100% + 4px );
+					position: absolute;
+					top: -2px;
+					left: -2px;
+				}
+			}
+
+			&.staff > article {
+				background: $blue_2;
+
+				&::before {
+					background: $blue_1;
+				}
+			}
+		}
+
+		& > li {
+			overflow: hidden;
+		}
+
+		.comment-author {
+			font-weight: 700;
+		  @include font-sizes( 18px, 22px );
+			margin: 0 0 3px;
+    	display: flex;
+    	align-items: center;
+			
+			.avatar {
+				margin-right: 10px;
+    		border-radius: 50%;
+			}
+		}
+
+		.comment-meta {
+			font-size: 14px;
+
+			a {
+				@extend %alt_link;
+			}
+		}
+
+		.comment-content {
+
+			p:last-child {
+				margin: 0;
+			}
+		}
+
+		.comment-reply {
+			margin-top: 16px;
+
+			a {
+				font-weight: 400;
+			}
+		}
+
+		ul.children {
+			margin: 0 0 0 32px;
+
+			li {
+				border-top: 1px solid $border-color;
+			}
+		}
+
+	}
+}
+
 /* Screen Reader Text
 --------------------------------------------- */
 

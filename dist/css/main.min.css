@@ -66,12 +66,12 @@ h6,
   transition: all 0.1s ease-in-out;
 }
 
-.breadcrumb a, .entry .entry-header .entry-meta a {
+.breadcrumb a, .entry .entry-header .entry-meta a, .entry-comments .comment-list .comment-meta a {
   color: #757575;
   font-weight: 400;
 }
 
-.breadcrumb a:hover, .entry .entry-header .entry-meta a:hover {
+.breadcrumb a:hover, .entry .entry-header .entry-meta a:hover, .entry-comments .comment-list .comment-meta a:hover {
   color: #e5554e;
   text-decoration: none;
 }
@@ -2908,6 +2908,97 @@ body.mobile-menu-active
   height: 20px;
   margin-top: -webkit-calc( ( 32px - 20px ) / 2);
   margin-top: calc( ( 32px - 20px ) / 2);
+}
+
+/* Comments
+--------------------------------------------- */
+.entry-comments .comment-list {
+  margin: 0 0 32px;
+}
+
+.entry-comments .comment-list li {
+  list-style-type: none;
+}
+
+.entry-comments .comment-list li article {
+  border: 2px solid #F5F5F5;
+  padding: 16px;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.entry-comments .comment-list li article::before {
+  background: #E0E0E0;
+  content: '';
+  display: block;
+  width: 5px;
+  height: -webkit-calc( 100% + 4px);
+  height: calc( 100% + 4px);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+}
+
+.entry-comments .comment-list li.staff > article {
+  background: #f8fafd;
+}
+
+.entry-comments .comment-list li.staff > article::before {
+  background: #4374c4;
+}
+
+.entry-comments .comment-list > li {
+  overflow: hidden;
+}
+
+.entry-comments .comment-list .comment-author {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0 0 3px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media (min-width: 768px) {
+  .entry-comments .comment-list .comment-author {
+    font-size: 22px;
+  }
+}
+
+.entry-comments .comment-list .comment-author .avatar {
+  margin-right: 10px;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.entry-comments .comment-list .comment-meta {
+  font-size: 14px;
+}
+
+.entry-comments .comment-list .comment-content p:last-child {
+  margin: 0;
+}
+
+.entry-comments .comment-list .comment-reply {
+  margin-top: 16px;
+}
+
+.entry-comments .comment-list .comment-reply a {
+  font-weight: 400;
+}
+
+.entry-comments .comment-list ul.children {
+  margin: 0 0 0 32px;
+}
+
+.entry-comments .comment-list ul.children li {
+  border-top: 1px solid #F5F5F5;
 }
 
 /* Screen Reader Text

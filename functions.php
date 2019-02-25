@@ -43,6 +43,7 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/wp-testme.php' );
 	include_once( get_stylesheet_directory() . '/inc/wp-postratings.php' );
 	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
+	include_once( get_stylesheet_directory() . '/inc/comments.php' );
 	
 	// Editor Styles
 	add_theme_support( 'editor-styles' );
@@ -128,22 +129,6 @@ function etidni_setup() {
 
 }
 add_action( 'genesis_setup', 'etidni_setup', 15 );
-
-/**
- * Change the comment area text
- *
- * @since  1.0.0
- * @param  array $args
- * @return array
- */
-function etidni_comment_text( $args ) {
-	$args['title_reply']          = __( 'Leave A Reply', 'Etidni' );
-	$args['label_submit']         = __( 'Post Comment',  'Etidni' );
-	$args['comment_notes_before'] = '';
-	$args['comment_notes_after']  = '';
-	return $args;
-}
-add_filter( 'comment_form_defaults', 'etidni_comment_text' );
 
 /**
  * Global enqueues
