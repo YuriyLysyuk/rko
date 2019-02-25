@@ -44,7 +44,7 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/wp-postratings.php' );
 	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
 	include_once( get_stylesheet_directory() . '/inc/comments.php' );
-	
+
 	// Editor Styles
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'dist/css/editor-style.css' );
@@ -142,7 +142,7 @@ function etidni_global_enqueues() {
 	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/dist/js/scripts.min.js' ), true );
 
 	// убираем стили Gutenberg
-	wp_dequeue_style( 'wp-block-library' );
+	// wp_dequeue_style( 'wp-block-library' );
 
 	// css
   wp_dequeue_style( 'child-theme' );
