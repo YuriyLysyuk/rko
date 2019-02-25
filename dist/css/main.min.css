@@ -719,6 +719,17 @@ input[type="submit"] {
   -webkit-appearance: none;
 }
 
+@media (max-width: 767px) {
+  button,
+  .button,
+  button.wpforms-submit,
+  input[type="button"],
+  input[type="reset"],
+  input[type="submit"] {
+    padding: 18px 18px;
+  }
+}
+
 button:hover,
 .button:hover,
 button.wpforms-submit:hover,
