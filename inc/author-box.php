@@ -30,7 +30,7 @@ function ly_author_box( $output, $context, $pattern, $gravatar, $title, $descrip
 	// Услуги автора
 	$output .= '<div class="author-service">';
 	$output .= '<p class="h5">Нашли ответ на свой вопрос?</p>';
-	$output .= '<p>Cпросите женщин в комментариях ниже, они с радостью поделятся с вами своим опытом.</p>';
+	$output .= '<p>Узнайте мнение женщин в комментариях ниже, они с радостью поделятся с вами своим опытом.</p>';
 	$output .= '<hr>';
 	$output .= '<p>Или задайте вопрос лично мне, я обязательно вам отвечу.</p>';
 	$output .= '<p><a href="'. get_site_url() .'/consultation/" class="button button-small">Задать вопрос врачу</a></p>';	
@@ -89,20 +89,23 @@ add_action( 'edit_user_profile_update', 'ly_save_custom_avatar_field' );
  * @link http://www.billerickson.net/wordpress-custom-avatar/
  *
  */
-function ly_gravatar_filter($avatar, $id_or_email, $size, $default, $alt) {
+function ly_gravatar_filter($avatar, $id_or_email, $size, $default, $alt, $args) {
 	
 	// If provided an email and it doesn't exist as WP user, return avatar since there can't be a custom avatar
 	$email = is_object( $id_or_email ) ? $id_or_email->comment_author_email : $id_or_email;
 	if( is_email( $email ) && ! email_exists( $email ) )
 		return $avatar;
 	
-	$custom_avatar = get_the_author_meta('ly_custom_avatar');
+	// Проверяем, аноним ли это, если да то аватарку не показываем
+	if ( (isset( $id_or_email->comment_ID )) && ($id_or_email->user_id == 0)) return '';
+
+	$custom_avatar = get_the_author_meta('ly_custom_avatar', $id_or_email->user_id);
 	if ($custom_avatar) 
 		$return = '<img src="'.get_stylesheet_directory_uri().$custom_avatar.'" width="'.$size.'" height="'.$size.'" alt="'.$alt.'" class="avatar" />';
 	elseif ($avatar) 
 		$return = $avatar;
 	else 
-		$return = '<img src="'.$default.'" width="'.$size.'" height="'.$size.'" alt="'.$alt.'" />';
+		$return = '';
 	return $return;
 }
-add_filter('get_avatar', 'ly_gravatar_filter', 10, 5);
+add_filter('get_avatar', 'ly_gravatar_filter', 10, 6);
