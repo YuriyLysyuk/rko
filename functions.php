@@ -44,6 +44,7 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/wp-postratings.php' );
 	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
 	include_once( get_stylesheet_directory() . '/inc/comments.php' );
+	include_once( get_stylesheet_directory() . '/inc/russian_date.php' );
 
 	// Editor Styles
 	add_theme_support( 'editor-styles' );

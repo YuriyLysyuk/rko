@@ -76,7 +76,7 @@ function ly_post_info_filter($post_info) {
 	$author .= '</span>';
 
 	$modified_time = '<span class="entry-date"><span class="label">обновлено</span>';
-	$modified_time .= '[post_modified_date format="F j, Y"]';
+	$modified_time .= '[post_modified_date format="j F Y"]';
 	$modified_time .= '</span>';
 
 	$comments = '<span class="entry-comments-link"><span class="label">вопросы и ответы</span>';
