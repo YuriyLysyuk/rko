@@ -45,6 +45,7 @@ gulp.task('scripts', function() {
 });
 
 // Image Compression
+/*
 gulp.task('img-compression', function() {
   gulp.src('images/*')
     .pipe(imagemin([
@@ -60,12 +61,13 @@ gulp.task('img-compression', function() {
     ]))
     .pipe(gulp.dest('dist/images'));
 });
-
+*/
 
 gulp.task('watch', function() {
 		gulp.watch('scss/**/*.scss', gulp.parallel('styles'));
 		gulp.watch(['js/src/*.js', 'js/common.js'], gulp.parallel('scripts'));
-		gulp.watch('**/*', {cwd: 'images/'}, gulp.parallel('img-compression'));
+		//gulp.watch('**/*', {cwd: 'images/'}, gulp.parallel('img-compression'));
 });
-gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'img-compression', 'watch'));
+gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
+//gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'img-compression', 'watch'));
 
