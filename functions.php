@@ -50,9 +50,6 @@ function etidni_setup() {
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'dist/css/editor-style.css' );
 
-	// Image Sizes
-	// add_image_size( 'Etidni_featured', 400, 100, true );
-
 	// Gutenberg
 	
 	// -- Responsive embeds
