@@ -32,6 +32,10 @@ textarea:focus {
 	border: 1px solid $grey_2;
 	outline: none;
 	@extend %transition;
+
+	.search-archive-description & {
+		border: 1px solid $border_color;
+	}
 }
 
 @include placeholder-color( $grey_12 );
@@ -157,7 +161,7 @@ input[type="search"]::-webkit-search-results-button {
 		line-height: 28px;
 		color: $base-color;
 		opacity: .5;
-		float: right;
+		//float: right;
 	}
 
 	.wpforms-field-select {

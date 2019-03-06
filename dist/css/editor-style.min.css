@@ -539,6 +539,7 @@ h6 a,
 .h5 a,
 .h6 a {
   color: #333;
+  font-weight: 700;
 }
 
 h1 a:hover,
@@ -1035,7 +1036,7 @@ blockquote.wp-block-quote.bq-info p {
 --------------------------------------------- */
 .wp-block-separator:not(.is-style-dots),
 hr:not(.is-style-dots) {
-  background-color: #F5F5F5;
+  background-color: #E0E0E0;
   border: 0;
   height: 1px;
 }
@@ -1072,11 +1073,11 @@ img {
 }
 
 img.border {
-  border: 1px solid #F5F5F5;
+  border: 1px solid #E0E0E0;
 }
 
 .wp-block-image.border > figure {
-  border: 1px solid #F5F5F5;
+  border: 1px solid #E0E0E0;
 }
 
 .wp-block-image img {
@@ -1150,7 +1151,7 @@ table td,
 table td,
 .table td,
 .wp-block-table td {
-  border-top: 1px solid #F5F5F5;
+  border-top: 1px solid #E0E0E0;
 }
 
 table thead,
@@ -1165,13 +1166,13 @@ table thead th,
 .table thead th,
 .wp-block-table thead th {
   vertical-align: bottom;
-  border-bottom: 2px solid #F5F5F5;
+  border-bottom: 2px solid #E0E0E0;
 }
 
 table tbody + tbody,
 .table tbody + tbody,
 .wp-block-table tbody + tbody {
-  border-top: 2px solid #F5F5F5;
+  border-top: 2px solid #E0E0E0;
 }
 
 /* Columns

@@ -105,3 +105,18 @@ function ly_unlink_logo( $title, $inside, $wrap ) {
 
 // Убираем вывод ссылок категории и меток в посте для записи
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+
+// Выводим в качестве отрывка дискрипшен из Yoast
+// Если его нет, то выводим стандартный.
+add_action( 'the_excerpt', 'ly_modify_the_excerpt' );
+
+function ly_modify_the_excerpt( $post_excerpt ) {
+	if (!has_excerpt()) {
+		$my_descr = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
+		if ($my_descr){
+			return '<p>'.$my_descr.'</p>';
+		}
+	}
+	
+	return $post_excerpt;
+}

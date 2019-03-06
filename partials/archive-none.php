@@ -11,18 +11,16 @@
 
 echo '<section class="no-results not-found">';
 
-	echo '<header class="entry-header"><h1 class="entry-title">' . esc_html__( 'Nothing Found', 'ea_genesis_child' ) . '</h1></header>';
+	echo '<header class="entry-header"><p class="h4">Ничего не найдено :(</p></header>';
 	echo '<div class="entry-content">';
 
 	if ( is_search() ) {
 
-		echo '<p>' . esc_html__( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'ea_genesis_child' ) . '</p>';
-		get_search_form();
+		echo '<p>К сожалению, по вашему запросу мы ничего не нашли, попробуйте изменить вопрос.</p>';
 
 	} else {
 
-		echo '<p>' . esc_html__( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'ea_genesis_child' ) . '</p>';
-		get_search_form();
+		echo '<p>Кажется, мы не можем найти то, что вы ищете. Возможно поиск вам поможет.</p>';
 	}
 
 	echo '</div>';
