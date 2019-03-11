@@ -20,7 +20,14 @@ echo '<section class="no-results not-found">';
 
 	} else {
 
-		echo '<p>Кажется, мы не можем найти то, что вы ищете. Возможно поиск вам поможет.</p>';
+		echo '<p>Страница которую вы ищете не существует. Вы можете перейти на <a href="' . esc_url( home_url( "/" ) ) .'">главную страницу</a>. Или воспользутесь поиском ниже.</p>';
+		$search_form = '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( "/" ) ) .'">';
+		$search_form.= '<label>';
+		$search_form.= '<input type="search" class="search-field" placeholder="Найти на сайте&hellip;" value="'. get_search_query() .'" name="s" title="Поиск по сайту">';
+		$search_form.= '</label>';
+		$search_form.= '<button type="submit" class="search-submit">'. ea_icon(array('icon' => 'search')) .'</button>';
+		$search_form.= '</form>';
+		echo $search_form;
 	}
 
 	echo '</div>';
