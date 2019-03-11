@@ -21,10 +21,13 @@ function ea_blog_archive_body_class( $classes ) {
 }
 add_filter( 'body_class', 'ea_blog_archive_body_class' );
 
-remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+if (is_search()) {
+	remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
 
-remove_action( 'genesis_before_loop', 'genesis_do_search_title' );
-add_action( 'genesis_before_while', 'genesis_do_search_title' );
+	remove_action( 'genesis_before_loop', 'genesis_do_search_title' );
+	add_action( 'genesis_before_while', 'genesis_do_search_title' );
+}
+
 
 function genesis_do_search_title() {
 
