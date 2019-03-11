@@ -471,7 +471,7 @@
 }
 */
 
-.archive .site-main {
+.archive .site-main, .home .site-main {
 
 	@supports( display: grid ) {
 
@@ -480,7 +480,7 @@
 			grid-template-columns: repeat( 6, 1fr );
 			grid-column-gap: $grid-gap;
 
-			header, nav {
+			header, nav, .header {
 				grid-column: 1 / -1;
 			}
 
@@ -518,6 +518,37 @@ section.no-results {
 
 	.search-form {
 		margin: 0 auto;
+	}
+}
+
+/* Main Page Header Search
+--------------------------------------------- */
+
+.main-page-search {
+	margin: 0 auto;
+	padding: $block-margin * 2 0;
+	background-color: $orange_3;
+
+	.h1, p {
+		margin-top: 0;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+
+	*:last-child {
+		margin-bottom: 0;
+	}
+
+	.search-form {
+		margin: 0 auto $block-margin;
+	}
+
+	.angle {
+		position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 40px;
 	}
 }
 
