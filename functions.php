@@ -25,7 +25,7 @@ if ( ! isset( $content_width ) )
  */
 function etidni_setup() {
 
-	define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/assets/css/main.min.css' ) );
+	define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/dist/css/main.min.css' ) );
 
 	// Includes
 	include_once( get_stylesheet_directory() . '/inc/wordpress-cleanup.php' );
@@ -37,16 +37,23 @@ function etidni_setup() {
 	include_once( get_stylesheet_directory() . '/inc/helper-functions.php' );
 	include_once( get_stylesheet_directory() . '/inc/navigation.php' );
 	include_once( get_stylesheet_directory() . '/inc/loop.php' );
-	// include_once( get_stylesheet_directory() . '/inc/custom-logo.php' );
+	include_once( get_stylesheet_directory() . '/inc/search.php' );
+	include_once( get_stylesheet_directory() . '/inc/footer.php' );
+	include_once( get_stylesheet_directory() . '/inc/wp-polls.php' );
+	include_once( get_stylesheet_directory() . '/inc/wp-testme.php' );
+	include_once( get_stylesheet_directory() . '/inc/wp-postratings.php' );
+	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
+	include_once( get_stylesheet_directory() . '/inc/comments.php' );
+	include_once( get_stylesheet_directory() . '/inc/russian_date.php' );
 
 	// Editor Styles
 	add_theme_support( 'editor-styles' );
-	add_editor_style( 'assets/css/editor-style.css' );
-
-	// Image Sizes
-	// add_image_size( 'Etidni_featured', 400, 100, true );
+	add_editor_style( 'dist/css/editor-style.css' );
 
 	// Gutenberg
+	
+	// -- Responsive embeds
+	add_theme_support( 'responsive-embeds' );
 
 	// -- Wide Images
 	add_theme_support( 'align-wide' );
@@ -84,43 +91,42 @@ function etidni_setup() {
 		array(
 			'name'  => __( 'Blue', 'Etidni' ),
 			'slug'  => 'blue',
-			'color'	=> '#59BACC',
+			'color'	=> '#4374c4',
 		),
 		array(
 			'name'  => __( 'Green', 'Etidni' ),
 			'slug'  => 'green',
-			'color' => '#58AD69',
+			'color' => '#00c851',
 		),
 		array(
 			'name'  => __( 'Orange', 'Etidni' ),
 			'slug'  => 'orange',
-			'color' => '#FFBC49',
+			'color' => '#fb3',
 		),
 		array(
 			'name'	=> __( 'Red', 'Etidni' ),
 			'slug'	=> 'red',
-			'color'	=> '#E2574C',
+			'color'	=> '#ff3547',
+		),
+		array(
+			'name'	=> __( 'White', 'Etidni' ),
+			'slug'	=> 'white',
+			'color'	=> '#fff',
+		),
+		array(
+			'name'	=> __( 'Grey', 'Etidni' ),
+			'slug'	=> 'grey',
+			'color'	=> '#333',
+		),
+		array(
+			'name'	=> __( 'Black', 'Etidni' ),
+			'slug'	=> 'black',
+			'color'	=> '#000',
 		),
 	) );
 
 }
 add_action( 'genesis_setup', 'etidni_setup', 15 );
-
-/**
- * Change the comment area text
- *
- * @since  1.0.0
- * @param  array $args
- * @return array
- */
-function etidni_comment_text( $args ) {
-	$args['title_reply']          = __( 'Leave A Reply', 'Etidni' );
-	$args['label_submit']         = __( 'Post Comment',  'Etidni' );
-	$args['comment_notes_before'] = '';
-	$args['comment_notes_after']  = '';
-	return $args;
-}
-add_filter( 'comment_form_defaults', 'etidni_comment_text' );
 
 /**
  * Global enqueues
@@ -131,16 +137,20 @@ add_filter( 'comment_form_defaults', 'etidni_comment_text' );
 function etidni_global_enqueues() {
 
 	// javascript
-	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/assets/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/scripts.min.js' ), true );
+	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/dist/js/scripts.min.js' ), true );
+
+	// убираем стили Gutenberg
+	// wp_dequeue_style( 'wp-block-library' );
 
 	// css
   wp_dequeue_style( 'child-theme' );
-  wp_enqueue_style( 'etidni-style', get_stylesheet_directory_uri() . '/assets/css/main.min.css', array(), CHILD_THEME_VERSION );
+  wp_enqueue_style( 'etidni-style', get_stylesheet_directory_uri() . '/dist/css/main.min.css', array(), CHILD_THEME_VERSION );
 
 	// Move jQuery to footer
 	if( ! is_admin() ) {
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/assets/js/jquery-3.3.1.min.js', false, NULL, true );
+		// wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/dist/js/jquery-3.3.1.min.js', false, NULL, true );
+		wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, NULL, true );
 		wp_enqueue_script( 'jquery' );
 	}
 }
@@ -165,16 +175,6 @@ function etidni_add_async_attribute($tag, $handle) {
 add_filter('script_loader_tag', 'etidni_add_async_attribute', 10, 2);
 
 /**
- * Gutenberg scripts and styles
- *
- */
-function etidni_gutenberg_scripts() {
-
-}
-add_action( 'enqueue_block_editor_assets', 'etidni_gutenberg_scripts' );
-
-
-/**
  * Template Hierarchy
  *
  */
@@ -190,7 +190,7 @@ add_filter( 'template_include', 'etidni_template_hierarchy' );
  *
  */
 function ly_favicon() {
-	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-152.png">';
-	echo '<!--[if IE]><link rel="shortcut icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon.ico"><![endif]-->';	
+	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon-152.png">';
+	echo '<!--[if IE]><link rel="shortcut icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon.ico"><![endif]-->';	
 }
 add_action( 'wp_head', 'ly_favicon' );

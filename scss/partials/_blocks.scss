@@ -1,0 +1,875 @@
+/* Blocks
+---------------------------------------------------------------------------------------------------- */
+
+/* General
+--------------------------------------------- */
+
+.entry-content,
+.entry-comments,
+.comment-respond {
+
+	& > *:first-child {
+		margin-top: 0;
+	}
+
+	@include media(">=tablet") {
+		max-width: $content-width;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+}
+
+.entry-content > * {
+
+	margin: $block-margin 0;
+	max-width: 100%;
+
+	> *:first-child {
+		margin-top: 0;
+	}
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+
+	&.alignwide {
+		margin: calc( 2 * #{$block-margin} ) -#{$base-margin};
+		max-width: calc( 100% + #{$margin_2x});
+
+		@include media(">=medium") {
+			margin-left: -100px;
+			margin-right: -100px;
+			max-width: calc( 100% + 200px );
+		}
+	}
+
+	&.alignfull {
+		margin: calc( 2 * #{$block-margin} ) calc(50% - 50vw);
+		width: auto;
+		padding-left: $base-margin;
+		padding-right: $base-margin;
+		max-width: 100vw;
+
+		@include media(">=desktop") {
+			max-width: $grid-width;
+			margin-left: calc( ( #{$content-width} - #{$grid-width} ) / 2 );
+			margin-right: calc( ( #{$content-width} - #{$grid-width} ) / 2 );
+		}
+
+		&.bg-grey {
+			background: $grey_1;
+			margin: 0 calc( 50% - 50vw);
+			max-width: 100vw;
+			padding: 65px 0;
+
+			.block-wrap {
+				padding: 0 $base-margin;
+				max-width: $grid-width;
+				margin: 0 auto;
+			}
+
+			&:last-child {
+				margin-bottom: -60px;
+				@include media(">=tablet") {
+					margin-bottom: -100px;
+				}
+			}
+		}
+	}
+
+	&.alignleft {
+		/*rtl:ignore*/
+		float: left;
+		max-width: calc(5 * (100vw / 12));
+		margin-top: 0;
+		margin-left: 0;
+		/*rtl:ignore*/
+		margin-right: $base-margin;
+
+		@include media(">=tablet") {
+			max-width: calc(4 * (#{$content-width} / 12));
+			/*rtl:ignore*/
+			margin-right: calc(2 * #{$base-margin});
+		}
+
+	}
+
+	&.alignright {
+		/*rtl:ignore*/
+		float: right;
+		max-width: calc(5 * (100vw / 12));
+		margin-top: 0;
+		margin-right: 0;
+		/*rtl:ignore*/
+		margin-left: $base-margin;
+
+		@include media(">=tablet") {
+			max-width: calc(4 * (#{$content-width} / 12));
+			margin-right: 0;
+		}
+	}
+	&.aligncenter {
+		margin-left: auto;
+		margin-right: auto;
+
+		@include media(">=tablet") {
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+}
+
+.entry-content {
+
+	ol {
+    padding-left: 20px;
+
+    li {
+			padding-left: 10px;
+			padding-bottom: .5rem;
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+
+			ul, ol {
+				padding-top: .5rem;
+			}
+		}
+	}
+
+	ul {
+    padding-left: 0;
+
+    li {
+			padding-left: 0;
+			padding-bottom: .5rem;
+			list-style-type: none;
+
+      &::before {
+      	background: url(../icons/color/angle-right-orange.svg) no-repeat center;
+				background-size: contain;
+				content: '';
+				display: inline-block;;
+				width: 18px;
+				height: 18px;
+				margin-right: 10px;
+				vertical-align: middle;
+
+				@include media(">=tablet") {
+					width: 20px;
+					height: 20px;
+				}
+      }
+
+			&:last-child {
+				padding-bottom: 0;
+			}
+
+			ul, ol {
+				padding-top: .5rem;
+			}
+		}
+	}
+}
+
+/* Headings
+--------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	color: $base-color;
+	line-height: 1.2;
+	font-weight: 700;
+	margin: 0 0 20px;
+	@extend %transition;
+
+	.entry-content > & {
+		margin: $margin_2x 0 -16px;
+
+		&.extra-margin {
+			margin-bottom: $base-margin;
+		}
+	}
+
+	a {
+		color: $base-color;
+		font-weight: 700;
+
+		&:hover {
+			color: $highlight;
+			text-decoration: none;
+		}
+	}
+
+	&:focus {
+		color: $grey_7;
+		outline: none;
+	}
+
+	&.alt {
+		color: $grey_6;
+	}
+}
+
+h1, .h1 {
+    @include font-sizes( 34px, 44px, 50px );
+
+	&.alt {
+		@include font-sizes( 32px, 38px, 44px );
+	}
+}
+
+h2, .h2 {
+    @include font-sizes( 30px, 38px, 42px );
+
+	&.alt {
+		@include font-sizes( 28px, 32px, 36px );
+	}
+}
+
+h3, .h3 {
+    @include font-sizes( 26px, 32px, 36px );
+
+	&.alt {
+		@include font-sizes( 24px, 30px );
+	}
+}
+
+h4, .h4 {
+    @include font-sizes( 22px, 26px, 28px );
+
+	&.alt {
+		font-size: 22px;
+	}
+}
+
+h5, .h5 {
+    @include font-sizes( 18px, 22px );
+
+	&.alt {
+		font-size: 16px;
+	}
+}
+
+h6, .h6 {
+    @include font-sizes( 14px, 16px );
+}
+
+/* Blockquote
+--------------------------------------------- */
+
+blockquote,
+blockquote.wp-block-quote {
+	padding: 20px;
+	border-radius: 0 20px 20px 0;
+	text-align: left;
+	
+	p {
+  	color: $base-color;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 400;
+  }
+  
+  cite,
+	.wp-block-quote__citation {
+		color: $base-color;
+		display: block;
+		font-size: 14px;
+		line-height: 25px;
+		font-weight: 700;
+		margin-top: 12px;
+		text-transform: uppercase;
+
+		em {
+			font-weight: 400;
+			text-transform: none;
+			font-style: normal;
+		}
+
+		.avatar {
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			float: left;
+			margin: 0 6px 0 0;
+		}
+	}
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+	&.is-style-large {
+		background: transparent;
+		border: none;
+		margin-top: calc( 2 * #{$block-margin});
+		margin-bottom: calc( 2 * #{$block-margin});
+		padding: 0 0 0 70px;
+		position: relative;
+
+		&::before {
+			background: url(../icons/color/quote-orange.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 45px;
+			height: 34px;
+			position: absolute;
+			top: 0;
+			left: 0;
+
+		}
+
+		p {
+			@include font-sizes( 20px, 28px );
+			font-style: normal;
+			line-height: 1.35;
+		}
+
+		cite {
+			text-align: left;
+			margin-top: 30px;
+		}
+
+		@include media("<tablet") {
+			padding-left: 35px;
+
+			&::before {
+				width: 25px;
+			}
+
+			cite {
+				margin-top: 16px;
+			}
+		}
+	}
+
+	&.bq-success {
+		border-left: 5px solid $green_1;
+    background-color: $green_3;
+    position: relative;
+			
+		&::before {
+			background: url(../icons/color/thumbs-up-green.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			top: calc( 50% - 20px );
+			left: 20px;
+		}
+
+		p {
+			padding-left: 55px;
+		}
+
+		@include media("<tablet") {
+			&::before {
+				display: none;
+			}
+
+			p {
+				padding-left: 0;
+			}
+		}
+	}
+
+	&.bq-danger {
+		border-left: 5px solid $red_1;
+    background-color: $red_3;
+		position: relative;
+			
+		&::before {
+			background: url(../icons/color/bolt-red.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			top: calc( 50% - 20px );
+			left: 20px;
+		}
+
+		p {
+			padding-left: 55px;
+		}
+
+		@include media("<tablet") {
+			&::before {
+				display: none;
+			}
+
+			p {
+				padding-left: 0;
+			}
+		}
+	}
+
+	&.bq-warning {
+		border-left: 5px solid $orange_1;
+    background-color: $orange_3;
+		position: relative;
+			
+		&::before {
+			background: url(../icons/color/exclamation-triangle-orange.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			top: calc( 50% - 20px );
+			left: 20px;
+		}
+
+		p {
+			padding-left: 55px;
+		}
+
+		@include media("<tablet") {
+			&::before {
+				display: none;
+			}
+
+			p {
+				padding-left: 0;
+			}
+		}
+	}
+
+	&.bq-primary, &.bq-info {
+		border-left: 4px solid $blue_1;
+    background-color: $blue_3;
+		position: relative;
+			
+		&::before {
+			background: url(../icons/color/info-blue.svg) no-repeat center;
+			background-size: contain;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: 20px;
+			top: calc( 50% - 20px );
+			left: 20px;
+		}
+
+		p {
+			padding-left: 55px;
+		}
+
+		@include media("<tablet") {
+			&::before {
+				display: none;
+			}
+
+			p {
+				padding-left: 0;
+			}
+		}
+	}
+
+	@include media("<tablet") {
+		margin: 40px 0;
+	}
+}
+
+
+/* Pull Quote
+--------------------------------------------- */
+
+.wp-block-pullquote {
+	border: none;
+	padding: 0;
+
+	blockquote {
+		border-left: 0;
+		border-top: 8px solid $highlight;
+		border-bottom: 8px solid $highlight;
+		padding: 16px 0;
+		text-align: center;
+		max-width: 50%;
+		margin: 0 auto;
+		border-radius: 0;
+	}
+
+	&.alignleft,
+	&.alignright {
+
+		blockquote {
+			max-width: 100%;
+		}
+	}
+}
+
+
+/* Separator
+--------------------------------------------- */
+
+.wp-block-separator,
+hr {
+
+	&:not(.is-style-dots) {
+		background-color: $border-color;
+		border: 0;
+		height: 1px;
+	}
+
+	&:not(.is-style-wide):not(.is-style-dots) {
+		width: 100%;
+		height: 4px;
+		background: transparent;
+
+		&::before {
+			content: '';
+			display: block;
+			height: 4px;
+			width: 40px;
+			background: $highlight;
+		}
+	}
+
+	&.is-style-dots:before {
+		color: $grey_9;
+		font-size: 18px;
+		letter-spacing: 12px;
+		padding-left: 12px;
+	}
+}
+
+/* Image
+--------------------------------------------- */
+
+img {
+	max-width: 100%;
+	height: auto;
+
+	&.border {
+		border: 1px solid $border-color;
+	}
+}
+
+.wp-block-image {
+
+	&.border > figure {
+		border: 1px solid $border-color;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	figcaption {
+		color: $grey_7;
+		text-align: left;
+		font-size: 14px;
+		font-style: italic;
+	}
+
+}
+
+/* Button
+--------------------------------------------- */
+
+.wp-block-button {
+	margin-bottom: $block-margin;
+	text-align: center;
+}
+
+
+/* Tables
+--------------------------------------------- */
+
+table,
+.table,
+.wp-block-table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	line-height: 2;
+	width: 100%;
+	max-width: $grid-width;
+	margin-bottom: $block-margin;
+	display: block;
+  overflow-x: auto;
+
+	&.alignwide {
+	margin: #{$block-margin}  -#{$base-margin};
+	padding-left: #{$base-margin};
+	max-width: calc( 100% + #{$margin_2x});
+	width: calc( 100% + #{$margin_2x});
+
+		@include media(">=medium") {
+			margin: 0 !important;
+			padding-left: 0 !important;
+			max-width: 100% !important;
+			width: 100% !important;
+		}
+  }
+
+	th,
+	td {
+		padding: 16px;
+		vertical-align: middle;
+		white-space: nowrap;
+	}
+
+	td {
+		border-top: 1px solid $border-color;
+	}
+
+	thead {
+		text-align: left;
+		background-color: $blue_3;
+		color: $base-color;
+
+
+		th {
+			vertical-align: bottom;
+			border-bottom: 2px solid $border-color;
+		}
+	}
+
+	tbody + tbody {
+		border-top: 2px solid $border-color;
+	}
+	
+}
+
+/* Columns
+--------------------------------------------- */
+
+.wp-block-columns {
+
+	.wp-block-column {
+		margin-bottom: $block-margin;
+	}
+
+	.wp-block-column > * {
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&[class*='has-'] > * {
+		margin-right: $base-margin;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+
+/* Table of content
+--------------------------------------------- */
+
+.block-toc {
+	background-color: $blue_2;
+	padding: 20px;
+	border-radius: 3px;
+	margin: #{$block-margin}  -#{$base-margin};
+	max-width: calc( 100% + #{$margin_2x});
+	width: calc( 100% + #{$margin_2x});
+
+	@include media(">=medium") {
+		margin: 0;
+		max-width: 100% ;
+		width: 100%;
+	}
+
+	.block-toc-title {
+		text-align: center;
+		display: block;
+		font-weight: 400;
+	}
+
+	.block-toc-contents {
+		margin-left: 20px;
+		margin-top: 30px;
+
+		li {
+			list-style-type: disc;
+			padding-bottom: 0;
+
+			a {
+				//@extend %alt_link;
+				color: $blue_1;
+				font-weight: 300;
+				border-bottom: 1px dashed $blue_1;
+
+				&:hover {
+					border-bottom: 1px dashed transparent;
+					text-decoration: none;
+					color: $base-color;
+				}
+			}
+
+			&::before {
+				display: none;
+			}
+		}
+	}
+}
+
+/* WP polls
+--------------------------------------------- */
+
+.wp-polls-archive {
+	/* background-color: #ffffff; */
+}
+.wp-polls {
+	background-color: #ffecd2;
+	@extend %juicy-peach-gradient;
+	padding: 20px;
+	border-radius: 3px;
+	margin: #{$block-margin}  -#{$base-margin};
+	max-width: calc( 100% + #{$margin_2x});
+	width: calc( 100% + #{$margin_2x});
+
+	@include media(">=medium") {
+		margin: 0;
+		max-width: 100% ;
+		width: 100%;
+	}
+
+	.poll-question {
+		text-align: center;
+		display: block;
+		font-weight: 400;
+	}
+
+	.wp-polls-ul {
+		margin-left: 0;
+		margin-top: 0;
+		
+		li {
+			list-style-type: none;
+			
+			&::before {
+				display: none;
+			}
+
+			.pollbar {
+				background-color: $highlight;
+				height: .5em;
+			}
+		}
+	}
+
+	.vote-button-wrap,
+	.total-voters,
+	.view-result-link,
+	.vote-link-wrap,
+	.total-voters-last {
+		text-align: center;
+	}
+
+	.total-voters-last,
+	.view-result-link,
+	.vote-link-wrap {
+		margin-bottom: 0;
+	}
+
+	a {
+		color: $base-color;
+	}
+}
+
+/* WP TestMe
+--------------------------------------------- */
+
+.testme_area {
+	background-color: rgba(156, 39, 176, 0.1);
+	padding: 20px;
+	border-radius: 3px;
+	margin: #{$block-margin}  -#{$base-margin};
+	max-width: calc( 100% + #{$margin_2x});
+	width: calc( 100% + #{$margin_2x});
+
+	@include media(">=medium") {
+		margin: 0;
+		max-width: 100% ;
+		width: 100%;
+	}
+
+	/* Текст вопроса */
+	.testme_question_text {
+		margin-top:20px;
+  	font-weight: bold;
+	}
+
+	/* Блок с ответом */
+	.testme_answer_block {
+	    margin-bottom:7px;
+	}
+
+	/* Радио-кнопка для выбора ответа */
+	.testme_answer {
+		padding-left:20px;
+	}
+
+	/* Текст ответа */
+	.testme_question label {
+	    margin-left: 10px;
+	}
+
+	/* Параметры кнопки */
+	.testme_button_wrap {
+		margin-top: 20px;
+		text-align: center;
+	}
+
+	/*  === Результаты === */
+
+	/* Оболочка, в которую записывается результат */
+	#testme_result {
+		border: 2px solid rgba(156, 39, 176, 0.7);
+    border-radius: 3px;
+
+
+	}
+
+	/* Весь блок с результатами */
+	.testme_result_block {
+		margin: 10px;
+	}
+
+	/* Надпись перед показом результатов */
+	.testme_before_results {
+	    color: $base-color;
+	}
+
+	/* Результат теста в баллах */
+	.testme_your_score {
+	    margin-top:10px;
+	    font-weight: bold;
+	}
+
+}

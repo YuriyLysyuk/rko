@@ -8,18 +8,15 @@
  * @license      GPL-2.0+
 **/
 
-echo '<article class="search-result">';
+echo '<article class="post-summary search-result">';
 
-	echo '<header class="entry-header">';
-		echo '<h2 class="entry-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
-	echo '</header>';
+	echo '<h2 class="h4 entry-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
 
-	echo '<div class="entry-content">';
-		$excerpt = get_the_excerpt();
-		if( empty( $excerpt ) )
-			$excerpt = get_post_meta( get_the_ID(), '_yoast_wpseo_metadesc', true );
-		if( !empty( $excerpt ) )
-			echo apply_filters( 'the_excerpt', $excerpt );
-	echo '</div>';
+	echo '<p class="entry-date">';
+		echo the_modified_date('j F Y');
+	echo '</p>';
+
+	the_excerpt();
+
 
 echo '</article>';

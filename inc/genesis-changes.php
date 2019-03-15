@@ -11,23 +11,25 @@
 // Theme Supports
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 add_theme_support( 'genesis-responsive-viewport' );
-add_theme_support( 'genesis-footer-widgets', 3 );
-add_theme_support( 'genesis-structural-wraps', array( 'header', 'menu-secondary', 'site-inner', 'footer-widgets', 'footer' ) );
-add_theme_support( 'genesis-menus', array( 'primary' => 'Primary Navigation Menu', 'secondary' => 'Secondary Navigation Menu', 'mobile' => 'Mobile Menu' ) );
+// add_theme_support( 'genesis-footer-widgets', 3 );
+add_theme_support( 'genesis-structural-wraps', array( 'header', 'menu-secondary', 'site-inner', 'footer' ) );
+add_theme_support( 'genesis-menus', array( 'primary' => 'Primary Navigation Menu' ) );
 add_theme_support( 'genesis-inpost-layouts' );
 add_theme_support( 'genesis-archive-layouts' );
 
 // Adds support for accessibility.
+
 add_theme_support(
 	'genesis-accessibility', array(
-		'404-page',
+		//'404-page',
 	//	'drop-down-menu',
-		'headings',
-		'rems',
-		'search-form',
-		'screen-reader-text',
+		//'headings',
+		//'rems',
+		//'search-form',
+		//'screen-reader-text',
 	)
 );
+
 
 // Remove admin bar styling
 add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
@@ -63,13 +65,58 @@ function ea_remove_genesis_templates( $page_templates ) {
 }
 add_filter( 'theme_page_templates', 'ea_remove_genesis_templates' );
 
-/**
- * Custom search form
+
+/** 
+ * Modify Post Info
  *
  */
-function ea_search_form() {
-	ob_start();
-	get_template_part( 'searchform' );
-	return ob_get_clean();
+function ly_post_info_filter($post_info) {
+	$author = '<span class="entry-author"><span class="label">автор</span>';
+	$author .= get_the_author();
+	$author .= '</span>';
+
+	$modified_time = '<span class="entry-date"><span class="label">обновлено</span>';
+	$modified_time .= '[post_modified_date format="j F Y"]';
+	$modified_time .= '</span>';
+
+	$comments = '<span class="entry-comments-link"><span class="label">вопросы и ответы</span>';
+	$comments .= '[post_comments zero="Нет комментариев" one="1 комментарий" more="% комментариев" hide_if_off="disabled"]';
+	$comments .= '</span>';
+
+	$post_info = $author . $modified_time . $comments;
+
+	return $post_info;
 }
-add_filter( 'genesis_search_form', 'ea_search_form' );
+add_filter('genesis_post_info', 'ly_post_info_filter');
+
+/** 
+ * Удаляем ссылку на главную с лого на главной странице
+ *
+ */
+add_filter( 'genesis_seo_title', 'ly_unlink_logo', 10, 3 );
+
+function ly_unlink_logo( $title, $inside, $wrap ) {
+		if (is_front_page()) {
+			$inside = sprintf( '%s', get_bloginfo( 'name' ) );
+		}
+
+    return sprintf( '<%1$s class="site-title" itemprop="headline">%2$s</%1$s>', $wrap, $inside );
+}
+
+// Убираем вывод ссылок категории и меток в посте для записи
+remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
+
+// Выводим в качестве отрывка дискрипшен из Yoast
+// Если его нет, то выводим стандартный.
+add_action( 'the_excerpt', 'ly_modify_the_excerpt' );
+
+function ly_modify_the_excerpt( $post_excerpt ) {
+	if (!has_excerpt()) {
+		$my_descr = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
+		if ($my_descr){
+			return '<p>'.$my_descr.'</p>';
+		}
+	}
+	
+	return $post_excerpt;
+}
