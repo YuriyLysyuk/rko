@@ -83,7 +83,7 @@ if (is_front_page()) {
 				// Классы для grid
 				if ($loop_counter < 3) {
 					$loop_image_view = ' large';
-					$loop_image_size = '384';
+					$loop_image_size = 'medium';
 
 				} else {
 					$loop_image_view = ' image-left';
