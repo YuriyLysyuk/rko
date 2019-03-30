@@ -16,7 +16,9 @@
  * @return array
  */
 function etidni_comment_text( $args ) {
+	$args['title_reply_before']   = '<p id="reply-title" class="comment-reply-title h3">';
 	$args['title_reply']          = 'Ответить';
+	$args['title_reply_after']    = '</p>';
 	$args['label_submit']         = 'Отправить комментарий';
 	$args['comment_notes_before'] = '';
 	$args['comment_notes_after']  = '';
