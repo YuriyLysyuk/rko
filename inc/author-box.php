@@ -59,7 +59,7 @@ function ly_custom_avatar_field( $user ) { ?>
 	<th><label for="ly_custom_avatar">Кастомный аватар URL:</label></th>
 	<td>
 	<input type="text" name="ly_custom_avatar" id="ly_custom_avatar" value="<?php echo esc_url_raw( get_the_author_meta( 'ly_custom_avatar', $user->ID ) ); ?>" /><br />
-	<span>Задайте относительный! URL для аватара размещенного в теме. Например: "/dist/images/avatar.jpg" Он перепишет Gravatar, или покажет этот аватар если Граватар отключен. <br /><strong>Image should be 100x100 pixels.</strong></span>
+	<span>Задайте относительный! URL для аватара размещенного в папке Uploads, "/" в начал обязателен Например: "/avatar.jpg" Он перепишет Gravatar, или покажет этот аватар если Граватар отключен. <br /><strong>Аватар должен быть 100x100 пикселей.</strong></span>
 	</td>
 	</tr>
 	</table>
@@ -100,8 +100,11 @@ function ly_gravatar_filter($avatar, $id_or_email, $size, $default, $alt, $args)
 	if ( (isset( $id_or_email->comment_ID )) && ($id_or_email->user_id == 0)) return '';
 
 	$custom_avatar = get_the_author_meta('ly_custom_avatar', $id_or_email->user_id);
+	// Достаем URL папки загрузки 
+	$upload_dir = wp_get_upload_dir();
+
 	if ($custom_avatar) 
-		$return = '<img src="'.get_stylesheet_directory_uri().$custom_avatar.'" width="'.$size.'" height="'.$size.'" alt="'.$alt.'" class="avatar" />';
+		$return = '<img src="'.$upload_dir['baseurl'].$custom_avatar.'" width="'.$size.'" height="'.$size.'" alt="'.$alt.'" class="avatar" />';
 	elseif ($avatar) 
 		$return = $avatar;
 	else 
