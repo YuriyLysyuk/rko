@@ -2,7 +2,7 @@
 /**
  * 404 / No Results partial
  *
- * @package      Etidni
+ * @package      rko
  * @author       Yuriy Lysyuk
  * @since        1.0.0
  * @license      GPL-2.0+

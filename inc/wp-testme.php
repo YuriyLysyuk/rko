@@ -2,7 +2,7 @@
 /**
  * WP-TestMe customize
  *
- * @package lyt
+ * @package rko
  * @since 1.0.0
  */
 

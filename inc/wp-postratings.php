@@ -2,7 +2,7 @@
 /**
  * WP-Postratings customize
  *
- * @package lyt
+ * @package rko
  * @since 1.0.0
  */
 
