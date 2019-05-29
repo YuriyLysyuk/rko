@@ -193,4 +193,4 @@ function ly_favicon() {
 	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon-152.png">';
 	echo '<!--[if IE]><link rel="shortcut icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon.ico"><![endif]-->';	
 }
-add_action( 'wp_head', 'ly_favicon' );
+//add_action( 'wp_head', 'ly_favicon' );

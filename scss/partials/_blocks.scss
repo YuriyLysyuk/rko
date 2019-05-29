@@ -225,7 +225,7 @@ h6,
 	}
 }
 
-h1, .h1, .site-title {
+h1, .h1 {
     @include font-sizes( 34px, 44px, 50px );
 
 	&.alt {

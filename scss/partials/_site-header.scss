@@ -9,15 +9,16 @@
 .title-area {
 	float: left;
 	padding: 20px 0;
-	width: 189px;
+	width: auto;
 
 	@include media("<phone" ) {
-		width: 150px;	
+		width: auto;	
 	}
 
 	h1.site-title,
 	p.site-title {
 		margin: 0;
+		font-size: 35px;
 	}
 	/*
 	.site-title a, & > h1.site-title {
