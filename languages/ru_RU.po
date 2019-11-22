@@ -1,0 +1,129 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: rko\n"
+"POT-Creation-Date: 2019-11-21 23:16+0300\n"
+"PO-Revision-Date: 2019-11-21 23:25+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: functions.php:148
+msgid "small"
+msgstr "маленький"
+
+#: functions.php:149
+msgid "S"
+msgstr ""
+
+#: functions.php:154
+msgid "regular"
+msgstr "обычный"
+
+#: functions.php:155
+msgid "M"
+msgstr ""
+
+#: functions.php:160
+msgid "large"
+msgstr "большой"
+
+#: functions.php:161
+msgid "L"
+msgstr ""
+
+#: functions.php:173
+msgid "Blue"
+msgstr "Синий"
+
+#: functions.php:178
+msgid "Green"
+msgstr "Зеленый"
+
+#: functions.php:183
+msgid "Orange"
+msgstr "Оранжевый"
+
+#: functions.php:188
+msgid "Red"
+msgstr "Красный"
+
+#: inc/comments.php:18
+msgid "Leave A Reply"
+msgstr "Добавить комментарий"
+
+#: inc/comments.php:19
+msgid "Post Comment"
+msgstr "Опубликовать"
+
+#: inc/comments.php:53
+msgid "Comments"
+msgstr "Комментарии"
+
+#: inc/footer.php:24
+msgid "Footer"
+msgstr "Подвал"
+
+#: inc/footer.php:25
+msgid "This is the general footer area"
+msgstr ""
+
+#: partials/archive-none.php:13
+msgid "Nothing Found :("
+msgstr "Ничего не найдено :("
+
+#: partials/archive-none.php:18
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"К сожалению, по вашему запросу мы ничего не нашли, попробуйте изменить "
+"вопрос."
+
+#: partials/archive-none.php:22
+msgid ""
+"It seems we can not find what you are looking for. Perhaps searching can "
+"help."
+msgstr "Кажется, мы не можем найти то, что вы ищите. Воспользуйтесь поиском."
+
+#: partials/headersearch.php:14 searchform.php:13
+msgid "Search on site"
+msgstr "Поиск на сайте"
+
+#: search.php:17
+msgid "Search Results"
+msgstr "Результаты поиска"
+
+#. Theme Name of the plugin/theme
+msgid "rko"
+msgstr "rko"
+
+#. Theme URI of the plugin/theme
+msgid "https://bitbucket.org/lysyuk-y/rko"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Custom child theme for the rko.guru<>"
+msgstr "Кастомная тема для rko.guru"
+
+#. Author of the plugin/theme
+msgid "Yuriy Lysyuk"
+msgstr "Юрий Лысюк"
+
+#. Author URI of the plugin/theme
+msgid "https://rko.guru"
+msgstr "https://rko.guru"

@@ -4,8 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 
 // Adds custom logo in Customizer > Site Identity.
@@ -37,7 +36,7 @@ function ea_customizer_css() {
 	}
 
 	if( $css ) {
-		wp_add_inline_style( 'etidni-style', $css );
+		wp_add_inline_style( 'rko-style', $css );
 	}
 
 }

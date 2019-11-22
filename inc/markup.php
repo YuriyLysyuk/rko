@@ -4,8 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 
 
@@ -87,6 +86,8 @@ add_filter( 'genesis_markup_cpt-archive-description_open', 'ea_archive_descripti
 add_filter( 'genesis_markup_cpt-archive-description_close', 'ea_archive_description_markup' );
 add_filter( 'genesis_markup_date-archive-description_open', 'ea_archive_description_markup' );
 add_filter( 'genesis_markup_date-archive-description_close', 'ea_archive_description_markup' );
+add_filter( 'genesis_markup_search-description_open', 'ea_archive_description_markup' );
+add_filter( 'genesis_markup_search-description_close', 'ea_archive_description_markup' );
 
 /**
  * Archive Pagination markup
@@ -99,3 +100,14 @@ add_filter( 'genesis_markup_archive-pagination_open', 'ea_archive_pagination_mar
 add_filter( 'genesis_markup_archive-pagination_close', 'ea_archive_pagination_markup' );
 
 add_filter( 'genesis_attr_cpt-archive-description', 'genesis_attributes_cpt_archive_description' );
+
+/**
+ * Search Header Classes
+ *
+ */
+function ea_search_header_classes( $attributes ) {
+	$attributes['class'] = 'archive-description search-description';
+	return $attributes;
+}
+add_filter( 'genesis_attr_search-description', 'ea_search_header_classes' );
+

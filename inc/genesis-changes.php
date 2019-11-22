@@ -4,32 +4,18 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 
 // Theme Supports
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 add_theme_support( 'genesis-responsive-viewport' );
-// add_theme_support( 'genesis-footer-widgets', 3 );
-add_theme_support( 'genesis-structural-wraps', array( 'header', 'menu-secondary', 'site-inner', 'footer' ) );
+add_theme_support( 'genesis-structural-wraps', array( 'header', 'menu-secondary', 'site-inner', 'footer-widgets', 'footer' ) );
 add_theme_support( 'genesis-menus', array( 'primary' => 'Primary Navigation Menu' ) );
-add_theme_support( 'genesis-inpost-layouts' );
-add_theme_support( 'genesis-archive-layouts' );
+add_theme_support( 'genesis-footer-widgets', 3 );
 
-// Adds support for accessibility.
-
-add_theme_support(
-	'genesis-accessibility', array(
-		//'404-page',
-	//	'drop-down-menu',
-		//'headings',
-		//'rems',
-		//'search-form',
-		//'screen-reader-text',
-	)
-);
-
+// h1 on home
+add_filter( 'genesis_site_title_wrap', function( $wrap ) { return is_front_page() ? 'h1' : $wrap; } );
 
 // Remove admin bar styling
 add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
@@ -40,16 +26,32 @@ add_filter( 'genesis_edit_post_link', '__return_false' );
 // Remove Genesis Favicon (use site icon instead)
 remove_action( 'wp_head', 'genesis_load_favicon' );
 
+
+remove_action( 'wp_head', 'genesis_do_meta_pingback' );
+
 // Remove Header Description
 remove_action( 'genesis_site_description', 'genesis_seo_site_description' );
 
-// Remove sidebar layouts
-unregister_sidebar( 'header-right' );
+/// Remove unused sidebars
 unregister_sidebar( 'sidebar' );
 unregister_sidebar( 'sidebar-alt' );
-add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+// Remove layouts
+genesis_unregister_layout( 'content-sidebar-sidebar' );
+genesis_unregister_layout( 'sidebar-content-sidebar' );
+genesis_unregister_layout( 'sidebar-sidebar-content' );
+genesis_unregister_layout( 'sidebar-content' );
+genesis_unregister_layout( 'content-sidebar' );
+
+// Remove layout metaboxes
 remove_theme_support( 'genesis-inpost-layouts' );
 remove_theme_support( 'genesis-archive-layouts' );
+
+// Use full width layout 
+add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
+
+// Убираем хлебные крошки
+remove_action('genesis_before_loop', 'genesis_do_breadcrumbs');
 
 // Add New Sidebars
 // genesis_register_widget_area( array( 'id' => 'blog-sidebar', 'name' => 'Blog Sidebar' ) );
@@ -65,36 +67,10 @@ function ea_remove_genesis_templates( $page_templates ) {
 }
 add_filter( 'theme_page_templates', 'ea_remove_genesis_templates' );
 
-
-/** 
- * Modify Post Info
- *
- */
-function ly_post_info_filter($post_info) {
-	$author = '<span class="entry-author"><span class="label">автор</span>';
-	$author .= get_the_author();
-	$author .= '</span>';
-
-	$modified_time = '<span class="entry-date"><span class="label">обновлено</span>';
-	$modified_time .= '[post_modified_date format="j F Y"]';
-	$modified_time .= '</span>';
-
-	$comments = '<span class="entry-comments-link"><span class="label">вопросы и ответы</span>';
-	$comments .= '[post_comments zero="Нет комментариев" one="1 комментарий" more="% комментариев" hide_if_off="disabled"]';
-	$comments .= '</span>';
-
-	$post_info = $author . $modified_time . $comments;
-
-	return $post_info;
-}
-add_filter('genesis_post_info', 'ly_post_info_filter');
-
 /** 
  * Удаляем ссылку на главную с лого на главной странице
  *
  */
-add_filter( 'genesis_seo_title', 'ly_unlink_logo', 10, 3 );
-
 function ly_unlink_logo( $title, $inside, $wrap ) {
 		if (is_front_page()) {
 			$inside = sprintf( '%s', get_bloginfo( 'name' ) );
@@ -103,20 +79,7 @@ function ly_unlink_logo( $title, $inside, $wrap ) {
     return sprintf( '<%1$s class="site-title" itemprop="headline">%2$s</%1$s>', $wrap, $inside );
 }
 
+add_filter( 'genesis_seo_title', 'ly_unlink_logo', 10, 3 );
+
 // Убираем вывод ссылок категории и меток в посте для записи
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-
-// Выводим в качестве отрывка дискрипшен из Yoast
-// Если его нет, то выводим стандартный.
-add_action( 'the_excerpt', 'ly_modify_the_excerpt' );
-
-function ly_modify_the_excerpt( $post_excerpt ) {
-	if (!has_excerpt()) {
-		$my_descr = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
-		if ($my_descr){
-			return '<p>'.$my_descr.'</p>';
-		}
-	}
-	
-	return $post_excerpt;
-}

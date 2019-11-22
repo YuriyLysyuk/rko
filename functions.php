@@ -4,8 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 
 /**
@@ -13,7 +12,79 @@
  *
  */
 if ( ! isset( $content_width ) )
-    $content_width = 1280;
+    $content_width = 1200;
+
+/**
+ * Global enqueues
+ *
+ * @since  1.0.0
+ * @global array $wp_styles
+ */
+function rko_global_enqueues() {
+
+	// javascript
+	wp_enqueue_script( 'rko-global', get_stylesheet_directory_uri() . '/assets/js/global.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/global.min.js' ), true );
+
+	// css
+	wp_dequeue_style( 'rko' );
+	wp_enqueue_style( 'rko-fonts', rko_theme_fonts_url() );
+	wp_enqueue_style( 'rko-style', get_stylesheet_directory_uri() . '/assets/css/main.min.css', array(), CHILD_THEME_VERSION );
+
+	// Move jQuery to footer
+	if( ! is_admin() ) {
+		wp_deregister_script( 'jquery' );
+		
+		// jquery из директории сайта
+		// wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/assets/js/jquery-3.3.1.min.js', false, NULL, true );
+		
+		// jquery из cdn гугла
+		// wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, NULL, true );
+
+		// стандартный jquery wordpress
+		wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
+		
+		wp_enqueue_script( 'jquery' );
+	}
+
+	/**
+	 * Dequeue jQuery Migrate
+	 * 
+	 */
+	function ea_dequeue_jquery_migrate( &$scripts ){
+		if( !is_admin() ) {
+			$scripts->remove( 'jquery');
+			$scripts->add( 'jquery', false, array( 'jquery-core' ), '1.12.4' );
+		}
+	}
+
+	//  Включить, если используется стандартный jquery
+	add_filter( 'wp_default_scripts', 'ea_dequeue_jquery_migrate' );
+}
+add_action( 'wp_enqueue_scripts', 'rko_global_enqueues' );
+
+/**
+ * Gutenberg scripts and styles
+ *
+ */
+function rko_gutenberg_scripts() {
+	wp_enqueue_style( 'rko-fonts', rko_theme_fonts_url() );
+	wp_enqueue_script( 'rko-editor', get_stylesheet_directory_uri() . '/assets/js/editor.js', array( 'wp-blocks', 'wp-dom' ), filemtime( get_stylesheet_directory() . '/assets/js/editor.js' ), true );
+}
+add_action( 'enqueue_block_editor_assets', 'rko_gutenberg_scripts' );
+
+/**
+ * Theme Fonts URL
+ *
+ */
+function rko_theme_fonts_url() {
+	$font_families = apply_filters( 'rko_theme_fonts', array( 'Roboto:400,400i,700,700i' ) );
+	$query_args = array(
+		'family' => implode( '|', $font_families ),
+		'subset' => 'cyrillic,cyrillic-ext',
+	);
+	$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+	return esc_url_raw( $fonts_url );
+}
 
 /**
  * Theme setup.
@@ -23,32 +94,42 @@ if ( ! isset( $content_width ) )
  *
  * @since 1.0.0
  */
-function etidni_setup() {
+function rko_setup() {
 
-	define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/dist/css/main.min.css' ) );
+	define( 'CHILD_THEME_VERSION', filemtime( get_stylesheet_directory() . '/assets/css/main.min.css' ) );
 
 	// Includes
 	include_once( get_stylesheet_directory() . '/inc/wordpress-cleanup.php' );
 	include_once( get_stylesheet_directory() . '/inc/genesis-changes.php' );
 	include_once( get_stylesheet_directory() . '/inc/markup.php' );
 	include_once( get_stylesheet_directory() . '/inc/login-logo.php' );
+	//include_once( get_stylesheet_directory() . '/inc/custom-logo.php' );
   include_once( get_stylesheet_directory() . '/inc/tinymce.php' );
 	include_once( get_stylesheet_directory() . '/inc/disable-editor.php' );
 	include_once( get_stylesheet_directory() . '/inc/helper-functions.php' );
 	include_once( get_stylesheet_directory() . '/inc/navigation.php' );
 	include_once( get_stylesheet_directory() . '/inc/loop.php' );
 	include_once( get_stylesheet_directory() . '/inc/search.php' );
-	include_once( get_stylesheet_directory() . '/inc/footer.php' );
-	include_once( get_stylesheet_directory() . '/inc/wp-polls.php' );
-	include_once( get_stylesheet_directory() . '/inc/wp-testme.php' );
-	include_once( get_stylesheet_directory() . '/inc/wp-postratings.php' );
-	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
 	include_once( get_stylesheet_directory() . '/inc/comments.php' );
 	include_once( get_stylesheet_directory() . '/inc/russian_date.php' );
+	//include_once( get_stylesheet_directory() . '/inc/amp.php' );
+	//include_once( get_stylesheet_directory() . '/inc/display-posts.php' );
+	include_once( get_stylesheet_directory() . '/inc/wpforms.php' );
+
+	//include_once( get_stylesheet_directory() . '/inc/footer.php' );
+	//include_once( get_stylesheet_directory() . '/inc/wp-polls.php' );
+	//include_once( get_stylesheet_directory() . '/inc/wp-testme.php' );
+	//include_once( get_stylesheet_directory() . '/inc/wp-postratings.php' );
+	//include_once( get_stylesheet_directory() . '/inc/author-box.php' );
+
+	//include_once( get_stylesheet_directory() . '/inc/debug.php' );
 
 	// Editor Styles
 	add_theme_support( 'editor-styles' );
-	add_editor_style( 'dist/css/editor-style.css' );
+	add_editor_style( 'assets/css/editor-style.min.css' );
+
+	// Image Sizes
+	// add_image_size( 'rko_featured', 400, 100, true );
 
 	// Gutenberg
 	
@@ -64,21 +145,21 @@ function etidni_setup() {
 	// -- Editor Font Styles
 	add_theme_support( 'editor-font-sizes', array(
 		array(
-			'name'      => __( 'small', 'Etidni' ),
-			'shortName' => __( 'S', 'Etidni' ),
+			'name'      => __( 'small', 'rko' ),
+			'shortName' => __( 'S', 'rko' ),
 			'size'      => 12,
 			'slug'      => 'small'
 		),
 		array(
-			'name'      => __( 'regular', 'Etidni' ),
-			'shortName' => __( 'M', 'Etidni' ),
+			'name'      => __( 'regular', 'rko' ),
+			'shortName' => __( 'M', 'rko' ),
 			'size'      => 16,
 			'slug'      => 'regular'
 		),
 		array(
-			'name'      => __( 'large', 'Etidni' ),
-			'shortName' => __( 'L', 'Etidni' ),
-			'size'      => 20,
+			'name'      => __( 'large', 'rko' ),
+			'shortName' => __( 'L', 'rko' ),
+			'size'      => 22,
 			'slug'      => 'large'
 		),
 	) );
@@ -89,80 +170,67 @@ function etidni_setup() {
 	// -- Editor Color Palette
 	add_theme_support( 'editor-color-palette', array(
 		array(
-			'name'  => __( 'Blue', 'Etidni' ),
+			'name'  => __( 'Blue', 'ea_genesis_child' ),
 			'slug'  => 'blue',
-			'color'	=> '#4374c4',
+			'color'	=> '#59BACC',
 		),
 		array(
-			'name'  => __( 'Green', 'Etidni' ),
+			'name'  => __( 'Green', 'ea_genesis_child' ),
 			'slug'  => 'green',
-			'color' => '#00c851',
+			'color' => '#58AD69',
 		),
 		array(
-			'name'  => __( 'Orange', 'Etidni' ),
+			'name'  => __( 'Orange', 'ea_genesis_child' ),
 			'slug'  => 'orange',
-			'color' => '#fb3',
+			'color' => '#FFBC49',
 		),
 		array(
-			'name'	=> __( 'Red', 'Etidni' ),
+			'name'	=> __( 'Red', 'ea_genesis_child' ),
 			'slug'	=> 'red',
-			'color'	=> '#ff3547',
-		),
-		array(
-			'name'	=> __( 'White', 'Etidni' ),
-			'slug'	=> 'white',
-			'color'	=> '#fff',
-		),
-		array(
-			'name'	=> __( 'Grey', 'Etidni' ),
-			'slug'	=> 'grey',
-			'color'	=> '#333',
-		),
-		array(
-			'name'	=> __( 'Black', 'Etidni' ),
-			'slug'	=> 'black',
-			'color'	=> '#000',
+			'color'	=> '#E2574C',
 		),
 	) );
 
 }
-add_action( 'genesis_setup', 'etidni_setup', 15 );
+add_action( 'genesis_setup', 'rko_setup', 15 );
+
+function rko_load_theme_textdomain() {
+  load_theme_textdomain( 'rko', get_template_directory() . '/languages' );
+}
+add_action( 'after_setup_theme', 'rko_load_theme_textdomain' );
 
 /**
- * Global enqueues
+ * Add favicon
  *
- * @since  1.0.0
- * @global array $wp_styles
  */
-function etidni_global_enqueues() {
+function rko_favicon() {
 
-	// javascript
-	wp_enqueue_script( 'etidni-script', get_stylesheet_directory_uri() . '/dist/js/scripts.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/dist/js/scripts.min.js' ), true );
+	// generics
+	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-32.png" sizes="32x32">';
+	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-128.png" sizes="128x128">';
+	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-192.png" sizes="192x192">';
 
-	// убираем стили Gutenberg
-	// wp_dequeue_style( 'wp-block-library' );
+	// Android
+	echo '<link rel="shortcut icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-196.png" sizes="196x196">';
 
-	// css
-  wp_dequeue_style( 'child-theme' );
-  wp_enqueue_style( 'etidni-style', get_stylesheet_directory_uri() . '/dist/css/main.min.css', array(), CHILD_THEME_VERSION );
-
-	// Move jQuery to footer
-	if( ! is_admin() ) {
-		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/dist/js/jquery-3.3.1.min.js', false, NULL, true );
-		// wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, NULL, true );
-		wp_enqueue_script( 'jquery' );
-	}
+	// iOS
+	echo '<link rel="apple-touch-icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-152.png" sizes="152x152">';
+	echo '<link rel="apple-touch-icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-167.png" sizes="167x167">';
+	echo '<link rel="apple-touch-icon" href="' . get_stylesheet_directory_uri() . '/assets/images/favicon-180.png" sizes="180x180">';
 }
-add_action( 'wp_enqueue_scripts', 'etidni_global_enqueues' );
+add_action( 'wp_head', 'rko_favicon' );
+
+
+// РАЗОБРАТЬ
 
 /**
  * Включаем асинхронную загрузку некоторых скриптов
  *
  */
-function etidni_add_async_attribute($tag, $handle) {
+
+function rko_add_async_attribute($tag, $handle) {
    // добавьте дескрипторы (названия) скриптов в массив ниже
-   $scripts_to_async = array('etidni-script');
+   $scripts_to_async = array('eafl-public', 'rko-global', 'comment-reply');
    
    foreach($scripts_to_async as $async_script) {
       if ($async_script === $handle) {
@@ -172,25 +240,50 @@ function etidni_add_async_attribute($tag, $handle) {
    return $tag;
 }
 
-add_filter('script_loader_tag', 'etidni_add_async_attribute', 10, 2);
+add_filter('script_loader_tag', 'rko_add_async_attribute', 10, 2);
 
-/**
- * Template Hierarchy
+
+/** 
+ * Modify Post Info ПРОДОЛЖИТЬ ОТСЮДА! ЭТО НУЖНО ПЕРЕНЕСТИ
  *
  */
-function etidni_template_hierarchy( $template ) {
-	if( is_home() || is_search() )
-		$template = get_query_template( 'archive' );
-	return $template;
-}
-add_filter( 'template_include', 'etidni_template_hierarchy' );
+function ly_post_info_filter($post_info) {
+	$author = '<span class="entry-author"><span class="label">автор</span>';
+	$author .= get_the_author();
+	$author .= '</span>';
 
-/**
- * Add favicon
- *
- */
-function ly_favicon() {
-	echo '<link rel="icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon-152.png">';
-	echo '<!--[if IE]><link rel="shortcut icon" href="' . get_stylesheet_directory_uri() . '/dist/images/favicon.ico"><![endif]-->';	
+	$modified_time = '<span class="entry-date"><span class="label">обновлено</span>';
+	$modified_time .= '[post_modified_date format="j F Y"]';
+	$modified_time .= '</span>';
+
+	$comments = '<span class="entry-comments-link"><span class="label">вопросы и ответы</span>';
+	$comments .= '[post_comments zero="Нет комментариев" one="1 комментарий" more="% комментариев" hide_if_off="disabled"]';
+	$comments .= '</span>';
+
+	$post_info = $author . $modified_time . $comments;
+
+	return $post_info;
 }
-//add_action( 'wp_head', 'ly_favicon' );
+add_filter('genesis_post_info', 'ly_post_info_filter');
+
+// Выводим в качестве отрывка дискрипшен из Yoast
+// Если его нет, то выводим стандартный.
+add_action( 'the_excerpt', 'ly_modify_the_excerpt' );
+
+function ly_modify_the_excerpt( $post_excerpt ) {
+	if (!has_excerpt()) {
+		$my_descr = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
+		if ( !empty($my_descr) ) {
+			return '<p>'.$my_descr.'</p>';
+		}
+	}
+	
+	return $post_excerpt;
+}
+
+// Сделаем косой стиль футера
+function ly_kosoy_footer() {
+	echo '<svg class="footer-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="#212121" points="0,100 100,0 100,100"></polygon></svg>';
+}
+
+add_action('genesis_footer','ly_kosoy_footer');	

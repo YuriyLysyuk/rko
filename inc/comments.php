@@ -4,8 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 
 /**
@@ -15,29 +14,43 @@
  * @param  array $args
  * @return array
  */
-function etidni_comment_text( $args ) {
-	$args['title_reply_before']   = '<p id="reply-title" class="comment-reply-title h3">';
-	$args['title_reply']          = 'Ответить';
-	$args['title_reply_after']    = '</p>';
-	$args['label_submit']         = 'Отправить комментарий';
+function rko_comment_text( $args ) {
+	$args['title_reply']          = __( 'Leave A Reply', 'rko' );
+	$args['label_submit']         = __( 'Post Comment',  'rko' );
 	$args['comment_notes_before'] = '';
 	$args['comment_notes_after']  = '';
-	$args['fields']['url']  = '';
+	$args['title_reply_before'] = '<div id="reply-title" class="h3 comment-reply-title">';
+ 	$args['title_reply_after'] = '</div>';
 	return $args;
 }
-add_filter( 'comment_form_defaults', 'etidni_comment_text' );
+add_filter( 'comment_form_defaults', 'rko_comment_text' );
 
-//* Modify the author says text in comments
-add_filter( 'comment_author_says_text', 'ly_comment_author_says_text' );
+/**
+ * Удаляет поле "Сайт" из формы комментирования для незарегистрированных пользователей.
+ *
+ */
+function rko_comment_form_default_add_my_fields( $fields ) {
+	unset( $fields['url'] );
 
+	return $fields;
+}
+add_filter( 'comment_form_default_fields', 'rko_comment_form_default_add_my_fields' );
+
+/**
+ * Modify the author says text in comments
+ *
+ */
 function ly_comment_author_says_text() {
 	return '';
 }
+add_filter( 'comment_author_says_text', 'ly_comment_author_says_text' );
 
-// Modify comments title text in comments
-add_filter( 'genesis_title_comments', 'ly_genesis_title_comments' );
-
+/**
+ * Modify comments title text in comments
+ *
+ */
 function ly_genesis_title_comments() {
-	$title = '<p class="h3">Комментарии</p>';
+	$title = '<div class="h3">'.__( 'Comments', 'rko' ).'</div>';
 	return $title;
 }
+add_filter( 'genesis_title_comments', 'ly_genesis_title_comments' );
