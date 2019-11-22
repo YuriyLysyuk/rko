@@ -1,0 +1,70 @@
+// Colors
+$white: #fff;
+$grey_1: #F5F5F5;
+$grey_2: #EEEEEE;
+$grey_3: #E0E0E0;
+$grey_4: #BDBDBD;
+$grey_5: #9E9E9E;
+$grey_6: #757575;
+$grey_7: #616161;
+$grey_8: #424242;
+$grey_9: #212121;
+$black: #000;
+
+// Brand Colors
+$blue: #23A7BF;
+$dark-blue: #12879C;
+$light-blue: #81D1DF;
+$green: #7CBA3F;
+$menu_bg_blue: #D0E7EC;
+
+// Gutenberg color options
+// -- see editor-color-palette in functions.php
+$colors: (
+  'light-grey': $grey_1,
+  'blue':     $blue,
+  'dark-blue':  $dark-blue,
+  'light-blue': $light-blue,
+  'green':    $green,
+);
+
+$base-color: $grey_8;
+$highlight: $blue;
+$border-color: $grey_3;
+
+// Fonts
+$base-font: -apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+$alt-font: Roboto, sans-serif;
+
+// Sidr
+$sidr_width: 345px;
+$sidr_close: 44px;
+$sidr_total: $sidr_width + $sidr_close;
+
+// Content
+$content-width: 768px;
+$block-margin: 20px;
+
+// Grid
+$grid-support: grid;
+$grid-width: 1168px;
+$grid-gap: 32px;
+$base-margin: 16px;
+$wrap_edge: $base-margin;
+$margin_2x: $base-margin * 2;
+$margin_4x: $base-margin * 4;
+
+// Include Media
+$breakpoints: (
+  'phone'  : 360px,
+  'small'  : 768px,
+  'tablet' : 768px, // required for include-media
+  'medium' : 768px + $grid-gap + 200px,
+  'reading': 768px + $grid-gap + 200px + 440px,
+  'large'  : 1200px,
+  'desktop': $grid-width + $grid-gap, // required for include-media
+);
+
+@import "../vendor/_include-media";
+@import "../modules/helpers";
+@import "../modules/base-styles";

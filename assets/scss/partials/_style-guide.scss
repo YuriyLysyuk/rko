@@ -1,0 +1,150 @@
+/* Style Guide
+---------------------------------------------------------------------------------------------------- */
+
+/* Typographical Elements
+--------------------------------------------- */
+
+body {
+	@include base-style();
+}
+
+::-moz-selection {
+	background-color: $base-color;
+	color: $white;
+}
+
+::selection {
+	background-color: $base-color;
+	color: $white;
+}
+
+a {
+	color: $blue;
+	font-weight: 700;
+	text-decoration: none;
+	@extend %transition;
+
+	&:hover {
+		color: $dark-blue;
+		text-decoration: underline;
+	}
+
+	svg {
+		@extend %transition;
+	}
+}
+
+strong {
+	font-weight: 700;
+}
+
+ol,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+code,
+pre {
+	font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+	font-size: 14px;
+}
+
+code {
+	padding: 2px 4px;
+	white-space: nowrap;
+}
+
+pre {
+	background: $grey_2;
+	display: block;
+	padding: 16px;
+	margin: 0 0 10px;
+	line-height: 18px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+}
+
+pre code {
+	padding: 0;
+	color: inherit;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: transparent;
+	border: 0;
+}
+
+cite {
+	font-style: normal;
+}
+
+.clearfix {
+	@include clearfix;
+}
+
+/* Paragraph
+--------------------------------------------- */
+
+p {
+	margin: 0 0 $base-margin;
+	padding: 0;
+
+	&.has-regular-font-size {
+		@include font-sizes( 16px, 18px );
+	}
+
+	&.large,
+	&.has-large-font-size {
+    	@include font-sizes( 19px, 22px );
+	}
+
+	&.small,
+	&.has-small-font-size {
+	    font-size: 12px;
+	}
+
+}
+
+/* List Items
+--------------------------------------------- */
+
+ol {
+    margin: 0 0 $margin_2x 32px;
+
+    li {
+        list-style-type: decimal;
+    }
+
+    ol {
+        margin-bottom: 0;
+    }
+}
+
+ul {
+    margin: 0 0 $margin_2x 32px;
+
+    li {
+        list-style-type: disc;
+    }
+
+    ul {
+        margin-bottom: 0;
+    }
+}
+
+
+/* Color Options
+--------------------------------------------- */
+
+@each $name, $color in $colors {
+
+	.has-#{$name}-color {
+		color: $color;
+	}
+
+	.has-#{$name}-background-color {
+		background-color: $color;
+	}
+}

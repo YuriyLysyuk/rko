@@ -5,7 +5,6 @@
  * @package      rko
  * @author       Yuriy Lysyuk
  * @since        1.0.0
- * @license      GPL-2.0+
 **/
 
  /**
@@ -79,19 +78,9 @@ function ea_clean_post_classes( $classes ) {
 	if( ! is_array( $classes ) )
 		return $classes;
 
-    $allowed_classes = array(
+	$allowed_classes = array(
   		'hentry',
   		'type-' . get_post_type(),
-      'one-half',
-      'one-third',
-      'two-thirds',
-      'one-fourth',
-      'two-fourths',
-      'three-fourths',
-      'one-fifth',
-      'two-fifths',
-      'three-fifths',
-      'four-fifths',
    	);
 
 	return array_intersect( $classes, $allowed_classes );
@@ -123,6 +112,16 @@ function ea_remove_avatars_from_comments( $avatar ) {
 	return $in_comment_loop ? '' : $avatar;
 }
 add_filter( 'get_avatar', 'ea_remove_avatars_from_comments' );
+
+/**
+ * Comment form, button class
+ *
+ */
+function ea_comment_form_button_class( $args ) {
+	$args['class_submit'] = 'submit wp-block-button__link';
+	return $args;
+}
+add_filter( 'comment_form_defaults', 'ea_comment_form_button_class' );
 
 /**
  * Excerpt More

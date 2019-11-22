@@ -20,15 +20,6 @@ if (is_front_page()) {
 	remove_action( 'genesis_entry_header', 'genesis_entry_header_markup_close', 15 );
 
 	/**
-	 * Use h1 for site title
-	 *
-	 */
-	function ea_h1_for_site_title( $wrap ) {
-		return 'h1';
-	}
-	add_filter( 'genesis_site_title_wrap', 'ea_h1_for_site_title' );
-
-	/**
 	 * Добавляем блок поиска на главную страницу
 	 *
 	 */

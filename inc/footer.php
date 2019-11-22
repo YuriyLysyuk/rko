@@ -5,7 +5,6 @@
  * @package      rko
  * @author       Yuriy Lysyuk
  * @since        1.0.0
- * @license      GPL-2.0+
 **/
 
 // Удаляем стандартный футер но не разметку
@@ -37,10 +36,3 @@ function ly_footer_widget() {
 		'after'  => '',
 	));
 }
-
-// Сделаем косой стиль футера
-function ly_kosoy_footer() {
-	echo '<svg class="footer-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="#f5f5f5" points="0,100 100,0 100,100"></polygon></svg>';
-}
-
-add_action('genesis_footer','ly_kosoy_footer');	

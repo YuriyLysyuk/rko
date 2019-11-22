@@ -4,8 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 
 // Duplicate 'the_content' filters
@@ -123,12 +122,13 @@ function ea_icon( $atts = array() ) {
 		'group'	=> 'utility',
 		'size'	=> 16,
 		'class'	=> false,
+		'label'	=> false,
 	), $atts );
 
 	if( empty( $atts['icon'] ) )
 		return;
 
-	$icon_path = get_stylesheet_directory() . '/dist/icons/' . $atts['group'] . '/' . $atts['icon'] . '.svg';
+	$icon_path = get_stylesheet_directory() . '/assets/icons/' . $atts['group'] . '/' . $atts['icon'] . '.svg';
 	if( ! file_exists( $icon_path ) )
 		return;
 
@@ -142,6 +142,11 @@ function ea_icon( $atts = array() ) {
 	$svg  = preg_replace( '/^<svg /', $repl, trim( $icon ) ); // Add extra attributes to SVG code.
 	$svg  = preg_replace( "/([\n\t]+)/", ' ', $svg ); // Remove newlines & tabs.
 	$svg  = preg_replace( '/>\s*</', '><', $svg ); // Remove white space between SVG tags.
+
+	if( !empty( $atts['label'] ) ) {
+		$svg = str_replace( '<svg class', '<svg aria-label="' . esc_attr( $atts['label'] ) . '" class', $svg );
+		$svg = str_replace( 'aria-hidden="true"', '', $svg );
+	}
 
 	return $svg;
 }

@@ -4,8 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 
 /**
@@ -36,17 +35,6 @@ add_filter( 'wp_nav_menu_items', 'ea_primary_menu_extras', 10, 2 );
  *
  */
 function ly_header_search() {	
-  get_search_form();	
+  get_template_part( 'partials/headersearch' );
 }	
 add_action( 'genesis_after_header', 'ly_header_search', 12 );
-
-/**
- * Добавляем форму поиска
- *
- */
-function ly_nav_mobile() {	
-  echo '<div class="nav-mobile"><button class="search-toggle">' . ea_icon(array('icon' => 'search', 'size' => '32')) . '<span class="screen-reader-text">Поиск</span></button>';
-
-  echo '<button class="mobile-menu-toggle"><span class="open">' . ea_icon(array('icon' => 'menu', 'size' => '32')) .'</span><span class="close">' . ea_icon(array('icon' => 'close', 'size' => '32')) .'</span><span class="screen-reader-text">Переключатель меню</span></button></div>';
-}	
-add_action( 'genesis_header', 'ly_nav_mobile', 10 );

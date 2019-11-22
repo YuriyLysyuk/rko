@@ -4,8 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 global $loop_image_view;
 global $loop_image_size;
@@ -18,7 +17,7 @@ echo '<article class="post-summary'.$loop_image_view.'">';
 		echo the_modified_date('j F Y');
 	echo '</p>';
 
-	echo '<h3 class="h4 entry-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h3>';
+	echo '<h2 class="h4 entry-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
 
 	the_excerpt();
 

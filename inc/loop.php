@@ -4,8 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.0
- * @license      GPL-2.0+
+ * @since        1.0.3
 **/
 
 /**
@@ -68,8 +67,10 @@ function ea_archive_loop() {
 
 	} else {
 
-		do_action( 'genesis_loop_else' );
+		remove_action( 'genesis_loop_else', 'genesis_do_noposts' );
 		get_template_part( 'partials/' . 'archive', 'none' );
+		
+		do_action( 'genesis_loop_else' );
 
 	}
 }
