@@ -4,7 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.3
+ * @since        1.0.3.2
 **/
 
 
@@ -48,6 +48,16 @@ function ea_change_content( $attributes ) {
 	return $attributes;
 }
 add_filter( 'genesis_attr_content', 'ea_change_content' );
+
+/**
+ * Add '#top' to body for Back To Top Button
+ *
+ */
+function rko_add_top_id( $attributes ) {
+	$attributes['id'] = 'top';
+	return $attributes;
+}
+add_filter( 'genesis_attr_body', 'rko_add_top_id' );
 
 /**
  * Add #main-content to .site-inner
