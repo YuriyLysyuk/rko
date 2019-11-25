@@ -4,7 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.3.2
+ * @since        1.0.4
 **/
 
 /**
@@ -116,12 +116,12 @@ function rko_setup() {
 	//include_once( get_stylesheet_directory() . '/inc/display-posts.php' );
 	include_once( get_stylesheet_directory() . '/inc/wpforms.php' );
 	include_once( get_stylesheet_directory() . '/inc/back-to-top.php' );
-
+	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
 	//include_once( get_stylesheet_directory() . '/inc/footer.php' );
 	//include_once( get_stylesheet_directory() . '/inc/wp-polls.php' );
 	//include_once( get_stylesheet_directory() . '/inc/wp-testme.php' );
 	//include_once( get_stylesheet_directory() . '/inc/wp-postratings.php' );
-	//include_once( get_stylesheet_directory() . '/inc/author-box.php' );
+
 
 	//include_once( get_stylesheet_directory() . '/inc/debug.php' );
 
@@ -171,22 +171,22 @@ function rko_setup() {
 	// -- Editor Color Palette
 	add_theme_support( 'editor-color-palette', array(
 		array(
-			'name'  => __( 'Blue', 'ea_genesis_child' ),
+			'name'  => __( 'Blue', 'rko' ),
 			'slug'  => 'blue',
 			'color'	=> '#59BACC',
 		),
 		array(
-			'name'  => __( 'Green', 'ea_genesis_child' ),
+			'name'  => __( 'Green', 'rko' ),
 			'slug'  => 'green',
 			'color' => '#58AD69',
 		),
 		array(
-			'name'  => __( 'Orange', 'ea_genesis_child' ),
+			'name'  => __( 'Orange', 'rko' ),
 			'slug'  => 'orange',
 			'color' => '#FFBC49',
 		),
 		array(
-			'name'	=> __( 'Red', 'ea_genesis_child' ),
+			'name'	=> __( 'Red', 'rko' ),
 			'slug'	=> 'red',
 			'color'	=> '#E2574C',
 		),
@@ -249,9 +249,11 @@ add_filter('script_loader_tag', 'rko_add_async_attribute', 10, 2);
  *
  */
 function ly_post_info_filter($post_info) {
-	$author = '<span class="entry-author"><span class="label">автор</span>';
+	$author = '<span class="entry-author">';
+	$author .= get_avatar( get_the_author_meta( 'email' ), 50 );
+	$author .= '<span><span class="label">автор</span>';
 	$author .= get_the_author();
-	$author .= '</span>';
+	$author .= '</span></span>';
 
 	$modified_time = '<span class="entry-date"><span class="label">обновлено</span>';
 	$modified_time .= '[post_modified_date format="j F Y"]';
