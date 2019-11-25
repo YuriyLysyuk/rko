@@ -82,6 +82,12 @@ body {
 				display: block;
 			}
 
+			& > .entry-author {
+
+				img {
+					border-radius: 50%;
+				}
+			}
 
 			@include media(">=tablet") {
 				display: flex;
@@ -96,6 +102,15 @@ body {
 
 					&:last-child {
 						text-align: right;
+					}
+				}
+
+				& > .entry-author {
+					display: flex;
+					justify-content: flex-start;
+
+					img {
+						margin-right: $base-margin;
 					}
 				}
 			}
@@ -231,7 +246,7 @@ body {
 		left: 0;
 	}
 
-	h5 {
+	.h5 {
 		margin: 0 0 5px;
 	}
 
@@ -318,6 +333,16 @@ body {
 			&.staff > article {
 				background: rgba( $dark-blue, .05 );
 
+				.comment-author {
+					display: flex;
+					align-items: center;
+
+					img {
+						border-radius: 50%;
+    				margin-right: $base-margin;
+					}
+				}
+
 				&::before {
 					background: $dark-blue;
 				}
@@ -332,7 +357,7 @@ body {
 		.comment-author {
 			font-family: $alt-font;
 			font-weight: 700;
-		    @include font-sizes( 18px, 22px );
+		  @include font-sizes( 18px, 22px );
 			margin: 0 0 3px;
 
 			.says {
