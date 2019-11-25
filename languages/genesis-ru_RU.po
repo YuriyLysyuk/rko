@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2019-11-14T16:11:51+00:00\n"
-"PO-Revision-Date: 2019-11-21 23:41+0300\n"
+"PO-Revision-Date: 2019-11-25 09:55+0300\n"
 "X-Generator: Poedit 2.0.6\n"
 "X-Domain: genesis\n"
 "Last-Translator: \n"
@@ -1257,7 +1257,7 @@ msgstr "%1$s в %2$s"
 
 #: lib/structure/comments.php:416
 msgid "Your comment is awaiting moderation."
-msgstr ""
+msgstr "Ваш комментарий находится на модерации."
 
 #: lib/structure/footer.php:209
 msgid ""
