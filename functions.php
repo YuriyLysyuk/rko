@@ -285,8 +285,9 @@ function ly_modify_the_excerpt( $post_excerpt ) {
 }
 
 // Сделаем косой стиль футера
-function ly_kosoy_footer() {
+function rko_kosoy_footer() {
 	echo '<svg class="footer-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="#212121" points="0,100 100,0 100,100"></polygon></svg>';
 }
 
-add_action('genesis_footer','ly_kosoy_footer');	
+add_action('genesis_footer','rko_kosoy_footer');
+
