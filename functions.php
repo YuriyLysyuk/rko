@@ -291,3 +291,18 @@ function rko_kosoy_footer() {
 
 add_action('genesis_footer','rko_kosoy_footer');
 
+// Выводим контактную форму в футере если выбран соответствующий метабокс в настройках страницы
+function rko_acf_footer_form() {
+
+	// Получаем ID формы в настройках
+	$footer_form_id = get_field( 'footer_form_id' );
+
+	// Если id формы не введен и не установлен плагин WPForms – ничего не выводить
+	if (!empty($footer_form_id) && function_exists( 'wpforms' )) {
+		get_template_part( 'partials/footer-contact-form' );
+	}
+
+}
+
+add_action('genesis_before_footer','rko_acf_footer_form');	
+

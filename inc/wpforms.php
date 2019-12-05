@@ -16,3 +16,14 @@ function be_wpforms_match_button_block( $form_data ) {
 	return $form_data;
 }
 add_filter( 'wpforms_frontend_form_data', 'be_wpforms_match_button_block' );
+
+/**
+ * Modify the required field indicator
+ *
+ * @link https://wpforms.com/developers/how-to-change-required-field-indicator/
+ *
+ */
+function wpf_dev_required_indicator( $text ) {
+    return ' <span class="wpforms-required-label">* Обязательно</span>';
+}
+add_filter( 'wpforms_get_field_required_label', 'wpf_dev_required_indicator' );
