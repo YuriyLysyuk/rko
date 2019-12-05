@@ -4,7 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.0.4
+ * @since        1.1.0
 **/
 
 /**
@@ -285,8 +285,24 @@ function ly_modify_the_excerpt( $post_excerpt ) {
 }
 
 // Сделаем косой стиль футера
-function ly_kosoy_footer() {
+function rko_kosoy_footer() {
 	echo '<svg class="footer-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="#212121" points="0,100 100,0 100,100"></polygon></svg>';
 }
 
-add_action('genesis_footer','ly_kosoy_footer');	
+add_action('genesis_footer','rko_kosoy_footer');
+
+// Выводим контактную форму в футере если выбран соответствующий метабокс в настройках страницы
+function rko_acf_footer_form() {
+
+	// Получаем ID формы в настройках
+	$footer_form_id = get_field( 'footer_form_id' );
+
+	// Если id формы не введен и не установлен плагин WPForms – ничего не выводить
+	if (!empty($footer_form_id) && function_exists( 'wpforms' )) {
+		get_template_part( 'partials/footer-contact-form' );
+	}
+
+}
+
+add_action('genesis_before_footer','rko_acf_footer_form');	
+
