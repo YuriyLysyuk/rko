@@ -15,7 +15,11 @@ $black: #000;
 $blue: #23A7BF;
 $dark-blue: #12879C;
 $light-blue: #81D1DF;
+$bg-light-blue: rgba(35, 167, 191, 0.1);
 $green: #7CBA3F;
+$green-bg: #7CBA3F;
+$yellow: #FFD26B;
+$dark-yellow: #F6B543;
 $menu_bg_blue: #D0E7EC;
 
 // Gutenberg color options
@@ -44,6 +48,7 @@ $sidr_total: $sidr_width + $sidr_close;
 // Content
 $content-width: 768px;
 $block-margin: 20px;
+$base-radius: 3px;
 
 // Grid
 $grid-support: grid;
