@@ -2,6 +2,8 @@
 --------------------------------------------- */
 
 [type="text"],
+[type="search"],
+[type="email"],
 select,
 textarea {
   background-color: $grey_1;
@@ -15,6 +17,8 @@ textarea {
 }
 
 [type="text"]:focus,
+[type="search"]:focus,
+[type="email"]:focus,
 textarea:focus {
   background-color: $white;
   border: 2px solid $blue;
@@ -24,6 +28,8 @@ textarea:focus {
 
 .color-bg {
   [type="text"],
+  [type="search"],
+  [type="email"],
   select,
   textarea {
     background-color: $white;
@@ -31,6 +37,8 @@ textarea:focus {
   }
 
   [type="text"]:focus,
+  [type="search"]:focus,
+  [type="email"]:focus,
   textarea:focus {
     background-color: $white;
     border: 2px solid $blue;
