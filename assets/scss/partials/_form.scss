@@ -959,7 +959,7 @@ input[type="search"]::-webkit-search-results-button {
     // grid-gap: 10px;
     align-items: center;
     grid-template-columns: 1fr;
-    grid-row-gap: 4px;
+    // grid-row-gap: 4px;
 
     .rko-calc-full-width {
       // grid-column: 1 / 2;
@@ -976,7 +976,7 @@ input[type="search"]::-webkit-search-results-button {
   }
 
   .rko-calc-field-label {
-    margin-bottom: 3px;
+    margin-bottom: 8px;
     // display: flex;
     // justify-content: space-between;
     // align-items: center;
@@ -1064,6 +1064,14 @@ input[type="search"]::-webkit-search-results-button {
     .noUi-connect,
     .noUi-handle {
       background: $yellow;
+    }
+  }
+
+  .rko-calc-field-slider {
+    margin-bottom: $base-margin;
+
+    &.before-h5 {
+      margin-bottom: 0;
     }
   }
 
