@@ -14,35 +14,22 @@ textarea {
   line-height: 20px;
   padding: 14px 16px;
   width: 100%;
-}
 
-[type="text"]:focus,
-[type="search"]:focus,
-[type="email"]:focus,
-textarea:focus {
-  background-color: $white;
-  border: 2px solid $blue;
-  box-shadow: 0 0 3px 0 $blue;
-  outline: none;
-}
-
-.color-bg {
-  [type="text"],
-  [type="search"],
-  [type="email"],
-  select,
-  textarea {
+  .color-bg & {
     background-color: $white;
-    border: 2px solid $bg-light-blue;
+    border: 2px solid $white;
   }
 
-  [type="text"]:focus,
-  [type="search"]:focus,
-  [type="email"]:focus,
-  textarea:focus {
+  &:focus {
     background-color: $white;
     border: 2px solid $blue;
     box-shadow: 0 0 3px 0 $blue;
+    outline: none;
+
+    .color-bg-green & {
+      border: 2px solid $green;
+      box-shadow: 0 0 3px 0 $green;
+    }
   }
 }
 
@@ -67,6 +54,10 @@ textarea:focus {
         border: 2px solid $blue;
         background: $white;
         border-radius: $base-radius;
+
+        .color-bg-green & {
+          border-color: $green;
+        }
       }
 
       &:after {
@@ -86,6 +77,10 @@ textarea:focus {
     &:focus + label:before,
     & + label:hover:before {
       box-shadow: 0px 0px 3px 0px $blue;
+
+      .color-bg-green & {
+        box-shadow: 0px 0px 3px 0px $green;
+      }
     }
 
     &:disabled:focus + label:before,
@@ -97,6 +92,10 @@ textarea:focus {
   &:checked {
     & + label:before {
       background: $blue;
+
+      .color-bg-green & {
+        background: $green;
+      }
     }
   }
 
@@ -480,6 +479,10 @@ input[type="search"]::-webkit-search-results-button {
       &:hover span {
         color: $white;
       }
+
+      .color-bg-green & {
+        background-color: $green;
+      }
     }
   }
 
@@ -500,6 +503,11 @@ input[type="search"]::-webkit-search-results-button {
       span {
         color: $dark-blue;
         border-bottom: 1px dashed $dark-blue;
+
+        .color-bg-green & {
+          color: $dark-green;
+          border-bottom-color: $dark-green;
+        }
       }
     }
   }
@@ -950,6 +958,10 @@ input[type="search"]::-webkit-search-results-button {
 
   &.color-bg {
     background-color: $bg-light-blue;
+
+    &.color-bg-green {
+      background-color: $bg-light-green;
+    }
   }
 }
 
@@ -967,6 +979,16 @@ input[type="search"]::-webkit-search-results-button {
 
   .rko-calc-field-label {
     margin-bottom: 8px;
+
+    &.dn,
+    &.dn + .rko-calc-field-slider {
+      display: none;
+    }
+  }
+
+  .rko-calc-field-label,
+  .detailed-calculation {
+    @include font-sizes(18px, 20px);
   }
 
   input[type="text"],
@@ -996,6 +1018,10 @@ input[type="search"]::-webkit-search-results-button {
 
     .noUi-connect {
       background: $blue;
+
+      .color-bg-green & {
+        background-color: $green;
+      }
     }
 
     .noUi-handle {
@@ -1008,6 +1034,10 @@ input[type="search"]::-webkit-search-results-button {
       background: $blue;
       cursor: pointer;
       box-shadow: none;
+
+      .color-bg-green & {
+        background-color: $green;
+      }
 
       &:before,
       &:after {
@@ -1111,6 +1141,15 @@ input[type="search"]::-webkit-search-results-button {
         svg {
           fill: $dark-blue;
         }
+
+        .color-bg-green & {
+          border-bottom-color: $dark-green;
+          color: $dark-green;
+
+          svg {
+            fill: $dark-green;
+          }
+        }
       }
     }
 
@@ -1120,14 +1159,27 @@ input[type="search"]::-webkit-search-results-button {
       &:before,
       &:after {
         background: $blue;
+
+        .color-bg-green & {
+          background: $green;
+        }
       }
 
       span {
         border-bottom-color: $blue;
         color: $blue;
 
+        .color-bg-green & {
+          color: $green;
+          border-bottom-color: $green;
+        }
+
         svg {
           fill: $blue;
+
+          .color-bg-green & {
+            fill: $green;
+          }
 
           &.close {
             display: inline;
@@ -1141,8 +1193,17 @@ input[type="search"]::-webkit-search-results-button {
           border-bottom-color: $dark-blue;
           color: $dark-blue;
 
+          .color-bg-green & {
+            border-bottom-color: $dark-green;
+            color: $dark-green;
+          }
+
           svg {
             fill: $dark-blue;
+
+            .color-bg-green & {
+              fill: $dark-green;
+            }
           }
         }
       }
