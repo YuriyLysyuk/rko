@@ -10,6 +10,10 @@
 	padding: 60px 0 100px;
 	position: relative;
 
+	.page-template-contact & {
+    background: transparent;
+  }
+
 	.footer-contact-angle {
 		position: absolute;
 		top: -40px;
