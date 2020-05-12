@@ -228,7 +228,7 @@ input[type="reset"],
 input[type="submit"] {
   background: $highlight;
   border: none;
-  border-radius: 3px;
+  border-radius: $base-radius;
   box-shadow: none;
   color: $white;
   cursor: pointer;
@@ -248,6 +248,14 @@ input[type="submit"] {
     color: $white;
     text-decoration: none;
   }
+
+  .color-bg-green & {
+    background: $green;
+
+    &:hover {
+      background: $dark-green;
+    }
+  }
 }
 
 .button {
@@ -258,7 +266,8 @@ input[type="submit"] {
 
   &.button-small {
     font-size: 16px;
-    padding: 9px 25px;
+    padding: 14px 25px;
+    line-height: 22px;
   }
 
   &.button-black {
@@ -282,7 +291,7 @@ input[type="submit"] {
     }
 
     &.button-small {
-      padding: 5px 21px;
+      padding: 10px 21px;
     }
   }
 
