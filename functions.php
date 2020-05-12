@@ -115,7 +115,7 @@ function rko_setup() {
 	//include_once( get_stylesheet_directory() . '/inc/amp.php' );
 	//include_once( get_stylesheet_directory() . '/inc/display-posts.php' );
 	include_once( get_stylesheet_directory() . '/inc/wpforms.php' );
-	include_once( get_stylesheet_directory() . '/inc/back-to-top.php' );
+	// include_once( get_stylesheet_directory() . '/inc/back-to-top.php' );
 	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
 	//include_once( get_stylesheet_directory() . '/inc/footer.php' );
 	//include_once( get_stylesheet_directory() . '/inc/wp-polls.php' );
