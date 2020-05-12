@@ -961,6 +961,10 @@ input[type="search"]::-webkit-search-results-button {
       z-index: -1;
       position: relative;
       vertical-align: middle;
+      
+      @include media("<=phone") {
+        display: none;
+      }
     }
     &:before {
       right: 15px;
@@ -968,7 +972,7 @@ input[type="search"]::-webkit-search-results-button {
     }
     &:after {
       left: 15px;
-      margin: 0 -101% 0 0;
+      margin: 0 -100% 0 0;
     }
 
     span:first-child {
