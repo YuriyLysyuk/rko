@@ -800,12 +800,12 @@ input[type="search"]::-webkit-search-results-button {
     padding: 0 $base-margin;
   }
 
-  &.color-bg .rko-calc-form,
-  &.color-bg .result-wrap {
+  .rko-calc-form,
+  .result-wrap {
     background-color: $bg-light-blue;
   }
-  &.color-bg.color-bg-green .rko-calc-form,
-  &.color-bg.color-bg-green .result-wrap {
+  &.color-bg-green .rko-calc-form,
+  &.color-bg-green .result-wrap {
     background-color: $bg-light-green;
   }
 }
