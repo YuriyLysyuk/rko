@@ -27,7 +27,7 @@ function rko_global_enqueues() {
 
 	// css
 	wp_dequeue_style( 'rko' );
-	wp_enqueue_style( 'rko-fonts', rko_theme_fonts_url() );
+	// wp_enqueue_style( 'rko-fonts', rko_theme_fonts_url() );
 	wp_enqueue_style( 'rko-style', get_stylesheet_directory_uri() . '/assets/css/main.min.css', array(), CHILD_THEME_VERSION );
 
 	// Move jQuery to footer
@@ -67,7 +67,7 @@ add_action( 'wp_enqueue_scripts', 'rko_global_enqueues' );
  *
  */
 function rko_gutenberg_scripts() {
-	wp_enqueue_style( 'rko-fonts', rko_theme_fonts_url() );
+	// wp_enqueue_style( 'rko-fonts', rko_theme_fonts_url() );
 	wp_enqueue_script( 'rko-editor', get_stylesheet_directory_uri() . '/assets/js/editor.js', array( 'wp-blocks', 'wp-dom' ), filemtime( get_stylesheet_directory() . '/assets/js/editor.js' ), true );
 }
 add_action( 'enqueue_block_editor_assets', 'rko_gutenberg_scripts' );
@@ -76,15 +76,15 @@ add_action( 'enqueue_block_editor_assets', 'rko_gutenberg_scripts' );
  * Theme Fonts URL
  *
  */
-function rko_theme_fonts_url() {
-	$font_families = apply_filters( 'rko_theme_fonts', array( 'Roboto:400,400i,700,700i' ) );
-	$query_args = array(
-		'family' => implode( '|', $font_families ),
-		'subset' => 'cyrillic,cyrillic-ext',
-	);
-	$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-	return esc_url_raw( $fonts_url );
-}
+// function rko_theme_fonts_url() {
+// 	$font_families = apply_filters( 'rko_theme_fonts', array( 'Roboto:400,400i,700,700i' ) );
+// 	$query_args = array(
+// 		'family' => implode( '|', $font_families ),
+// 		'subset' => 'cyrillic,cyrillic-ext',
+// 	);
+// 	$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+// 	return esc_url_raw( $fonts_url );
+// }
 
 /**
  * Theme setup.
