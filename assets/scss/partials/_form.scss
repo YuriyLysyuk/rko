@@ -1047,6 +1047,7 @@ input[type="search"]::-webkit-search-results-button {
 .rko-calc-results-list {
   padding: 0 !important;
   margin: 0;
+  position: relative;
 
   .price {
     font-weight: 700;
@@ -1280,6 +1281,79 @@ input[type="search"]::-webkit-search-results-button {
         margin: 11px 0 16px;
       }
     }
+  }
+}
+
+.preloader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 7;
+  background: rgba(255, 255, 255, 0.9);
+  display: none;
+
+  &.preloader-visible {
+    display: block;
+  }
+
+  .spin {
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 100px;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0)
+    );
+    display: inline-block;
+    backface-visibility: hidden;
+    width: 32px;
+    height: 32px;
+    font-size: 15px;
+    line-height: 28px;
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    animation: spin-blue 1s infinite linear;
+
+    .color-bg-green & {
+      animation: spin-green 1s infinite linear;
+    }
+
+    &:after {
+      visibility: hidden;
+      content: "\00A0";
+    }
+  }
+}
+
+@keyframes spin-green {
+  0% {
+    border-top-color: $green;
+    border-left-color: $green;
+    transform: rotate(0deg);
+  }
+
+  to {
+    border-top-color: $green;
+    border-left-color: $green;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-blue {
+  0% {
+    border-top-color: $blue;
+    border-left-color: $blue;
+    transform: rotate(0deg);
+  }
+
+  to {
+    border-top-color: $blue;
+    border-left-color: $blue;
+    transform: rotate(360deg);
   }
 }
 
