@@ -798,6 +798,7 @@ input[type="search"]::-webkit-search-results-button {
   h2 {
     text-align: center;
     padding: 0 $base-margin;
+    margin-top: 40px;
   }
 
   .rko-calc-form,
@@ -1057,6 +1058,7 @@ input[type="search"]::-webkit-search-results-button {
   padding: 0 !important;
   margin: 0;
   position: relative;
+  min-height: 120px;
 
   .price {
     font-weight: 700;
@@ -1070,6 +1072,10 @@ input[type="search"]::-webkit-search-results-button {
   .result-wrap {
     margin-bottom: $base-margin;
     list-style-type: none;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     @supports (display: $grid-support) {
       display: grid;
@@ -1324,7 +1330,7 @@ input[type="search"]::-webkit-search-results-button {
     line-height: 28px;
     position: absolute;
     top: 44px;
-    left: 50%;
+    left: calc(50% - 16px);
     animation: spin-blue 1s infinite linear;
 
     .color-bg-green & {
@@ -1460,5 +1466,5 @@ input[type="search"]::-webkit-search-results-button {
 
 .load-more-results {
   display: flex;
-  margin: auto;
+  margin: 40px auto 0;
 }
