@@ -38,10 +38,10 @@ function rko_global_enqueues() {
 		// wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/assets/js/jquery-3.3.1.min.js', false, NULL, true );
 		
 		// jquery из cdn гугла
-		// wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', false, NULL, true );
+		wp_register_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js', false, NULL, true );
 
 		// стандартный jquery wordpress
-		wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
+		// wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
 		
 		wp_enqueue_script( 'jquery' );
 	}
