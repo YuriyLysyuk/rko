@@ -250,7 +250,7 @@ add_filter('script_loader_tag', 'rko_add_async_attribute', 10, 2);
  */
 function ly_post_info_filter($post_info) {
 	$author = '<span class="entry-author">';
-	$author .= get_avatar( get_the_author_meta( 'email' ), 50 );
+	$author .= get_avatar( get_the_author_meta( 'email' ), 48 );
 	$author .= '<span><span class="label">автор</span>';
 	$author .= get_the_author();
 	$author .= '</span></span>';
