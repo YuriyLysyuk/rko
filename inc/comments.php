@@ -16,8 +16,8 @@
  */
 function rko_comment_text($args)
 {
-  $args['title_reply'] = "Добавить комментарий";
-  $args['label_submit'] = "Опубликовать";
+  $args['title_reply'] = __('Leave A Reply', 'rko');
+  $args['label_submit'] = __('Post Comment', 'rko');
   $args['comment_notes_before'] = '';
   $args['comment_notes_after'] = '';
   $args['title_reply_before'] =
@@ -58,7 +58,7 @@ add_filter('comment_author_says_text', 'ly_comment_author_says_text');
  */
 function ly_genesis_title_comments()
 {
-  $title = '<div class="h3">Комментарии</div>';
+  $title = '<div class="h3">' . __('Comments', 'rko') . '</div>';
   return $title;
 }
 add_filter('genesis_title_comments', 'ly_genesis_title_comments');
