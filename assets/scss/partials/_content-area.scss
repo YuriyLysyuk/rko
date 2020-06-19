@@ -192,16 +192,16 @@ body {
       @include media(">=tablet") {
         margin-left: 8px;
       }
-		}
-		
-		& div:only-child {
-			margin-top: 0;
-		}
+    }
+
+    & div:only-child {
+      margin-top: 0;
+    }
 
     @include media(">=tablet") {
       & div:only-child {
         grid-column: 1/3;
-				text-align: center;
+        text-align: center;
       }
 
       & span:only-child {
