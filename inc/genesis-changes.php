@@ -15,7 +15,7 @@ add_theme_support( 'genesis-menus', array( 'primary' => 'Primary Navigation Menu
 add_theme_support( 'genesis-footer-widgets', 3 );
 
 // h1 on home
-add_filter( 'genesis_site_title_wrap', function( $wrap ) { return is_front_page() ? 'h1' : $wrap; } );
+// add_filter( 'genesis_site_title_wrap', function( $wrap ) { return is_front_page() ? 'h1' : $wrap; } );
 
 // Remove admin bar styling
 add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
