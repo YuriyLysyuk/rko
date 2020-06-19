@@ -79,7 +79,7 @@ function ly_unlink_logo( $title, $inside, $wrap ) {
     return sprintf( '<%1$s class="site-title" itemprop="headline">%2$s</%1$s>', $wrap, $inside );
 }
 
-add_filter( 'genesis_seo_title', 'ly_unlink_logo', 10, 3 );
+// add_filter( 'genesis_seo_title', 'ly_unlink_logo', 10, 3 );
 
 // Убираем вывод ссылок категории и меток в посте для записи
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
