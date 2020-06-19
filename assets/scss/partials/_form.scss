@@ -799,6 +799,7 @@ input[type="search"]::-webkit-search-results-button {
     text-align: center;
     padding: 0 $base-margin;
     margin-top: 40px;
+    margin-bottom: $block-margin;
   }
 
   .rko-calc-form,

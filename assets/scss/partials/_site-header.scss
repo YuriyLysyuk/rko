@@ -6,10 +6,12 @@
 ---------------------------------------------------------------------------------------------------- */
 
 .site-header {
-  background: linear-gradient(40deg, $light-blue, $dark-blue);
+  background: $brand-gradient;
   position: relative;
+  z-index: 1;
 
-  .page-template-contact & {
+  .page-template-contact &,
+  .home & {
     background: transparent;
   }
 }
