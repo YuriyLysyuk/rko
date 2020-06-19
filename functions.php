@@ -4,7 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.1.0
+ * @since        1.3.0
  **/
 
 /**
@@ -68,13 +68,13 @@ function rko_global_enqueues()
    * Dequeue jQuery Migrate
    *
    */
-  function ea_dequeue_jquery_migrate(&$scripts)
-  {
-    if (!is_admin()) {
-      $scripts->remove('jquery');
-      $scripts->add('jquery', false, ['jquery-core'], '1.12.4');
-    }
-  }
+  // function ea_dequeue_jquery_migrate(&$scripts)
+  // {
+  //   if (!is_admin()) {
+  //     $scripts->remove('jquery');
+  //     $scripts->add('jquery', false, ['jquery-core'], '1.12.4');
+  //   }
+  // }
 
   //  Включить, если используется стандартный jquery
   add_filter('wp_default_scripts', 'ea_dequeue_jquery_migrate');
