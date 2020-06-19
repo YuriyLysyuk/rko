@@ -264,6 +264,7 @@
 
   &.active {
     display: block;
+    position: absolute;
   }
 
   .search-form {
@@ -337,6 +338,8 @@
 
     &.active {
       display: block;
+      position: absolute;
+      top: 80px;
     }
 
     .menu-item {
