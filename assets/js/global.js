@@ -74,14 +74,14 @@ jQuery(function($){
   });
 
   //  Back To Top Button
-  var btn_to_top = $('.to-top-button');
+  // var btn_to_top = $('.to-top-button');
 
-  $(window).scroll(function() {
-    if ($(window).scrollTop() > 300) {
-      btn_to_top.addClass('show');
-    } else {
-      btn_to_top.removeClass('show');
-    }
-  });
+  // $(window).scroll(function() {
+  //   if ($(window).scrollTop() > 300) {
+  //     btn_to_top.addClass('show');
+  //   } else {
+  //     btn_to_top.removeClass('show');
+  //   }
+  // });
 
 });

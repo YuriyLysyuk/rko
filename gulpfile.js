@@ -1,6 +1,5 @@
 var gulp          = require('gulp'),
-		//babel 				= require('gulp-babel');
-		gutil         = require('gulp-util' ),
+		gutil         = require('gulp-util'),
 		sass          = require('gulp-sass'),
 		concat        = require('gulp-concat'),
 		uglify        = require('gulp-uglify'),
@@ -23,9 +22,6 @@ gulp.task('scripts', function() {
 		'assets/js/src/*.js',
 		'assets/js/global.js', // Always at the end
 		])
-	//.pipe(babel({
-  //    presets: ['@babel/preset-env']
-  //  }))
 	.pipe(concat('global.min.js'))
 	.pipe(uglify()) // Mifify js (opt.)
 	.pipe(gulp.dest('assets/js'))
