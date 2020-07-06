@@ -4,7 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.3.9
+ * @since        1.3.10
  **/
 
 /**
