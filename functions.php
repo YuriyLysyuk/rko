@@ -4,7 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.3.10
+ * @since        1.3.11
  **/
 
 /**
@@ -367,15 +367,17 @@ function rko_acf_footer_form()
 add_action('genesis_before_footer', 'rko_acf_footer_form');
 
 // Добавляем Google Tag Manager на боевой сайт
-if ('production' === WP_ENVIRONMENT) {
-  // Выводим GTM только посетителям сайта, администратору не выводим
-  if (!is_admin()) {
-    // Добавляем Google Tag Manager код в <head>
-    add_action('wp_head', 'google_tag_manager_head', 1);
+// Выводим GTM только посетителям сайта, администратору не выводим
+if (
+  defined('WP_ENVIRONMENT') &&
+  'production' === WP_ENVIRONMENT &&
+  !current_user_can('manage_options')
+) {
+  // Добавляем Google Tag Manager код в <head>
+  add_action('wp_head', 'google_tag_manager_head', 1);
 
-    // Добавляем Google Tag Manager код непосредствено после тэга <body>
-    add_action('genesis_before', 'google_tag_manager_body');
-  }
+  // Добавляем Google Tag Manager код непосредствено после тэга <body>
+  add_action('genesis_before', 'google_tag_manager_body');
 }
 
 // Код Google Tag Manager в <head>
