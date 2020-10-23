@@ -446,6 +446,10 @@ img {
     height: auto;
   }
 
+  .entry-content > &.alignwide figcaption {
+    padding: 0 $base-margin;
+  }
+
   figcaption {
     color: $grey_7;
     text-align: left;
