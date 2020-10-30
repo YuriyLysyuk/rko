@@ -28,6 +28,25 @@ if (
 // Добавляем поддержку вывода мета для страницы перед контентов (автор, обновление и комменты)
 add_post_type_support('page', 'genesis-entry-meta-before-content');
 
+/**
+ * Yoast SEO не поддерживает вывод схемы Article для страниц page
+ * Добавляем такую поддержку в этом шаблоне
+ */
+
+// Добавляем вывод схемы Article
+add_filter('wpseo_schema_needs_article', '__return_true');
+// Добавляем вывод схемы Author
+add_filter('wpseo_schema_needs_author', '__return_true');
+
+// Принудительно устанавливаем тип схемы Article
+add_filter('wpseo_schema_article', 'set_article');
+function set_article($data)
+{
+  $data['@type'] = 'Article';
+
+  return $data;
+}
+
 get_header();
 
 do_action('genesis_before_content');
