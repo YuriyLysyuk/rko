@@ -111,5 +111,29 @@ function ly_gravatar_filter($avatar, $id_or_email, $size, $default, $alt) {
 	else 
 		$return = 'ololo';
 	return $return;
-}
 add_filter('get_avatar', 'ly_gravatar_filter', 10, 5);
+
+/*
+ * Yoast SEO в разметке автора для получения URL аватара использует get_avatar_url()
+ * Эта функция добавляет поддержку кастомного аватара
+ *
+ */
+function custom_modify_get_avatar($args, $id_or_email)
+{
+  $customAvatar = get_the_author_meta(
+    'ly_custom_avatar',
+    $id_or_email->user_id
+  );
+
+  // Достаем URL папки загрузки
+  $uploadDir = wp_get_upload_dir();
+
+  if ($customAvatar) {
+    $customAvatarUrl = $uploadDir['baseurl'] . $customAvatar;
+    if (!empty($customAvatarUrl)) {
+      $args['url'] = $customAvatarUrl;
+    }
+  }
+  return $args;
+}
+add_filter('pre_get_avatar_data', 'custom_modify_get_avatar', 10, 2);
