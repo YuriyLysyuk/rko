@@ -4,7 +4,7 @@
  *
  * @package      rko
  * @author       Yuriy Lysyuk
- * @since        1.3.13
+ * @since        1.3.14
  **/
 
 // add_filter( 'genesis_author_box', 'ly_author_box', 10, 6 );
@@ -152,10 +152,18 @@ add_filter('get_avatar', 'ly_gravatar_filter', 10, 5);
  */
 function custom_modify_get_avatar($args, $id_or_email)
 {
-  $customAvatar = get_the_author_meta(
-    'ly_custom_avatar',
-    $id_or_email->user_id
-  );
+  if (is_object($id_or_email) && isset($id_or_email->user_id)) {
+    $id = $id_or_email->user_id;
+  } elseif (is_object($id_or_email) && isset($id_or_email->post_author)) {
+    $id_or_email->post_author;
+  } elseif (is_string($id_or_email)) {
+    $user = get_user_by('email', $id_or_email);
+    $id = $user->user_id;
+  } else {
+    $id = $id_or_email;
+  }
+
+  $customAvatar = get_the_author_meta('ly_custom_avatar', $id);
 
   // Достаем URL папки загрузки
   $uploadDir = wp_get_upload_dir();
