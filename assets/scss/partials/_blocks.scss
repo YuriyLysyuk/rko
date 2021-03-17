@@ -118,37 +118,40 @@
 	}
 }
 
-ul,
-ol {
-	padding-left: 40px;
-
-	li {
-		padding-left: 0;
-		padding-bottom: 0.5rem;
-
-		&:last-child {
-			padding-bottom: 0;
-		}
-
-		ul,
-		ol {
-			padding-top: 0.5rem;
-		}
-	}
-
-	&.wp-block-gallery {
-		padding: 0;
+.entry-content,
+.block-editor-writing-flow {
+	ul,
+	ol {
+		padding-left: 40px;
 
 		li {
-			padding: 0;
+			padding-left: 0;
+			padding-bottom: 0.5rem;
 
 			&:last-child {
-				margin-bottom: 16px;
+				padding-bottom: 0;
+			}
+
+			ul,
+			ol {
+				padding-top: 0.5rem;
 			}
 		}
 
-		&.border img {
-			border: 1px solid $border-color;
+		&.wp-block-gallery {
+			padding: 0;
+
+			li {
+				padding: 0;
+
+				&:last-child {
+					margin-bottom: 16px;
+				}
+			}
+
+			&.border img {
+				border: 1px solid $border-color;
+			}
 		}
 	}
 }
