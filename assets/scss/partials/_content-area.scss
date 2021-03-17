@@ -210,6 +210,10 @@ body {
       }
     }
   }
+		// WP 5.7 ввел "" для пустых абзацев, поэтому были отступы у rko_toc
+		p:empty:before {
+			content: none;
+		}
 }
 
 .after-entry {
