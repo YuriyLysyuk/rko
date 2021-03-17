@@ -92,54 +92,51 @@ p {
 	padding: 0;
 
 	&.has-regular-font-size {
-		@include font-sizes( 16px, 18px );
+		@include font-sizes(16px, 18px);
 	}
 
 	&.large,
 	&.has-large-font-size {
-    	@include font-sizes( 19px, 22px );
+		@include font-sizes(19px, 22px);
 	}
 
 	&.small,
 	&.has-small-font-size {
-	    font-size: 12px;
+		font-size: 12px;
 	}
-
 }
 
 /* List Items
 --------------------------------------------- */
 
 ol {
-    margin: 0 0 $margin_2x 32px;
+	margin: 0 0 $margin_2x 32px;
 
-    li {
-        list-style-type: decimal;
-    }
+	li {
+		list-style-type: decimal;
+	}
 
-    ol {
-        margin-bottom: 0;
-    }
+	ol {
+		margin-bottom: 0;
+	}
 }
 
 ul {
-    margin: 0 0 $margin_2x 32px;
+	margin: 0 0 $margin_2x 32px;
 
-    li {
-        list-style-type: disc;
-    }
+	li {
+		list-style-type: disc;
+	}
 
-    ul {
-        margin-bottom: 0;
-    }
+	ul {
+		margin-bottom: 0;
+	}
 }
-
 
 /* Color Options
 --------------------------------------------- */
 
 @each $name, $color in $colors {
-
 	.has-#{$name}-color {
 		color: $color;
 	}
@@ -147,4 +144,8 @@ ul {
 	.has-#{$name}-background-color {
 		background-color: $color;
 	}
+}
+
+.has-highlight {
+	background-color: $pale-orange;
 }

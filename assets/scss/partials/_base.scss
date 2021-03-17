@@ -25,28 +25,27 @@ $green: #4caf50;
 $bg-light-green: rgba(76, 175, 80, 0.1);
 $dark-green: #388e3c;
 $light-orange: #ffbb33;
+$pale-orange: #fdf2d0;
 $orange: #ff8800;
 $menu_bg_blue: #d0e7ec;
 
 $brand-gradient: linear-gradient(40deg, $light-blue, $dark-blue);
 
-// Gutenberg color options
-// -- see editor-color-palette in functions.php
-$colors: (
-  "light-grey": $grey_1,
-  "blue": $blue,
-  "dark-blue": $dark-blue,
-  "light-blue": $light-blue,
-  "green": $green,
-);
-
 $base-color: $grey_8;
 $highlight: $blue;
 $border-color: $grey_3;
 
+// Gutenberg color options
+// -- see editor-color-palette in functions.php
+$colors: (
+	"pale-orange": $pale-orange,
+);
+
 // Fonts
-$base-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-$alt-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$base-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+	"Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$alt-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+	"Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 
 // Sidr
 $sidr_width: 345px;
@@ -69,15 +68,15 @@ $margin_4x: $base-margin * 4;
 
 // Include Media
 $breakpoints: (
-  "phone": 360px,
-  "small": 768px,
-  "tablet": 768px,
-  // required for include-media
-    "medium": 768px + $grid-gap + 200px,
-  "reading": 768px + $grid-gap + 200px + 440px,
-  "large": 1200px,
-  "desktop": $grid-width + $grid-gap,
-  // required for include-media
+	"phone": 360px,
+	"small": 768px,
+	"tablet": 768px,
+	// required for include-media
+	"medium": 768px + $grid-gap + 200px,
+	"reading": 768px + $grid-gap + 200px + 440px,
+	"large": 1200px,
+	"desktop": $grid-width + $grid-gap,
+	// required for include-media
 );
 
 @import "../vendor/_include-media";
