@@ -61,4 +61,22 @@ function ly_genesis_title_comments()
   $title = '<div class="h3">' . __('Comments', 'rko') . '</div>';
   return $title;
 }
-add_filter('genesis_title_comments', 'ly_genesis_title_comments');
+add_filter( 'genesis_title_comments', 'ly_genesis_title_comments' );
+
+/**
+ * Кнопка отблагодарить со ссылкой на донат
+ */
+function comment_reply_link_args_filter( $args, $comment ) {
+
+	$comment_user = get_user_by( 'email', $comment->comment_author_email );
+
+	if ( user_can( $comment_user, 'manage_options' ) ) {
+		$thanks_url = $GLOBALS['rko']['thanks']['url'];
+		$thanks_link = '<a class="comment-donate-link" href="' . $thanks_url . '" rel="nofollow" target="_blank">Отблагодарить</a>';
+
+		$args['after'] = $thanks_link . $args['after'];
+	}
+
+	return $args;
+}
+add_filter( 'comment_reply_link_args', 'comment_reply_link_args_filter', 10, 2 );

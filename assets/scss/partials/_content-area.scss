@@ -541,6 +541,10 @@ body {
 	}
 }
 
+.comment-reply-link + .comment-donate-link {
+  margin-left: $base-margin;
+}
+
 .comment-respond {
 	p:last-child {
 		margin-bottom: 0;

@@ -8,6 +8,21 @@
  * @since        1.3.11
  **/
 
+/*
+ * CUSTOM GLOBAL VARIABLES
+ */
+function rko_global_vars() {
+	global $rko;
+
+	$rko = [ 
+		'thanks' => [ 
+			'url' => 'https://yoomoney.ru/to/410012496287506'
+		],
+	];
+
+}
+add_action( 'parse_query', 'rko_global_vars' );
+
 /**
  * Set up the content width value based on the theme's design.
  *
