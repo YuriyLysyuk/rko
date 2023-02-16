@@ -12,7 +12,7 @@
  * Set up the content width value based on the theme's design.
  *
  */
-if (!isset($content_width)) {
+if ( ! isset( $content_width ) ) {
 	$content_width = 1200;
 }
 
@@ -22,19 +22,18 @@ if (!isset($content_width)) {
  * @since  1.0.0
  * @global array $wp_styles
  */
-function rko_global_enqueues()
-{
+function rko_global_enqueues() {
 	// javascript
 	wp_enqueue_script(
 		'rko-global',
 		get_stylesheet_directory_uri() . '/assets/js/global.min.js',
-		['jquery'],
-		filemtime(get_stylesheet_directory() . '/assets/js/global.min.js'),
+		[ 'jquery' ],
+		filemtime( get_stylesheet_directory() . '/assets/js/global.min.js' ),
 		true
 	);
 
 	// css
-	wp_dequeue_style('rko');
+	wp_dequeue_style( 'rko' );
 	// wp_enqueue_style( 'rko-fonts', rko_theme_fonts_url() );
 	wp_enqueue_style(
 		'rko-style',
@@ -44,8 +43,8 @@ function rko_global_enqueues()
 	);
 
 	// Move jQuery to footer
-	if (!is_admin()) {
-		wp_deregister_script('jquery');
+	if ( ! is_admin() ) {
+		wp_deregister_script( 'jquery' );
 
 		// jquery из директории сайта
 		// wp_register_script( 'jquery', get_stylesheet_directory_uri() . '/assets/js/jquery-3.3.1.min.js', false, NULL, true );
@@ -62,7 +61,7 @@ function rko_global_enqueues()
 		// стандартный jquery wordpress
 		// wp_register_script( 'jquery', includes_url( '/js/jquery/jquery.js' ), false, NULL, true );
 
-		wp_enqueue_script('jquery');
+		wp_enqueue_script( 'jquery' );
 	}
 
 	/**
@@ -78,26 +77,25 @@ function rko_global_enqueues()
 	// }
 
 	//  Включить, если используется стандартный jquery
-	add_filter('wp_default_scripts', 'ea_dequeue_jquery_migrate');
+	add_filter( 'wp_default_scripts', 'ea_dequeue_jquery_migrate' );
 }
-add_action('wp_enqueue_scripts', 'rko_global_enqueues');
+add_action( 'wp_enqueue_scripts', 'rko_global_enqueues' );
 
 /**
  * Gutenberg scripts and styles
  *
  */
-function rko_gutenberg_scripts()
-{
+function rko_gutenberg_scripts() {
 	// wp_enqueue_style( 'rko-fonts', rko_theme_fonts_url() );
 	wp_enqueue_script(
 		'rko-editor',
 		get_stylesheet_directory_uri() . '/assets/js/editor.js',
-		['wp-blocks', 'wp-dom'],
-		filemtime(get_stylesheet_directory() . '/assets/js/editor.js'),
+		[ 'wp-blocks', 'wp-dom' ],
+		filemtime( get_stylesheet_directory() . '/assets/js/editor.js' ),
 		true
 	);
 }
-add_action('enqueue_block_editor_assets', 'rko_gutenberg_scripts');
+add_action( 'enqueue_block_editor_assets', 'rko_gutenberg_scripts' );
 
 /**
  * Theme Fonts URL
@@ -121,11 +119,10 @@ add_action('enqueue_block_editor_assets', 'rko_gutenberg_scripts');
  *
  * @since 1.0.0
  */
-function rko_setup()
-{
+function rko_setup() {
 	define(
 		'CHILD_THEME_VERSION',
-		filemtime(get_stylesheet_directory() . '/assets/css/main.min.css')
+		filemtime( get_stylesheet_directory() . '/assets/css/main.min.css' )
 	);
 
 	// Includes
@@ -155,8 +152,8 @@ function rko_setup()
 	//include_once( get_stylesheet_directory() . '/inc/debug.php' );
 
 	// Editor Styles
-	add_theme_support('editor-styles');
-	add_editor_style('assets/css/editor-style.min.css');
+	add_theme_support( 'editor-styles' );
+	add_editor_style( 'assets/css/editor-style.min.css' );
 
 	// Image Sizes
 	// add_image_size( 'rko_featured', 400, 100, true );
@@ -164,49 +161,48 @@ function rko_setup()
 	// Gutenberg
 
 	// -- Responsive embeds
-	add_theme_support('responsive-embeds');
+	add_theme_support( 'responsive-embeds' );
 
 	// -- Wide Images
-	add_theme_support('align-wide');
+	add_theme_support( 'align-wide' );
 
 	// -- Disable custom font sizes
-	add_theme_support('disable-custom-font-sizes');
+	add_theme_support( 'disable-custom-font-sizes' );
 
 	// -- Editor Font Styles
-	add_theme_support('editor-font-sizes', [
-		[
+	add_theme_support( 'editor-font-sizes', [ 
+		[ 
 			'name' => 'Маленький',
 			'shortName' => 'S',
 			'size' => 12,
 			'slug' => 'small',
 		],
-		[
+		[ 
 			'name' => 'Большой',
 			'shortName' => 'L',
 			'size' => 22,
 			'slug' => 'large',
 		],
-	]);
+	] );
 
 	// -- Disable Custom Colors
-	add_theme_support('disable-custom-colors');
+	add_theme_support( 'disable-custom-colors' );
 
 	// -- Editor Color Palette
-	add_theme_support('editor-color-palette', [
-		[
+	add_theme_support( 'editor-color-palette', [ 
+		[ 
 			'name' => 'Бледно-оранжевый',
 			'slug' => 'pale-orange',
 			'color' => '#fdf2d0',
 		],
-	]);
+	] );
 }
-add_action('genesis_setup', 'rko_setup', 15);
+add_action( 'genesis_setup', 'rko_setup', 15 );
 
 // Меняем путь к файлу перевода для Genesis
-add_filter('load_textdomain_mofile', 'rko_genesis_change_mofile', 10, 2);
-function rko_genesis_change_mofile($mofile, $domain)
-{
-	if ($domain !== 'genesis') {
+add_filter( 'load_textdomain_mofile', 'rko_genesis_change_mofile', 10, 2 );
+function rko_genesis_change_mofile( $mofile, $domain ) {
+	if ( $domain !== 'genesis' ) {
 		return $mofile;
 	}
 	return get_stylesheet_directory() .
@@ -216,18 +212,16 @@ function rko_genesis_change_mofile($mofile, $domain)
 }
 
 // Загружаем перевод для дочерней темы
-function rko_load_theme_textdomain()
-{
-	load_theme_textdomain('rko', get_stylesheet_directory() . '/languages');
+function rko_load_theme_textdomain() {
+	load_theme_textdomain( 'rko', get_stylesheet_directory() . '/languages' );
 }
-add_action('after_setup_theme', 'rko_load_theme_textdomain');
+add_action( 'after_setup_theme', 'rko_load_theme_textdomain' );
 
 /**
  * Add favicon
  *
  */
-function rko_favicon()
-{
+function rko_favicon() {
 	// generics
 	echo '<link rel="icon" href="' .
 		get_stylesheet_directory_uri() .
@@ -255,7 +249,7 @@ function rko_favicon()
 		get_stylesheet_directory_uri() .
 		'/assets/images/favicon-180.png" sizes="180x180">';
 }
-add_action('wp_head', 'rko_favicon');
+add_action( 'wp_head', 'rko_favicon' );
 
 // РАЗОБРАТЬ
 
@@ -264,29 +258,27 @@ add_action('wp_head', 'rko_favicon');
  *
  */
 
-function rko_add_async_attribute($tag, $handle)
-{
+function rko_add_async_attribute( $tag, $handle ) {
 	// добавьте дескрипторы (названия) скриптов в массив ниже
-	$scripts_to_async = ['eafl-public', 'rko-global', 'comment-reply'];
+	$scripts_to_async = [ 'eafl-public', 'rko-global', 'comment-reply' ];
 
-	foreach ($scripts_to_async as $async_script) {
-		if ($async_script === $handle) {
-			return str_replace(' src', ' async src', $tag);
+	foreach ( $scripts_to_async as $async_script ) {
+		if ( $async_script === $handle ) {
+			return str_replace( ' src', ' async src', $tag );
 		}
 	}
 	return $tag;
 }
 
-add_filter('script_loader_tag', 'rko_add_async_attribute', 10, 2);
+add_filter( 'script_loader_tag', 'rko_add_async_attribute', 10, 2 );
 
 /**
  * Modify Post Info ПРОДОЛЖИТЬ ОТСЮДА! ЭТО НУЖНО ПЕРЕНЕСТИ
  *
  */
-function ly_post_info_filter($post_info)
-{
+function ly_post_info_filter( $post_info ) {
 	$author = '<span class="entry-author">';
-	$author .= get_avatar(get_the_author_meta('email'), 48);
+	$author .= get_avatar( get_the_author_meta( 'email' ), 48 );
 	$author .= '<span><span class="label">автор</span>';
 	$author .= get_the_author();
 	$author .= '</span></span>';
@@ -306,17 +298,16 @@ function ly_post_info_filter($post_info)
 
 	return $post_info;
 }
-add_filter('genesis_post_info', 'ly_post_info_filter');
+add_filter( 'genesis_post_info', 'ly_post_info_filter' );
 
 // Выводим в качестве отрывка дискрипшен из Yoast
 // Если его нет, то выводим стандартный.
-add_action('the_excerpt', 'ly_modify_the_excerpt');
+add_action( 'the_excerpt', 'ly_modify_the_excerpt' );
 
-function ly_modify_the_excerpt($post_excerpt)
-{
-	if (!has_excerpt()) {
-		$my_descr = get_post_meta(get_the_ID(), '_yoast_wpseo_metadesc', true);
-		if (!empty($my_descr)) {
+function ly_modify_the_excerpt( $post_excerpt ) {
+	if ( ! has_excerpt() ) {
+		$my_descr = get_post_meta( get_the_ID(), '_yoast_wpseo_metadesc', true );
+		if ( ! empty( $my_descr ) ) {
 			return '<p>' . $my_descr . '</p>';
 		}
 	}
@@ -325,23 +316,21 @@ function ly_modify_the_excerpt($post_excerpt)
 }
 
 // Сделаем косой стиль футера
-function rko_kosoy_footer()
-{
+function rko_kosoy_footer() {
 	echo '<svg class="footer-angle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="#212121" points="0,100 100,0 100,100"></polygon></svg>';
 }
 
-add_action('genesis_footer', 'rko_kosoy_footer');
+add_action( 'genesis_footer', 'rko_kosoy_footer' );
 
 // Выводим контактную форму в футере если выбран соответствующий метабокс в настройках страницы
-function rko_acf_footer_form()
-{
+function rko_acf_footer_form() {
 	// Получаем ID формы в настройках
-	$footer_form_id = get_field('footer_form_id');
+	$footer_form_id = get_field( 'footer_form_id' );
 
 	// Если id формы не введен и не установлен плагин WPForms – ничего не выводить
-	if (!empty($footer_form_id) && function_exists('wpforms')) {
-		get_template_part('partials/footer-contact-form');
+	if ( ! empty( $footer_form_id ) && function_exists( 'wpforms' ) ) {
+		get_template_part( 'partials/footer-contact-form' );
 	}
 }
 
-add_action('genesis_before_footer', 'rko_acf_footer_form');
+add_action( 'genesis_before_footer', 'rko_acf_footer_form' );
