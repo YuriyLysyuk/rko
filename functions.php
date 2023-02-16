@@ -53,7 +53,7 @@ function rko_global_enqueues() {
 		wp_register_script(
 			'jquery',
 			'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js',
-			false,
+			[],
 			null,
 			true
 		);
