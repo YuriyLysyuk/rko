@@ -35,7 +35,7 @@ function ea_primary_menu_extras($menu, $args)
   }
   return $menu;
 }
-add_filter('wp_nav_menu_items', 'ea_primary_menu_extras', 10, 2);
+// add_filter('wp_nav_menu_items', 'ea_primary_menu_extras', 10, 2);
 
 /**
  * Добавляем форму поиска

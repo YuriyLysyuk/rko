@@ -18,10 +18,10 @@ add_action('genesis_header', 'genesis_do_nav', 12);
 function rko_mobile_menu()
 {
   echo '<nav class="nav-mobile">';
-  echo '<button class="search-toggle">';
-  echo ea_icon(array('icon' => 'search', 'size' => 16, 'class' => 'open'));
-  echo ea_icon(array('icon' => 'close', 'size' => 16, 'class' => 'close'));
-  echo '</button>';
+  // echo '<button class="search-toggle">';
+  // echo ea_icon(array('icon' => 'search', 'size' => 16, 'class' => 'open'));
+  // echo ea_icon(array('icon' => 'close', 'size' => 16, 'class' => 'close'));
+  // echo '</button>';
 
   echo '<button class="mobile-menu-toggle">';
   echo ea_icon(array('icon' => 'menu', 'size' => 16, 'class' => 'open'));
